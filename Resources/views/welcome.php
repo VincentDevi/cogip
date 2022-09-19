@@ -12,7 +12,7 @@
     <main>
        <section class="container">
         <img 
-                src="assets/img/Illustration.png" 
+                src="assets/img/Illustration.png"
                 alt="cogip logo"
                 class="illustration">
             <h1>Welcome to <?php echo $name ?></h1>
