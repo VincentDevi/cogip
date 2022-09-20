@@ -11,7 +11,7 @@
 <body>
     <main>
        <section class="container">
-        <img 
+        <img
                 src="public/assets/img/Illustration.png"
                 alt="cogip logo"
                 class="illustration">

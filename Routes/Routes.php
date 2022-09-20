@@ -25,8 +25,8 @@ $router->get('/', function() {
 });
 
 $router->get('/companies', function() {
-    (new CompaniesController)->index();
-//    echo 'companies';
+//    (new CompaniesController)->index();
+    echo 'companies';
 });
 
 //$router->get('/contacts', function() {
