@@ -1,14 +1,9 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "89808082de194fdff9658de6f9057c87",
     "packages": [
         {
             "name": "bramus/router",
             "version": "1.6.1",
+            "version_normalized": "1.6.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bramus/router.git",
@@ -28,7 +23,9 @@
                 "phpunit/php-code-coverage": "~2.0",
                 "phpunit/phpunit": "~4.8"
             },
+            "time": "2021-11-18T19:24:07+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "Bramus": "src/"
@@ -55,11 +52,12 @@
                 "issues": "https://github.com/bramus/router/issues",
                 "source": "https://github.com/bramus/router/tree/1.6.1"
             },
-            "time": "2021-11-18T19:24:07+00:00"
+            "install-path": "../bramus/router"
         },
         {
             "name": "filp/whoops",
             "version": "2.14.5",
+            "version_normalized": "2.14.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
@@ -84,12 +82,14 @@
                 "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
                 "whoops/soap": "Formats errors as SOAP responses"
             },
+            "time": "2022-01-07T12:00:00+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.7-dev"
                 }
             },
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Whoops\\": "src/Whoops/"
@@ -126,11 +126,12 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-07T12:00:00+00:00"
+            "install-path": "../filp/whoops"
         },
         {
             "name": "psr/log",
             "version": "3.0.0",
+            "version_normalized": "3.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
@@ -145,12 +146,14 @@
             "require": {
                 "php": ">=8.0.0"
             },
+            "time": "2021-07-14T16:46:02+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "3.x-dev"
                 }
             },
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Psr\\Log\\": "src"
@@ -176,11 +179,12 @@
             "support": {
                 "source": "https://github.com/php-fig/log/tree/3.0.0"
             },
-            "time": "2021-07-14T16:46:02+00:00"
+            "install-path": "../psr/log"
         },
         {
             "name": "rakit/validation",
             "version": "v1.4.0",
+            "version_normalized": "1.4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rakit/validation.git",
@@ -201,7 +205,9 @@
                 "phpunit/phpunit": "^6.5",
                 "squizlabs/php_codesniffer": "^3"
             },
+            "time": "2020-08-27T05:07:01+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Rakit\\Validation\\": "src"
@@ -222,11 +228,12 @@
                 "issues": "https://github.com/rakit/validation/issues",
                 "source": "https://github.com/rakit/validation/tree/v1.4.0"
             },
-            "time": "2020-08-27T05:07:01+00:00"
+            "install-path": "../rakit/validation"
         },
         {
             "name": "symfony/polyfill-ctype",
             "version": "v1.26.0",
+            "version_normalized": "1.26.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
@@ -247,6 +254,7 @@
             "suggest": {
                 "ext-ctype": "For best performance"
             },
+            "time": "2022-05-24T11:49:31+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -257,6 +265,7 @@
                     "url": "https://github.com/symfony/polyfill"
                 }
             },
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "bootstrap.php"
@@ -304,11 +313,12 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-05-24T11:49:31+00:00"
+            "install-path": "../symfony/polyfill-ctype"
         },
         {
             "name": "symfony/polyfill-mbstring",
             "version": "v1.26.0",
+            "version_normalized": "1.26.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
@@ -329,6 +339,7 @@
             "suggest": {
                 "ext-mbstring": "For best performance"
             },
+            "time": "2022-05-24T11:49:31+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -339,6 +350,7 @@
                     "url": "https://github.com/symfony/polyfill"
                 }
             },
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "bootstrap.php"
@@ -387,11 +399,12 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-05-24T11:49:31+00:00"
+            "install-path": "../symfony/polyfill-mbstring"
         },
         {
             "name": "twig/twig",
             "version": "v3.4.2",
+            "version_normalized": "3.4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
@@ -412,12 +425,14 @@
                 "psr/container": "^1.0",
                 "symfony/phpunit-bridge": "^4.4.9|^5.0.9|^6.0"
             },
+            "time": "2022-08-12T06:47:24+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "3.4-dev"
                 }
             },
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Twig\\": "src/"
@@ -463,18 +478,9 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-08-12T06:47:24+00:00"
+            "install-path": "../twig/twig"
         }
     ],
-    "packages-dev": [],
-    "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
-    "prefer-stable": false,
-    "prefer-lowest": false,
-    "platform": {
-        "ext-pdo": "*"
-    },
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "dev": true,
+    "dev-package-names": []
 }
