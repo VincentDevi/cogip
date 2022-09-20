@@ -16,15 +16,17 @@ $router = new Router();
 
 $router->set404(function() {
     header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
-    (new NotFoundController())->index();
+    (new NotFoundController)->index();
 });
 
 $router->get('/', function() {
-    (new HomeController())->index();
+//    echo 'home';
+    (new HomeController)->index();
 });
 
 $router->get('/companies', function() {
-    echo 'companies';
+    (new CompaniesController)->index();
+//    echo 'companies';
 });
 
 //$router->get('/contacts', function() {
