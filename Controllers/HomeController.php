@@ -6,11 +6,14 @@ use App\Core\Controller;
 
 class HomeController extends Controller
 {
-    /*
-    * return view
-    */
-    public function index()
+    /**
+     * return view
+     *
+     * @param $data
+     * @return void
+     */
+    public function index($data = ['name' => 'Jean-Christian'] )
     {
-        return $this->view('welcome',["name" => "Cogip"]);
+        $this->view('welcome', $data);
     }
 }
