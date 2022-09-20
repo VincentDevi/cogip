@@ -1,1 +1,45 @@
-<h1>Hello {{ name }}</h1>
+{% block footer %}
+
+<footer class="footer">
+
+    <section class="footer__section footer__section--main">
+        <div class="footer__section__logo">
+            <p class="footer__section__logo__text">COGIP</p>
+        </div>
+
+        <div class="footer__section__infos">
+                <section class="infos__contact"></section>
+                    <p class="contact__p contact__p--adress"><span class="contact__icon contact__icon--location"></span>Square des Martyrs, 6000 Charleroi</p>
+                    <p class="contact__p contact__p--tel"><span class="contact__icon contact__icon--tel"></span>(123) 456-7890</p>
+                    <p class="contact__p contact__p--fax"><span class="contact__icon contact__icon--fax"></span>(123) 456-7890</p>
+                <section class="infos__socialmedias">
+                    <p class="infos__socialmedias__p">Social Media</p>
+                    <div class="infos__socialmedias__icons">
+                        <li class="infos__socialmedias__icons__icon"></li>
+                        <li class="infos__socialmedias__icons__icon"></li>
+                        <li class="infos__socialmedias__icons__icon"></li>
+                        <li class="infos__socialmedias__icons__icon"></li>
+                        <li class="infos__socialmedias__icons__icon"></li>
+                        <li class="infos__socialmedias__icons__icon"></li>
+                        <li class="infos__socialmedias__icons__icon"></li>
+                        <li class="infos__socialmedias__icons__icon"></li>
+                    </div>
+                </section>
+        </div>
+
+    </section>
+    <section class="footer__section footer__section__nav">
+        <ul class="footer__section__menu">
+            <li class="footer__section__menu__item">HOME</li>
+            <li class="footer__section__menu__item">INVOINCES</li>
+            <li class="footer__section__menu__item">COMPANIES</li>
+            <li class="footer__section__menu__item">CONTACTS</li>
+            <li class="footer__section__menu__item">PRIVACY POLICY</li>
+            <li class="footer__section__menu__item footer__section__menu__item--copyright">Copyright &copy; 2022 • COGIP Inc.</li>
+           
+        </ul>
+
+    </section>
+</footer>
+
+{% endblock %}
