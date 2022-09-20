@@ -6,11 +6,14 @@ use App\Core\Controller;
 
 class HomeController extends Controller
 {
-    /*
-    * return view
-    */
-    public function index()
+    /**
+     * return view
+     *
+     * @param $data
+     * @return void
+     */
+    public function index($data = ['name' => 'Jean-Christian'] )
     {
-        new Render('welcome.html.twig', ['name' => 'Jean-Christian']);
+        $this->view('welcome', $data);
     }
 }
