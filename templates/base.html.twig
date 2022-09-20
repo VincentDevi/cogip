@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{{pageTitle}}{% endblock %}</title>
+        <link rel="stylesheets" type="text/css" href="../public/assets/css/styles.css" />
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+
+        {% set content %}
+            {% include 'header.html.twig' %}
+        {% endset %}
+
+
+        <script src="../public/assets/javascript/script.js"></script>
+        {% block javascripts %}{% endblock %}
+
+    </body>
+</html>
