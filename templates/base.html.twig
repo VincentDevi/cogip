@@ -22,12 +22,7 @@
         {% endblock %}
 
         
-        
-
-
-
 {# --------------------------- MAIN CONTENT--------------------------------- #}
->>>>>>> SelimDev
 
     <main class="main">
         {% block content %}
@@ -44,8 +39,11 @@
 
 
 {# ----------------------------- JS scripts -------------------------------- #}
+        
+        {% block javascripts %}
         <script src="assets/javascript/script.js"></script>
-        {% block javascripts %}{% endblock %}
+        {% endblock %}
+
     </body>
 {% endblock %}
 
