@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="public/assets/css/reset.css" rel="stylesheet" type="text/css">
-    <link href="public/assets/css/styles.css" rel="stylesheet" type="text/css">
-    <title>Cogip - Welcome</title>
-</head>
-<body>
-<main>
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome{% endblock %}
+
+
+{% block content %}
+    
     <section class="container">
         <img
-                src="public/assets/img/Illustration.png"
+                src="../public/assets/img/Illustration.png"
                 alt="cogip logo"
                 class="illustration">
         <h1>Welcome to {{ name }}</h1>
@@ -24,6 +19,5 @@
             <li>redirect() function</li>
         </ul>
     </section>
-</main>
-</body>
-</html>
+{% endblock %}
+
