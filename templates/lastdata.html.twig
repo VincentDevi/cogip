@@ -1,8 +1,19 @@
 {# ----------------------------- Data tables template ----------------------------- #}
+
+
+{% block tablesection %}
+
 <section class="main__section">
+
+    {% block tabletitlesection %}
     <h2 class="main__section__title">LAST INVOICES</h2>
+    {% endblock %}
+
+    {% block datatable %}
 
     <table class="main__section__table">
+
+        {% block tableheader %}
         <thead class="table__header">
             <tr class="table__header__row">
                 <th scope="col" class="table__header__row__title">Invoice Number<span class="ordertriangle">&#9662;</span></th>
@@ -11,7 +22,9 @@
                 <th scope="col" class="table__header__row__title">Created at<span class="ordertriangle">&#9662;</span></th>
             </tr>
         </thead>
+        {% endblock %}
 
+        {% block tablebody %}
         <tbody class= "table__body">
             <tr class="table__body__row">
                 <th scope="col" class="table__body__row__cell">F20220915-001</th>
@@ -50,5 +63,17 @@
 
 
         </tbody>
+
+        {% endblock %}
+        
     </table>
+
+    {% endblock %}
+
+    {% block datapages %}
+    {% endblock %}
+
+
 </section>
+
+{% endblock %}
