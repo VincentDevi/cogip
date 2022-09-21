@@ -1,0 +1,87 @@
+.header{
+    background-color: var(--color-yellow);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto';
+    .header__menu{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 5%;
+        width: 80%;
+        margin: 50px 0px;
+        .header__menu__logo{
+            font-weight: 900;
+            font-size: 48px;
+            line-height: 56px;            
+        }
+        .header__menu__nav{
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 23px;
+            li{
+                padding: 10px;
+                cursor: pointer;
+                border: 0.5px;
+            }            
+            li:hover{
+                border: solid 0.5px;
+            }
+        }
+        .header__menu__connection{
+            display: flex;
+            align-items: center;
+            .menu__connection__signUp{
+                font-family: 'Roboto';
+                font-weight: 600;
+                font-size: 20px;
+                white-space: nowrap;
+                border: none;
+                background-color: white;
+                border-radius: 10px;
+                padding: 5px 10px;
+                margin: 0px 20px;
+                cursor: pointer;
+            }
+            .menu__connection__signUp:hover{
+                background-color: rgb(251, 255, 134);
+            }
+            .menu__connection__login{
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 23px;
+                background-color: var(--color-yellow);
+                border: none;
+                cursor: pointer;
+                font-family: 'Roboto';
+
+            }
+        }
+    }
+    .header__banner{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 80%;
+        margin-bottom: 2%;
+        .header__banner__slogan{
+            font-family: 'Inter';
+            font-weight: 900;
+            font-size: 3.5rem;
+            line-height: 79px;
+            width: 50%;
+        }
+        .header__banner__image{
+            width: 40%;           
+        }
+    }
+    .header__mask{
+        width: 90%;
+    }
+}

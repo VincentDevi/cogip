@@ -11,42 +11,27 @@
         <title>{% block title %}{{pageTitle}}{% endblock %}</title>
     </head>
     {% endblock %}
-
-
-
+    
     {% block body %}
     <body>
-
+{# --------------------------- HEADER CONTENT------------------------------- #}
         {% block header %}
             {% include 'header.html.twig' %}
         {% endblock %}
-
-        
-        
-
-
-
+        <main>
 {# --------------------------- MAIN CONTENT--------------------------------- #}
-
-    <main class="main">
         {% block content %}
-                 {# ------- Dynamic main content (data display) --------- #}
+
         {% endblock %}
-    </main>
-
-
-{# ------------------------------- FOOTER ------------------------------ #}
+{# --------------------------- FOOTER CONTENT------------------------------- #}        
         {% block footer %}
             {% include 'footer.html.twig' %}
         {% endblock %}
-        
+        </main>
 
-
-{# ----------------------------- JS scripts -------------------------------- #}
-        <script src="assets/javascript/script.js"></script>
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="assets/javascript/script.js"></script>
+        {% endblock %}
     </body>
-{% endblock %}
-
-
+    {% endblock %}
 </html>
