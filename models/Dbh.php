@@ -5,6 +5,9 @@ namespace App\models;
 use PDO;
 use PDOException;
 
+/**
+ * Connect to database.
+ */
 class Dbh
 {
     private string $user = "vinz";

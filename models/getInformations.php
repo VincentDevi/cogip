@@ -2,21 +2,21 @@
 
 namespace App\models;
 use Rakit\Validation\Validator;
-use App\models\Dbh;
+//use App\models\Dbh;
 use PDO;
 
 class getInformations extends Dbh
 {
     public function getInfo($table, $limit=null): array{
-        $temporaryQuery = $this->defineTable($table);
-        $query= $this->defineLimit($temporaryQuery,$limit);
+        $temporaryQuery = $this->getQuery($table);
+        $query = $this->defineLimit($temporaryQuery,$limit);
 
         $arr = $this->makeConnexion($query);
         return $arr;
     }
 
     public function searchInfo($table, $keyword){
-        $temporaryQuery = $this->defineTable($table);
+        $temporaryQuery = $this->getQuery($table);
         $query = $this->defineCondition($temporaryQuery,$table,$keyword);
 
         $con = $this->connexion();
@@ -30,9 +30,6 @@ class getInformations extends Dbh
         $stmt=null;
         return $arrAll;
     }
-
-
-
 
     private function makeConnexion($queryDefined): array{
         $con = $this->connexion();
@@ -54,7 +51,6 @@ class getInformations extends Dbh
         return $query;
     }
 
-
     private function defineCondition($queryWithTableDefined, $table,$keyword): string
     {
         $query = $this->sanitizeSearchInput($queryWithTableDefined);
@@ -71,13 +67,33 @@ class getInformations extends Dbh
                 $query .= " WHERE name LIKE :search";
             }
         return $query;
-    }
+        }
     }
 
+//    private function getQuery($table, $limit = 0): string{
+//        $query = "";
+//        $queryLimit = '';
+//        if ($limit > 0) {
+//            $queryLimit = " LIMIT ".$limit;
+//        }
+//        if ($table ==="contacts"){
+//            $query = "SELECT contacts.name, contacts.phone, contacts.email, contacts.created_at, companies.name"." FROM ".$table
+//                ." INNER JOIN companies ON  companies.id = contacts.company_id ".$queryLimit;
+//        }
+//        elseif ($table ==="companies"){
+//            $query = "SELECT companies.name, companies.tva, companies.country, companies.created_at, types.name"." FROM ".$table
+//                ." INNER JOIN types ON types.id = companies.type_id ".$queryLimit;
+//        }
+//        else{
+//            $query = "SELECT ref, invoices.due_date, invoices.created_at, companies.name" . " FROM ".$table
+//                ." INNER JOIN companies ON companies.id = invoices.id_company ".$queryLimit;
+//        }
+//        return $query;
+//    }
 
-    private function defineTable($table): string{
+    private function getQuery($table): string{
         $query = "";
-        if ($table==="contacts"){
+        if ($table ==="contacts"){
             $query = "SELECT contacts.name, contacts.phone, contacts.email, contacts.created_at, companies.name"." FROM ".$table
                 ." INNER JOIN companies ON  companies.id = contacts.company_id";
         }
@@ -91,6 +107,7 @@ class getInformations extends Dbh
         }
         return $query;
     }
+
     private function sanitizeSearchInput($searchInput): string{
         return htmlspecialchars($searchInput);
     }
@@ -109,6 +126,5 @@ class getInformations extends Dbh
         }
         return $result;
     }
-
 
 }
