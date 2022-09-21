@@ -113,3 +113,9 @@
   line-height: 79px;
   width: 50%;
 }
+.header .header__banner .header__banner__image {
+  width: 40%;
+}
+.header .header__mask {
+  width: 90%;
+}/*# sourceMappingURL=styles.css.map */
