@@ -5,15 +5,14 @@ namespace App\models;
 use PDO;
 use PDOException;
 
-require_once './dbSettings.php';
+require_once 'dbSettings.php';
 
 /**
  * Connect to database.
  */
 class Dbh
 {
-//    private string $user = "vinz";
-//    private string $password = "5739";
+
 
     protected function connexion()
     {
