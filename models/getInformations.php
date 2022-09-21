@@ -78,15 +78,15 @@ class getInformations extends Dbh
     private function defineTable($table): string{
         $query = "";
         if ($table==="contacts"){
-            $query = "SELECT contacts.name, contacts.phone, contacts.email, contacts.created_at, companies.name"." FROM ".$table
+            $query = "SELECT contacts_name, contacts.phone, contacts.email, contacts.contacts_created_at, companies.companies_name"." FROM ".$table
                 ." INNER JOIN companies ON  companies.id = contacts.company_id";
         }
         elseif ($table ==="companies"){
-            $query = "SELECT companies.name, companies.tva, companies.country, companies.created_at, types.name"." FROM ".$table
+            $query = "SELECT companies.companies_name, companies.tva, companies.country, companies.companies_created_at, types.types_name"." FROM ".$table
                 ." INNER JOIN types ON types.id = companies.type_id";
         }
         else{
-            $query = "SELECT ref, invoices.due_date, invoices.created_at, companies.name" . " FROM ".$table
+            $query = "SELECT ref, invoices.due_date, invoices.invoices_created_at, companies.companies_name" . " FROM ".$table
                 ." INNER JOIN companies ON companies.id = invoices.id_company";
         }
         return $query;

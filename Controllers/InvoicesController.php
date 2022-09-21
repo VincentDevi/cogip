@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\models\getInformations;
 
 class InvoicesController extends Controller
 {
@@ -12,8 +13,10 @@ class InvoicesController extends Controller
      * @param $data
      * @return void
      */
-    public function index($data = [] )
+    public function index( )
     {
-        $this->view('invoices', $data);
+        $data = new getInformations();
+        $datas = $data->getInfo("invoices");
+        $this->view('invoices', $datas);
     }
 }

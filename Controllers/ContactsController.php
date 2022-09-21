@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\models\getInformations;
 
 class ContactsController extends Controller
 {
@@ -12,8 +13,10 @@ class ContactsController extends Controller
      * @param $data
      * @return void
      */
-    public function index($data = [] )
+    public function index( )
     {
-        $this->view('contacts', $data);
+        $data = new getInformations();
+        $datas = $data->getInfo("contacts");
+        $this->view('contacts', $datas);
     }
 }

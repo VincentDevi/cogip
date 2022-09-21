@@ -16,6 +16,7 @@ class CompaniesController extends Controller
     {
         $data = new getInformations();
         $datas = $data->getInfo("companies");
+
         $this->view('companies', $datas);
     }
 }
