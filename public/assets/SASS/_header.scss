@@ -60,15 +60,19 @@
                 background-color: rgb(251, 255, 134);
             }
             .menu__connection__login{
+                font-family: 'Roboto';
                 font-weight: 600;
                 font-size: 20px;
                 line-height: 23px;
                 background-color: var(--color-yellow);
-                border: none;
+                padding: 10px;
                 cursor: pointer;
-                font-family: 'Roboto';
-
+                border: 0.5px;
             }
+            .menu__connection__login:hover{
+                border: solid 0.5px;
+            }
+
         }
     }
     .header__banner{

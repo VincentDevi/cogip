@@ -97,13 +97,17 @@
   background-color: rgb(251, 255, 134);
 }
 .header .header__menu .header__menu__connection .menu__connection__login {
+  font-family: "Roboto";
   font-weight: 600;
   font-size: 20px;
   line-height: 23px;
   background-color: var(--color-yellow);
-  border: none;
+  padding: 10px;
   cursor: pointer;
-  font-family: "Roboto";
+  border: 0.5px;
+}
+.header .header__menu .header__menu__connection .menu__connection__login:hover {
+  border: solid 0.5px;
 }
 .header .header__banner {
   display: flex;
@@ -204,22 +208,33 @@
   mix-blend-mode: normal;
   opacity: 0.5;
   white-space: nowrap;
+  cursor: default;
+}
+.footer .footer__banner .footer__banner__infos .banner__infos__social ul li {
+  cursor: pointer;
 }
 .footer .footer__menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 80%;
+  margin-top: 10px;
+  margin-bottom: 100px;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  color: var(--color-greyfootertext);
+  color: var(--color-darkbluefooter);
 }
 .footer .footer__menu .footer__menu__nav {
   display: flex;
+  gap: 15%;
 }
 .footer .footer__menu .footer__menu__nav li {
   padding: 10px;
   cursor: pointer;
+  white-space: nowrap;
+}
+.footer .footer__menu .footer__menu__copyright {
+  color: var(--color-greyfootertext);
 }/*# sourceMappingURL=styles.css.map */

@@ -71,6 +71,10 @@
                         mix-blend-mode: normal;
                         opacity: 0.5;
                         white-space: nowrap;
+                        cursor: default;
+                    }
+                    li{
+                        cursor: pointer;
                     }
                 }
             }
@@ -81,17 +85,24 @@
         justify-content: space-between;
         align-items: center;
         width: 80%;
+        margin-top: 10px;
+        margin-bottom: 100px;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 400;
         font-size: 14px;
-        color: var(--color-greyfootertext);
+        color: var(--color-darkbluefooter);
         .footer__menu__nav{
             display: flex;
+            gap: 15%;
             li{
                 padding: 10px;
                 cursor: pointer;
+                white-space: nowrap;
             }
+        }
+        .footer__menu__copyright{
+            color: var(--color-greyfootertext);
         }
     }
 }
