@@ -5,51 +5,34 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="../public/assets/css/reset.css" rel="stylesheet" type="text/css">
-        <link href="../public/assets/css/styles.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/reset.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/styles.css" rel="stylesheet" type="text/css">
+
         {% block stylesheets %}{% endblock %}
         <title>{% block title %}{{pageTitle}}{% endblock %}</title>
     </head>
     {% endblock %}
-
-
-
+    
     {% block body %}
     <body>
-
-
+{# --------------------------- HEADER CONTENT------------------------------- #}
+        {% block header %}
+            {% include 'header.html.twig' %}
+        {% endblock %}
         <main>
-        
-            {% block header %}
-                {% include 'header.html.twig' %}
-            {% endblock %}
-<<<<<<< HEAD
-{# MAIN CONTENT #}
-=======
-
-
 {# --------------------------- MAIN CONTENT--------------------------------- #}
->>>>>>> SelimDev
         {% block content %}
-        
-
 
         {% endblock %}
-
-
+{# --------------------------- FOOTER CONTENT------------------------------- #}        
         {% block footer %}
             {% include 'footer.html.twig' %}
         {% endblock %}
-        
-
-            <script src="../public/assets/javascript/script.js"></script>
-            {% block javascripts %}{% endblock %}
-
         </main>
 
-
+        {% block javascripts %}
+            <script src="assets/javascript/script.js"></script>
+        {% endblock %}
     </body>
-{% endblock %}
-
-
+    {% endblock %}
 </html>

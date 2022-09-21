@@ -1,21 +1,24 @@
-
 {% block header %}
     <header class="header">
-        <div class="header__menu">
-            <nav class="header__box__nav">
-                <div class="header_box__nav__logo"></div>
-                <ul class="header__box_nav__menu">
-                    <li class="nav__menu__item">Home</li>
-                    <li class="nav__menu__item">UInvoices</li>
-                    <li class="nav__menu__item">Companies</li>
-                    <li class="nav__menu__item"></li>Contacts</li>
-                    </ul>
-                <div class ="header__box__connection">
-                    <button class="header__box__connection__button">Sign up</button>
-                    <button class="header__box__connection__button">Login</button>
-                </div>
-            </nav>
-        </div>
+        <nav class="header__menu">
+            <div class="header__menu__logo" >COGIP</div>
+            <ul class="header__menu__nav">
+                <li class="menu__nav__home">Home</li>
+                <li class="menu__nav__invoices">Invoices</li>
+                <li class="menu__nav__companies">Companies</li>
+                <li class="menu__nav__contacts">Contacts</li>
+                </ul>
+            <div class ="header__menu__connection">
+                <button class="menu__connection__signUp">Sign up</button>
+                <button class="menu__connection__login">Login</button>
+            </div>
+        </nav>
+        {% block banner %}
+            
+        {% endblock %}
+
+        <img class="header__mask" src="assets/img/white_mask.png" alt="white_mask">
+
     </header>
 {% endblock %}
 

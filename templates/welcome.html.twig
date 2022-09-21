@@ -2,22 +2,12 @@
 
 {% block title %}Welcome{% endblock %}
 
+{% block header %}
+    {% include "home_header.html.twig" %}
+{% endblock %}
 
 {% block content %}
     
-    <section class="container">
-        <img
-                src="../public/assets/img/Illustration.png"
-                alt="cogip logo"
-                class="illustration">
-        <h1>Welcome to {{ name }}</h1>
-        <p>This base project is provided by BeCode</p>
-        <ul>
-            <li><a href="https://github.com/bramus/router" target="_blank">Bramus/Router</a></li>
-            <li><a href="https://github.com/filp/whoops" target="_blank">Flip/Whoops</a></li>
-            <li>dd() function</li>
-            <li>redirect() function</li>
-        </ul>
-    </section>
+    
 {% endblock %}
 
