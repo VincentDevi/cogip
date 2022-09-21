@@ -92,7 +92,7 @@ class getDbData extends Dbh
     private function getLimit($limit): string
     {
         if (is_numeric($limit) && $limit > 0) {
-            return " LIMIT ".$limit;
+            return " ORDER BY id DESC LIMIT ".$limit;
         } else {
             return "";
         }
@@ -111,16 +111,16 @@ class getDbData extends Dbh
         $queryCondition = $this->getCondition($condition);
 
         if ($table ==="contacts"){
-            $query = "SELECT contacts.name, contacts.phone, contacts.email, contacts.created_at, companies.name"." FROM ".$table
+            $query = "SELECT contacts.contacts_name, contacts.contacts_phone, contacts.email, contacts.contacts_created_at, companies.companies_name"." FROM ".$table
                 ." INNER JOIN companies ON companies.id = contacts.company_id".$queryLimit.$queryCondition.";";
         }
         elseif ($table ==="companies"){
-            $query = "SELECT companies.name, companies.tva, companies.country, companies.created_at, types.name"." FROM ".$table
+            $query = "SELECT companies.companies_name, companies.tva, companies.country, companies.companies_created_at, types.types_name"." FROM ".$table
                 ." INNER JOIN types ON types.id = companies.type_id".$queryLimit.$queryCondition.";";
         }
         else{
-            $query = "SELECT ref, invoices.due_date, invoices.created_at, companies.name" . " FROM ".$table
-                ." INNER JOIN companies ON companies.id = invoices.id_company".$queryLimit.";";
+            $query = "SELECT ref, invoices.due_date, invoices.invoices_created_at, companies.companies_name" . " FROM ".$table
+                ." INNER JOIN companies ON companies.id = invoices.id_company".$queryLimit.$queryCondition.";";
         }
         return $query;
     }
