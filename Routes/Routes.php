@@ -43,13 +43,24 @@ $router->get('/invoices', function() {
 //    echo 'invoices';
     (new InvoicesController())->index();
 });
-$router->get('/contact', function() {
+//$router->get('/contact', function() {
 ////    echo 'contacts';
-    (new ContactController())->index();
-});
-$router->get('company', function() {
-    (new CompanyController())->index();
-    //   echo 'companies';
-});
+//    (new ContactController())->index();
+//});
+$router->get('/contact/([a-z0-9_-]+)', function($name) {
+    // get data's from DB here and pass it to index function
 
+    (new ContactController())->index($name);
+});
+//$router->get('company', function() {
+  //  (new CompanyController())->index();
+    //   echo 'companies';
+//});
+$router->get('/company/([a-z0-9_-]+)', function($name) {
+    // get data's from DB here and pass it to index function
+
+        (new CompanyController())->index($name);
+});
 $router->run();
+
+

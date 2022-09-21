@@ -19,12 +19,12 @@ class companyInformation extends Dbh
     {
         if ( $table === "invoices"){
             $query = "SELECT ref, due_date, companies.companies_name, invoices_created_at"." FROM ".$table." INNER JOIN companies ON companies.id= id_company"
-                ." WHERE companies_name LIKE ".$company." LIMIT 5";
+                ." WHERE companies_name LIKE "."'".$company."'"." LIMIT 5".";";
         }elseif ( $table === "contacts"){
-            $query = "SELECT contacts_name"." FROM ".$table." INNER JOIN companies ON companies.id = contacts.id"." WHERE companies_name LIKE ".$company;
+            $query = "SELECT contacts_name"." FROM ".$table." INNER JOIN companies ON companies.id = company_id"." WHERE companies_name LIKE "."'".$company."'".";";
 
         }else{
-            $query = "SELECT companies_name, tva, country, companies_phone"." FROM ".$table." WHERE companies_name LIKE ".$company;
+            $query = "SELECT companies_name, tva, country, companies_phone"." FROM ".$table." WHERE companies_name LIKE "."'".$company."'".";";
         }
         return $query;
     }
@@ -34,6 +34,7 @@ class companyInformation extends Dbh
         $stmt->execute();
         $arrAll = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $stmt= null;
+        $con = null;
         return $arrAll;
     }
 }
