@@ -1,1 +1,21 @@
-companies page
+{# ALL COMPANIES Page #}
+
+{% extends "welcome.html.twig" %}
+
+{% block title %}Companies{% endblock %}
+
+{% block tabletitlesection %}
+    {# TODO: replace h2 title + inputplaceholder by variable #}
+    <h2 class="main__section__title main__section__title--yellowshadow">ALL COMPANIES</h2>
+    <input class "searchinput" type="search" placeholder="Search company name" name="searchinput" id="searchinput"></input>
+{% endblock %}
+
+
+{% block content %}
+
+    {% include 'datadetails.html.twig' %}
+
+    {# ! Maybe other modifications in tableheadercells and tablebodyrows blocks #}
+    {# ! 5 th (cols) #}
+
+{% endblock %}
