@@ -7,7 +7,7 @@ use App\Core\Controller;
 class CompanyController extends Controller
 {
     /**
-     * return view
+     * Show the company view with data's about the company.
      *
      * @param $data
      * @return void

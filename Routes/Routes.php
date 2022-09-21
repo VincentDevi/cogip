@@ -12,7 +12,7 @@ use App\Controllers\InvoicesController;
 use App\Controllers\CompanyController;
 use App\Controllers\ContactController;
 
-use App\models\getInformations;
+use App\models\getDbData;
 
 $router = new Router();
 

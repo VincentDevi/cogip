@@ -3,18 +3,17 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\models\getInformations;
+use App\models\getDbData;
 class CompaniesController extends Controller
 {
     /**
-     * return view
-     *
+     * Show the companies view.
      *
      * @return void
      */
     public function index()
     {
-        $data = new getInformations();
+        $data = new getDbData();
         $datas = $data->getInfo("companies");
 
         $this->view('companies', $datas);
