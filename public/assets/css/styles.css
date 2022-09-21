@@ -119,3 +119,40 @@
 .header .header__mask {
   width: 90%;
 }
+
+.main__section {
+  width: 85%;
+  margin: auto;
+}
+.main__section__title {
+  font-family: var(--font-family-title);
+  font-weight: var(--font-weight-black);
+  font-size: 3.75rem;
+  margin: 3.25rem 0 5rem 0;
+  border: 2px solid greenyellow;
+}
+.main__section__table {
+  width: 100%;
+  font-family: var(--font-family-header);
+  font-weight: var(--font-weight-semibold);
+  font-size: 20px;
+}
+.main__section__table .table__header {
+  width: 100%;
+  background-color: var(--color-yellow);
+}
+.main__section__table .table__header__row {
+  height: 55px;
+}
+.main__section__table .table__header__row__title {
+  vertical-align: middle;
+}
+.main__section__table .table__body__row {
+  height: 55px;
+}
+.main__section__table .table__body__row:nth-of-type(even) {
+  background-color: var(--color-lightgreytablerows);
+}
+.main__section__table .table__body__row__cell {
+  vertical-align: middle;
+}

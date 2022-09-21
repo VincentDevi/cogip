@@ -1,3 +1,5 @@
+{#  ***MAIN TEMPLATE*** #}
+
 <!DOCTYPE html>
 <html>
     {% block head %}
@@ -24,11 +26,12 @@
         {% block content %}
 
         {% endblock %}
+        </main>
 {# --------------------------- FOOTER CONTENT------------------------------- #}        
         {% block footer %}
             {% include 'footer.html.twig' %}
         {% endblock %}
-        </main>
+        
 
         {% block javascripts %}
             <script src="assets/javascript/script.js"></script>

@@ -1,0 +1,48 @@
+.main__section {
+    width: 85%;
+    margin: auto;
+    &__title {
+        font-family: var(--font-family-title);
+        font-weight: var(--font-weight-black);
+        font-size: 3.75rem;
+        margin: 3.25rem 0 5rem 0;
+        border: 2px solid greenyellow;
+
+        
+    };
+
+    &__table {
+        width:100%;
+        font-family: var(--font-family-header);
+        font-weight: var(--font-weight-semibold);
+        font-size: 20px;
+
+        .table__header {
+            width: 100%;
+            background-color: var(--color-yellow);
+
+            &__row {
+                height: 55px;
+                &__title {
+                    vertical-align: middle;
+                };
+            };
+    
+        };
+
+        .table__body {
+            &__row  {
+                height: 55px;
+                &:nth-of-type(even) {
+                    background-color:var(--color-lightgreytablerows);
+                };
+
+                &__cell {
+                    vertical-align: middle;
+                    
+                };
+            };
+        };
+    };
+
+};
