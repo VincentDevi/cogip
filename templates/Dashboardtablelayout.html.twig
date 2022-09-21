@@ -1,0 +1,57 @@
+{# template for "Last contacts", "Last Invoices" & "Last companies" tables for Dabhboardglobal page #}
+
+{% block dashboardglobalsection %}
+
+<section class="main__section main__section--datatable">
+
+    {% block dashboardtabletitle %}
+    {# TODO: replace <h3>.innerhtml by variable #}
+    <h3 class="main__section__title">Last Contacts</h3>
+    {% endblock %}
+
+
+    {% block dashboardsectioncontent %}
+
+    <table class="main__section__table">
+        <thead class="table__header">
+            <tr class="table__header__row">
+                {# TODO: LOOP function to replace th.innerhtml #}
+                <th scope="col" class="table__header__cell">Name</th>
+                <th scope="col" class="table__header__cell">Phone</th>
+                <th scope="col" class="table__header__cell">Email</th>
+            </tr>
+
+        </thead>
+        <tbody class="table__body">
+            <tr class="table__body__row">
+                {# TODO: LOOP function to replace th.innerhtml #}
+                <th scope="col" class="table__body_cell">Henry Bailleux</th>
+                <th scope="col" class="table__body__cell">0485 78 76 67</th>
+                <th scope="col" class="table__body__cell">henry.bailleux@gr.be</th>
+            </tr>
+            <tr class="table__body__row">
+                <th scope="col" class="table__body_cell">Henry Bailleux</th>
+                <th scope="col" class="table__body__cell">0485 78 76 67</th>
+                <th scope="col" class="table__body__cell">henry.bailleux@gr.be</th>
+            </tr>
+            <tr class="table__body__row">
+                <th scope="col" class="table__body_cell">Henry Bailleux</th>
+                <th scope="col" class="table__body__cell">0485 78 76 67</th>
+                <th scope="col" class="table__body__cell">henry.bailleux@gr.be</th>
+            </tr>
+            <tr class="table__body__row">
+                <th scope="col" class="table__body_cell">Henry Bailleux</th>
+                <th scope="col" class="table__body__cell">0485 78 76 67</th>
+                <th scope="col" class="table__body__cell">henry.bailleux@gr.be</th>
+            </tr>
+            
+
+        </tbody>
+
+    </table>
+
+    {% endblock %}
+    
+</section>
+
+{% endblock %}

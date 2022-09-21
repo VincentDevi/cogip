@@ -1,0 +1,19 @@
+{% extends 'dashboardlayout.html.twig' %}
+
+{% block content %}
+
+<section class="main__section main__section--form">
+    <h3 class="main__section__title">New invoice</h3>
+
+    <form class="main__section__form" method="POST" action="#" name="insertinvoice" id="dashboardlayout.html">
+        
+        <input class="form__input" type="text" value="reference" placeholder="Reference">
+        <input class="form__input" type="number" value="price" placeholder="Price">
+        <input class="form__input" type="text" value="companyname" placeholder="Company name">
+        <input class="form__submit" type="Submit" value="SAVE">
+
+    </form>
+
+</section>
+
+{% endblock %}

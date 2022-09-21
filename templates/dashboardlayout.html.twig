@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+    {% block stylesheets %}
+    <link href="assets/css/dashboard.css" rel="stylesheet" type="text/css">
+    {% endblock %}
+
+
+    {% block body %}
+    <body>
+{# --------------------------- HEADER DASHBOARD------------------------------- #}
+        {% block header %}
+            {% include 'headerdashboard.html.twig' %}
+        {% endblock %}
+
+        {% block aside %}
+            {% include 'asidedashboard.html.twig' %}
+        {% endblock %}
+        <main>
+
+{# --------------------------- MAIN CONTENT--------------------------------- #}
+        {% block content %}
+
+        {% endblock %}
+
+{# --------------------------- FOOTER CONTENT------------------------------- #}        
+        {% block footer %}
+            {# no footer here, see FIGMA template #}
+        {% endblock %}
+        </main>
+
+        {% block javascripts %}
+            {# ! change script sheet? #}
+            <script src="assets/javascript/script.js"></script>
+        {% endblock %}
+        
+    </body>
+    {% endblock %}
+    
