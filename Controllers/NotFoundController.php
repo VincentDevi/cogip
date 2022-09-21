@@ -7,7 +7,7 @@ use App\Core\Controller;
 class NotFoundController extends Controller
 {
     /**
-     * return view
+     * return the default 404 view.
      *
      * @param $data
      * @return void
