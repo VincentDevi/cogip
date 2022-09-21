@@ -7,7 +7,7 @@ use PDO;
 
 class getInformations extends Dbh
 {
-    protected function getInfo($table, $limit=null): array{
+    public function getInfo($table, $limit=null): array{
         $temporaryQuery = $this->defineTable($table);
         $query= $this->defineLimit($temporaryQuery,$limit);
 
@@ -15,7 +15,7 @@ class getInformations extends Dbh
         return $arr;
     }
 
-    protected function searchInfo($table, $keyword){
+    public function searchInfo($table, $keyword){
         $temporaryQuery = $this->defineTable($table);
         $query = $this->defineCondition($temporaryQuery,$table,$keyword);
 
@@ -78,16 +78,16 @@ class getInformations extends Dbh
     private function defineTable($table): string{
         $query = "";
         if ($table==="contacts"){
-            $query = "SELECT name, phone, mail, created_at, companies.name"." FROM ".$table
-                ."INNER JOIN companies ON  id = company_id";
+            $query = "SELECT contacts.name, contacts.phone, contacts.email, contacts.created_at, companies.name"." FROM ".$table
+                ." INNER JOIN companies ON  companies.id = contacts.company_id";
         }
         elseif ($table ==="companies"){
-            $query = "SELECT name, tva, country, created_at, types.name"." FROM ".$table
-                ."INNER JOIN types id = type_id";
+            $query = "SELECT companies.name, companies.tva, companies.country, companies.created_at, types.name"." FROM ".$table
+                ." INNER JOIN types ON types.id = companies.type_id";
         }
         else{
-            $query = "SELECT ref, updated_at, created_at, companies.name" . " FROM ".$table
-                ." INNER JOIN companies ON id = id_company";
+            $query = "SELECT ref, invoices.due_date, invoices.created_at, companies.name" . " FROM ".$table
+                ." INNER JOIN companies ON companies.id = invoices.id_company";
         }
         return $query;
     }

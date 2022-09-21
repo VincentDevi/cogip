@@ -12,7 +12,7 @@ class HomeController extends Controller
      * @param $data
      * @return void
      */
-    public function index($data = ['name' => 'Jean-Christian'] )
+    public function index($data = ['name' => 'Jean-Christian'])
     {
         $this->view('welcome', $data);
     }
