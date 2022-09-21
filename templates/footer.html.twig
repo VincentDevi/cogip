@@ -1,45 +1,37 @@
 {% block footer %}
-
 <footer class="footer">
-
-    <section class="footer__section footer__section--main">
-        <div class="footer__section__logo">
-            <p class="footer__section__logo__text">COGIP</p>
+    <section class="footer__banner">
+        <div class="footer__banner__logo">COGIP</div>
+        <div class="footer__banner__infos">
+            <section class="banner__infos__contact"></section>
+                <div class="infos__contact__adress">Square des Martyrs, 6000 Charleroi</div>
+                <div class="infos__contact__phone">(123) 456-7890</div>
+                <div class="infos__contact__fax">(123) 456-7890</div>
+            <section class="banner__infos__social">
+                <p class="infos__social__title">Social Media</p>
+                <ul class="infos__social__icons">
+                    <li class="social__icons__facebook"></li>
+                    <li class="social__icons__twitter"></li>
+                    <li class="social__icons__linkedin"></li>
+                    <li class="social__icons__youtube"></li>
+                    <li class="social__icons__instagram"></li>
+                    <li class="social__icons__googleplus"></li>
+                    <li class="social__icons__pinterest"></li>
+                    <li class="social__icons__rss"></li>
+                </ul>
+            </section>
         </div>
-
-        <div class="footer__section__infos">
-                <section class="infos__contact"></section>
-                    <p class="contact__p contact__p--adress"><span class="contact__icon contact__icon--location"></span>Square des Martyrs, 6000 Charleroi</p>
-                    <p class="contact__p contact__p--tel"><span class="contact__icon contact__icon--tel"></span>(123) 456-7890</p>
-                    <p class="contact__p contact__p--fax"><span class="contact__icon contact__icon--fax"></span>(123) 456-7890</p>
-                <section class="infos__socialmedias">
-                    <p class="infos__socialmedias__p">Social Media</p>
-                    <div class="infos__socialmedias__icons">
-                        <li class="infos__socialmedias__icons__icon"></li>
-                        <li class="infos__socialmedias__icons__icon"></li>
-                        <li class="infos__socialmedias__icons__icon"></li>
-                        <li class="infos__socialmedias__icons__icon"></li>
-                        <li class="infos__socialmedias__icons__icon"></li>
-                        <li class="infos__socialmedias__icons__icon"></li>
-                        <li class="infos__socialmedias__icons__icon"></li>
-                        <li class="infos__socialmedias__icons__icon"></li>
-                    </div>
-                </section>
-        </div>
-
     </section>
-    <section class="footer__section footer__section__nav">
-        <ul class="footer__section__menu">
-            <li class="footer__section__menu__item">HOME</li>
-            <li class="footer__section__menu__item">INVOINCES</li>
-            <li class="footer__section__menu__item">COMPANIES</li>
-            <li class="footer__section__menu__item">CONTACTS</li>
-            <li class="footer__section__menu__item">PRIVACY POLICY</li>
-            <li class="footer__section__menu__item footer__section__menu__item--copyright">Copyright &copy; 2022 • COGIP Inc.</li>
-           
+    <section class="footer__menu">
+        <ul class="footer__menu__nav">
+            <li class="menu__nav__home">HOME</li>
+            <li class="menu__nav__invoices">INVOINCES</li>
+            <li class="menu__nav__companies">COMPANIES</li>
+            <li class="menu__nav__contacts">CONTACTS</li>
+            <li class="menu__nav__privacy policy">PRIVACY POLICY</li>
         </ul>
-
+        <spanclass="footer__menu__copyright"> Copyright &copy; 2022 • COGIP Inc.</span>
     </section>
-</footer>
 
+</footer>
 {% endblock %}
