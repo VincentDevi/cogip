@@ -1,12 +1,12 @@
 <?php
 
 namespace App\models;
-use App\models\Dbh;
 use PDO;
-class contactInformation
+class contactInformation extends Dbh
 {
-    public function connexionDb($contact){
-        $query= "SELECT contacts_name, phone, email, companies.companies_name"." FROM contacts". "INNER JOIN companies ON companies.id=company_id";
+    public function getcontactInfo($contact){
+        $query= "SELECT contacts_name, phone, email, companies.companies_name"." FROM contacts". "INNER JOIN companies ON companies.id=company_id"
+        ."WHERE contacts_name LIKE ".$contact;
         $con = $this->connexion();
         $stmt= $con->prepare($query);
         $stmt->execute();

@@ -1,24 +1,30 @@
 <?php
 
 namespace App\models;
-use App\models\Dbh;
 use PDO;
-class companyInformation
+class companyInformation extends Dbh
 {
-    public function getCompanyInfo($company){
-        $query = $this->chooseQuery($company);
-        return $this->connexionDb($query);
-    }
 
-    private function chooseQuery($company){
-        if ( $company === "invoices"){
-            $query = "SELECT ref, due_dates, companies.companies_name, invoices_created_at"." FROM ".$company." INNER JOIN companies ON companies.id= id_company"
-                ." LIMIT 5";
-        }elseif ( $company === "contacts"){
-            $query = "SELECT contacts_name"." FROM ".$company." INNER JOIN companies ON companies.id = id"." WHERE company_id = companies.id";
+    public function getCompanyInfo($company): array
+    {
+        $invArr = $this->connexionDb($this->chooseQuery("invoices", $company));
+        $contArr = $this->connexionDb($this->chooseQuery("contacts", $company));
+        $compArr = $this->connexionDb($this->chooseQuery("companies", $company));
+        $arrAll = ["invoices"=>$invArr,
+                "contacts"=>$contArr,
+                "companies"=>$compArr];
+        return $arrAll;
+    }
+    private function chooseQuery($table,$company): string
+    {
+        if ( $table === "invoices"){
+            $query = "SELECT ref, due_date, companies.companies_name, invoices_created_at"." FROM ".$table." INNER JOIN companies ON companies.id= id_company"
+                ." WHERE companies_name LIKE ".$company." LIMIT 5";
+        }elseif ( $table === "contacts"){
+            $query = "SELECT contacts_name"." FROM ".$table." INNER JOIN companies ON companies.id = contacts.id"." WHERE companies_name LIKE ".$company;
 
         }else{
-            $query = "SELECT companies_name, tva, country, companies_phone"." FROM companies"." WHERE companies.name LIKE ".$company;
+            $query = "SELECT companies_name, tva, country, companies_phone"." FROM ".$table." WHERE companies_name LIKE ".$company;
         }
         return $query;
     }

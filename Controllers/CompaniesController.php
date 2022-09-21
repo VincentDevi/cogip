@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\models\getDbData;
+
 class CompaniesController extends Controller
 {
     /**

@@ -53,7 +53,6 @@ class getDbData extends Dbh
     private function fetchInformation($query, $vars = NULL): array{
         $connexion = $this->connexion();
         $stmt = $connexion->prepare($query);
-
         $vars ? $stmt->execute($vars) : $stmt->execute();
 
         $output = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -89,10 +88,10 @@ class getDbData extends Dbh
      * @param $limit
      * @return string
      */
-    private function getLimit($limit): string
+    private function getLimit($limit,$table): string
     {
         if (is_numeric($limit) && $limit > 0) {
-            return " ORDER BY id DESC LIMIT ".$limit;
+            return " ORDER BY ".$table.".id DESC LIMIT ".$limit;
         } else {
             return "";
         }
@@ -107,7 +106,7 @@ class getDbData extends Dbh
      * @return string
      */
     private function getQuery($table, $limit, $condition = NULL): string{
-        $queryLimit = $this->getLimit($limit);
+        $queryLimit = $this->getLimit($limit,$table);
         $queryCondition = $this->getCondition($condition);
 
         if ($table ==="contacts"){

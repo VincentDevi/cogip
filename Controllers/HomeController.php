@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\models\getInformations;
+use App\models\getDbData;
 
 class HomeController extends Controller
 {
@@ -15,14 +15,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = new getInformations();
+        $data = new getDbData();
         $comp = $data->getInfo("companies", 5);
         $inv = $data->getInfo("invoices", 5);
         $cont = $data->getInfo("contacts", 5);
         $datas= ["companies"  => $comp,
                 "invoices"=> $inv,
                 "contacts"=> $cont];
-        dd($datas);
         $this->view('welcome', $datas);
     }
 }
