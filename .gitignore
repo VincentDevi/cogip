@@ -1,3 +1,5 @@
 vendor
 cache
 .idea
+
+models/dbSettings.php
