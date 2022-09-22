@@ -7,15 +7,15 @@ class companyInformation extends Dbh
 
     public function getCompanyInfo($company): array
     {
-        $invArr = $this->connexionDb($this->chooseQuery("invoices", $company));
-        $contArr = $this->connexionDb($this->chooseQuery("contacts", $company));
-        $compArr = $this->connexionDb($this->chooseQuery("companies", $company));
+        $invArr = $this->fetchInformation($this->getQuery("invoices", $company));
+        $contArr = $this->fetchInformation($this->getQuery("contacts", $company));
+        $compArr = $this->fetchInformation($this->getQuery("companies", $company));
         $arrAll = ["invoices"=>$invArr,
                 "contacts"=>$contArr,
                 "companies"=>$compArr];
         return $arrAll;
     }
-    private function chooseQuery($table,$company): string
+    private function getQuery($table, $company): string
     {
         if ( $table === "invoices"){
             $query = "SELECT ref, due_date, companies.companies_name, invoices_created_at"." FROM ".$table." INNER JOIN companies ON companies.id= id_company"
@@ -28,13 +28,13 @@ class companyInformation extends Dbh
         }
         return $query;
     }
-    private function connexionDb($query){
-        $con = $this->connexion();
-        $stmt= $con->prepare($query);
-        $stmt->execute();
-        $arrAll = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $stmt= null;
-        $con = null;
-        return $arrAll;
-    }
+//    private function connexionDb($query){
+//        $con = $this->connexion();
+//        $stmt= $con->prepare($query);
+//        $stmt->execute();
+//        $arrAll = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//        $stmt= null;
+//        $con = null;
+//        return $arrAll;
+//    }
 }
