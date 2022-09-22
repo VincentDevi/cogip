@@ -18,6 +18,8 @@ class DashboardHomeController extends Controller
         $data = new getDbData();
         $datas = $data->createArray();
 
+        $datas['user'] = CURRENT_USER;
+
         $this->view('dashboardglobal',$datas);
     }
 }
