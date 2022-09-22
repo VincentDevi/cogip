@@ -3,6 +3,7 @@
 namespace App\Routes;
 
 
+use App\Controllers\DashboardHomeController;
 use Bramus\Router\Router;
 use App\Controllers\HomeController;
 use App\Controllers\NotFoundController;
@@ -60,6 +61,10 @@ $router->get('/company/([0-9]+)', function($name) {
     // get data's from DB here and pass it to index function
 
         (new CompanyController())->index($name);
+});
+$router->get('/dashboard', function() {
+//    echo 'invoices';
+    (new DashboardHomeController())->index();
 });
 $router->run();
 
