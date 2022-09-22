@@ -20,7 +20,7 @@ $whoops->register();
 /**
  * ------------------------------------------------------------------------
  * redirect Helper
- * Redirect the user to a given url
+ * Redirect the dashboard to a given url
  */
 if(! function_exists('redirect'))
 {

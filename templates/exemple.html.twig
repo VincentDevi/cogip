@@ -1,0 +1,62 @@
+for 'All companies'
+    values, you received:
+        companies_name
+        country
+        tva
+        companies_created_at
+        types_name
+for 'All invoices'
+    values, you received:
+        ref
+        due_dates
+        companies_name
+        invoices_created_at
+
+for 'All contacts'
+    values, you received:
+        contacts_name
+        contacts_phone
+        email
+        companies_name
+        contacts_created_at
+
+For 'Home Page'
+    you have an array with 3 elements, called ["invoices", "companies", "contacts"]
+        each element has an array of 5 element
+            like [
+["invoices" =>
+                    ["ref" => value,
+                    "due_dates" => value,
+                    "companies_name" => value,
+                    "invoices_created_at" => value
+                     ],
+                    ["ref" => value,
+                    "due_dates" => value,
+                    "companies_name" => value,
+                    "invoices_created_at" => value
+                    ],
+                    ["ref" => value,
+                    "due_dates" => value,
+                    "companies_name" => value,
+                    "invoices_created_at" => value
+                    ],
+                    ["ref" => value,
+                    "due_dates" => value,
+                    "companies_name" => value,
+                    "invoices_created_at" => value
+                    ],
+                    ["ref" => value,
+                    "due_dates" => value,
+                    "companies_name" => value,
+                    "invoices_created_at" => value
+                    ],
+                ],
+the same with "companies" and "contacts".
+]
+
+here is an example of how to use the data you received ( this one is for the 'All companies' )
+<ul>
+    {% for user in _context %}
+        <li>{{ user.companies_name }}</li>
+    {% endfor %}
+</ul>
