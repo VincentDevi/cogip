@@ -16,12 +16,7 @@ class HomeController extends Controller
     public function index()
     {
         $data = new getDbData();
-        $comp = $data->getInfo("companies", 5);
-        $inv = $data->getInfo("invoices", 5);
-        $cont = $data->getInfo("contacts", 5);
-        $datas= ["companies"  => $comp,
-                "invoices"=> $inv,
-                "contacts"=> $cont];
+        $datas = $data->createArray();
         $this->view('welcome', $datas);
     }
 }

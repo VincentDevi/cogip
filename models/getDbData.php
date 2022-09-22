@@ -21,6 +21,23 @@ class getDbData extends Dbh
         return $this->fetchInformation($query, NULL, $this);
     }
 
+    public function getRowCount(): array{
+        return ["companies" => $this->rowCount("companies"),
+            "invoices"=> $this->rowCount("invoices"),
+            "contacts"=> $this->rowCount("contacts")
+        ];
+
+    }
+    public function createArray(): array{
+        $comp = $this->getInfo("companies", 5);
+        $inv = $this->getInfo("invoices", 5);
+        $cont = $this->getInfo("contacts", 5);
+        $rowCounts = $this->getRowCount();
+        return ["companies"  => $comp,
+            "invoices"=> $inv,
+            "contacts"=> $cont,
+            "stats"=> $rowCounts];
+    }
     /**
      * Return an array with infos according to the provided table and provided limit.
      * Limit argument will limit the length of the array. E.g.  5 will return an array with 5 elements.
@@ -29,6 +46,7 @@ class getDbData extends Dbh
      * @param $input
      * @return array
      */
+
     public function getSearchInfos($table, $input): array
     { // replace searchInfo
         $input = $this->validateSearchInput($input);
@@ -58,6 +76,9 @@ class getDbData extends Dbh
         } else {
             return "";
         }
+    }
+    private function rowCount($table): string{
+        return "SELECT COUNT(*)"." FROM ".$table;
     }
 
     /**
