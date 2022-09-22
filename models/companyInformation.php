@@ -5,36 +5,32 @@ use PDO;
 class companyInformation extends Dbh
 {
 
-    public function getCompanyInfo($company): array
+    public function getCompanyInfo($companyId): array
     {
-        $invArr = $this->fetchInformation($this->getQuery("invoices", $company));
-        $contArr = $this->fetchInformation($this->getQuery("contacts", $company));
-        $compArr = $this->fetchInformation($this->getQuery("companies", $company));
+        $idArray = [
+            "id"=> $companyId
+        ];
+        $invArr = $this->fetchInformation($this->getQuery("invoices"),$idArray);
+        $contArr = $this->fetchInformation($this->getQuery("contacts"), $idArray);
+        $compArr = $this->fetchInformation($this->getQuery("companies"), $idArray);
         $arrAll = ["invoices"=>$invArr,
                 "contacts"=>$contArr,
                 "companies"=>$compArr];
         return $arrAll;
     }
-    private function getQuery($table, $company): string
+    private function getQuery($table): string
     {
+        $limit = 5;
         if ( $table === "invoices"){
             $query = "SELECT ref, due_date, companies.companies_name, invoices_created_at"." FROM ".$table." INNER JOIN companies ON companies.id= id_company"
-                ." WHERE companies_name LIKE "."'".$company."'"." LIMIT 5".";";
+                ." WHERE companies.id = :id "." LIMIT ".$limit.";";
         }elseif ( $table === "contacts"){
-            $query = "SELECT contacts_name"." FROM ".$table." INNER JOIN companies ON companies.id = company_id"." WHERE companies_name LIKE "."'".$company."'".";";
+            $query = "SELECT contacts_name"." FROM ".$table." INNER JOIN companies ON companies.id = company_id"." WHERE companies.id = :id ;";
 
         }else{
-            $query = "SELECT companies_name, tva, country, companies_phone"." FROM ".$table." WHERE companies_name LIKE "."'".$company."'".";";
+            $query = "SELECT companies_name, tva, country, companies_phone"." FROM ".$table." WHERE companies.id = :id ;";
         }
         return $query;
     }
-//    private function connexionDb($query){
-//        $con = $this->connexion();
-//        $stmt= $con->prepare($query);
-//        $stmt->execute();
-//        $arrAll = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//        $stmt= null;
-//        $con = null;
-//        return $arrAll;
-//    }
+
 }

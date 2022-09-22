@@ -33,7 +33,6 @@ class Dbh
 
         $connexion = NULL;
         $stmt = NULL;
-
         return $output;
     }
 
