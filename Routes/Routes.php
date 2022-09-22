@@ -29,7 +29,7 @@ $router->get('/', function() {
  (new HomeController)->index();
 });
 
-$router->get('companies', function() {
+$router->get('/companies', function() {
     (new CompaniesController)->index();
  //   echo 'companies';
 });
@@ -61,6 +61,19 @@ $router->get('/company/([0-9]+)', function($name) {
 
         (new CompanyController())->index($name);
 });
+
+$router->put('/create/invoice/reference/price/company', function($reference, $price, $company) {
+    //    (new CreateInvoiceController())->index($reference, $price, $company);
+});
+
+$router->put('/create/company/name/country/tva/phone', function($name, $country, $tva, $phone) {
+    //    (new CreateCompanyController())->index($name, $country, $tva, $phone);
+});
+
+$router->put('/create/contact/name/email/phone/companyId', function($name, $email, $phone, $companyId) {
+    //    (new CreateContactController())->index($name, $email, $phone, $companyId);
+});
+
 $router->run();
 
 
