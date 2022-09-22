@@ -3,7 +3,6 @@
 namespace App\models;
 use Rakit\Validation\ErrorBag;
 use Rakit\Validation\Validator;
-//use App\models\Dbh;
 use PDO;
 
 class getDbData extends Dbh
@@ -125,7 +124,7 @@ class getDbData extends Dbh
     }
 
     /**
-     * Sanitize the given user input.
+     * Sanitize the given dashboard input.
      *
      * @param $searchInput
      * @return string
