@@ -3,6 +3,7 @@
 namespace App\Routes;
 
 
+use App\Controllers\DashboardHomeController;
 use Bramus\Router\Router;
 use App\Controllers\HomeController;
 use App\Controllers\NotFoundController;
@@ -29,7 +30,7 @@ $router->get('/', function() {
  (new HomeController)->index();
 });
 
-$router->get('/companies', function() {
+$router->get('companies', function() {
     (new CompaniesController)->index();
  //   echo 'companies';
 });
@@ -74,6 +75,10 @@ $router->put('/create/contact/name/email/phone/companyId', function($name, $emai
     //    (new CreateContactController())->index($name, $email, $phone, $companyId);
 });
 
+$router->get('/dashboard', function() {
+//    echo 'invoices';
+    (new DashboardHomeController())->index();
+});
 $router->run();
 
 
