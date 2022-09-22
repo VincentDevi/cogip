@@ -12,19 +12,26 @@
     };
 
     &__table {
+        border-collapse: collapse;
         width:100%;
         font-family: var(--font-family-header);
         font-weight: var(--font-weight-semibold);
         font-size: 20px;
 
         .table__header {
-            width: 100%;
-            background-color: var(--color-yellow);
+            width: fit-content;
 
             &__row {
+                background-color: var(--color-yellow);
                 height: 55px;
                 &__title {
                     vertical-align: middle;
+                    text-align: left;
+                    white-space:nowrap;
+
+                    &:nth-last-child(1){
+                        width:100%;
+                    };
                 };
             };
     
@@ -39,6 +46,8 @@
 
                 &__cell {
                     vertical-align: middle;
+                    text-align: left;
+                    white-space:nowrap;
                     
                 };
             };
@@ -46,3 +55,8 @@
     };
 
 };
+
+
+.ordertriangle {
+    display:none;
+}
