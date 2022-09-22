@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\models\createDbData;
 use App\models\getDbData;
 
 class DashboardHomeController extends Controller
@@ -12,11 +13,11 @@ class DashboardHomeController extends Controller
      *
      * @return void
      */
-    public function index($data = [])
+    public function index()
     {
+        $data = new getDbData();
+        $datas = $data->createArray();
 
-
-        $this->view('dashboardglobal', $data);
+        $this->view('dashboardglobal',$datas);
     }
-
 }
