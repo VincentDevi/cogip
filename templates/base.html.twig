@@ -21,17 +21,16 @@
         {% block header %}
             {% include 'header.html.twig' %}
         {% endblock %}
-        <main>
 {# --------------------------- MAIN CONTENT--------------------------------- #}
+        <main>
         {% block content %}
-
-        {% endblock %}
+            
+        {% endblock %}        
         </main>
 {# --------------------------- FOOTER CONTENT------------------------------- #}        
         {% block footer %}
             {% include 'footer.html.twig' %}
         {% endblock %}
-        
 
         {% block javascripts %}
             <script src="assets/javascript/script.js"></script>
