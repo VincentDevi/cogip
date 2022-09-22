@@ -64,7 +64,6 @@
 .header .header__menu .header__menu__left .header__menu__nav {
   display: flex;
   justify-content: flex-start;
-  gap: 3%;
   font-weight: 600;
   font-size: 20px;
   line-height: 23px;
