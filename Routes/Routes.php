@@ -13,6 +13,8 @@ use App\Controllers\InvoicesController;
 use App\Controllers\CompanyController;
 use App\Controllers\ContactController;
 
+use App\Test\ValidateUserInputTest;
+
 use App\models\getDbData;
 
 $router = new Router();
@@ -30,7 +32,7 @@ $router->get('/', function() {
  (new HomeController)->index();
 });
 
-$router->get('companies', function() {
+$router->get('/companies', function() {
     (new CompaniesController)->index();
  //   echo 'companies';
 });
@@ -44,6 +46,12 @@ $router->get('/invoices', function() {
 //    echo 'invoices';
     (new InvoicesController())->index();
 });
+
+$router->get('/test', function() {
+//    echo 'invoices';
+    (new validateUserInputTest());
+});
+
 //$router->get('/contact', function() {
 ////    echo 'contacts';
 //    (new ContactController())->index();
