@@ -4,12 +4,45 @@ namespace App\models\dashboard;
 
 use App\models\Dbh;
 
+/**
+ * Methods to handle create forms.
+ * todo: implement them to forms controllers that handle invoice, contact, compny creation forms.
+ */
 class Form extends Dbh
 {
+    // todo: give better names to theses method's names.
+
+    /**
+     * Return an array with all companies.
+     * Useful for fill select input in forms.
+     *
+     * @param $table
+     * @return array
+     */
     public function fetchAutocompleteFormData($table):array{
         $query = $this->queryFormAutocomplete($table);
+
         return $this->fetchInformation($query);
     }
+
+    /**
+     * Return the query for fetchAutocompleteFormData.
+     * @param $table
+     * @return string
+     */
+    private function queryFormAutocomplete($table): string{
+        return "SELECT ".$table."_name"." FROM ".$table;
+    }
+
+    /**
+     * check if value name exist in provided table.
+     * E.g. : checkIfValueExist(contacts, 'toto'); will check if
+     * toto exist in table contacts in contacts_name column.
+     *
+     * @param $table
+     * @param $nameToCheck
+     * @return bool
+     */
     public function checkIfValueExist($table, $nameToCheck): bool{
         if ( $this->countRowDb($table,$nameToCheck) !=0) {
             $isNotInDB = false;
@@ -17,7 +50,16 @@ class Form extends Dbh
             $isNotInDB = true;
         }
         return $isNotInDB;
+
     }
+
+    /**
+     * Possible duplicate of Dbh->fetchInformation() function.
+     *
+     * @param $table
+     * @param $arrayOfInput
+     * @return void
+     */
     public function createDb($table,$arrayOfInput){
         $con = $this->connexion();
         $stmt = $con->prepare($this->selectCreateQuery($table));
@@ -25,10 +67,27 @@ class Form extends Dbh
         $stmt = null;
     }
 
+    /**
+     * Return formatted today date.
+     *
+     * @return string
+     */
     private function getTodayDate(): string{
         return date('Y-m-d');
     }
 
+    // todo: to check if that work.
+    /**
+     * query db for matching names according to given table.
+     * Used in checkIfValueExist. So probably need to merge the two functions.
+     *
+     * E.g. : checkIfValueExist(contacts, 'toto'); will check if
+     * toto exist in table contacts in contacts_name column.
+     *
+     * @param $table
+     * @param $nameToCheck
+     * @return array
+     */
     private function countRowDb($table,$nameToCheck): array{
         $query = "SELECT COUNT(*)"." FROM :table WHERE :table"."_name = :nameTocheck";
         return $this->fetchInformation($query,[
@@ -37,17 +96,26 @@ class Form extends Dbh
         ]);
 
     }
-    private function queryFormAutocomplete($table): string{
-        return "SELECT ".$table."_name"." FROM ".$table;
-    }
 
 
-    private function fectchCompanyName($company_name){
-        $query= "SELECT companies.id" ."FROM companies"." WHERE companies.names = ".$company_name;
+    /**
+     * Return company's id according to given name.
+     *
+     * @param $company_id
+     * @return mixed
+     */
+    private function fectchCompanyName($company_id){
+        $query= "SELECT companies_name" ."FROM companies"." WHERE companies.id = ".$company_id;
         $arr = $this->fetchInformation($query);
         return $arr["companies.id"];
     }
 
+    /**
+     * Return the query to create entry with SQL query according to provided table.
+     *
+     * @param $table
+     * @return string
+     */
     private function selectCreateQuery($table): string{
         if ($table === "companies"){
             $query = "INSERT INTO ".$table." (companies_name, country, tva, companies_created_at, companies_updated_at, companies_phone)"
@@ -55,12 +123,21 @@ class Form extends Dbh
         }elseif ($table === "contacts"){
             $query = "INSERT INTO ".$table." (contacts_name, company_id, email, contacts_phone, contacts_created_at, contacts_updated_at)"
                 ." VALUES (:contacts_name, :company_id, :email, :phone,:created_at, :updated_at)";
-        }else{
+        }elseif ($table === 'invoices'){
             $query = "INSERT INTO ".$table." (ref, id_company,invoices_created_at, invoices_updated_at, due_date)"
                 ." VALUES (:ref, :id_company, :created_at, :updated_at, :due_date)";
         }
         return $query;
     }
+
+    /**
+     * Return the $vars to pass to fetchInformation method, according to
+     * provided table.
+     *
+     * @param $table
+     * @param $array
+     * @return array
+     */
     private function createArrayExecute($table,$array): array{
         if( $table === "companies") {
             $arr = [
@@ -81,7 +158,7 @@ class Form extends Dbh
                 "phone" => $array["phone"]
                 ];
         }
-        else{
+        elseif ( $table=== "invoices") {
             $arr = [
                 "ref" => $array["ref"],
                 "id_company" => $array["id_company"],
