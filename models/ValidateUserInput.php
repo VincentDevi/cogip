@@ -6,11 +6,16 @@ use Rakit\Validation\Validator;
 
 /**
  * Validate inputs values provided by the user.
+ *
+ * E.g. :   $validate = new ValidateUserInput();
+ *          print_r($validate->validate($rawInputs, $crudMethod, $table));
  */
 class ValidateUserInput extends ValidationTable
 {
     /**
      * Validate provided inputs according to the crud method and the table provided.
+     * Return the provided Array if is valid.
+     * Return False if is not valid.
      *
      * @param $rawInputs - Array of raw input. Typically, $_POST
      * @param $crudMethod - create|read|update|delete
@@ -20,40 +25,41 @@ class ValidateUserInput extends ValidationTable
     public function validate($rawInputs, $crudMethod, $table){
         $validationTable = $this->getValidationTable($crudMethod, $table);
 
-        if (method_exists($this, $validationTable)) {
-
-            $table = $this->$validationTable();
-
-            return $this->validateData($rawInputs, $table);
+        if ($validationTable) {
+            return $this->validateData($rawInputs, $validationTable);
         }
 
         return NULL;
     }
 
     /**
-     * Get the
+     * Get the table with validation rules.
+     *
      * @param $crudMethod
      * @param $table
      * @return string
      */
     private function getValidationTable($crudMethod, $table) {
-        return 'get'.ucfirst($crudMethod).ucfirst($table).'Table';
+        $validationTable = $this->getTableMethodName($crudMethod, $table);
+
+        if (method_exists($this, $validationTable)) {
+            return $this->$validationTable();
+        }
+
+        return NULL;
     }
 
     /**
+     * Validate the provided data's with according rules table.
+     *
      * @param $rawInputs
      * @param $table
      * @return null
      */
     private function validateData($rawInputs, $table) {
-
         $validator = new Validator();
         $validation = $validator->validate($rawInputs, $table);
 
-        if($validation->fails()) {
-            return NULL;
-        } else {
-            return $rawInputs;
-        }
+        return !$validation->fails() ? $rawInputs : NULL;
     }
 }

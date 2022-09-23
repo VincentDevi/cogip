@@ -20,7 +20,6 @@ class ValidateUserInputTest
         $crudMethod = 'create';
         $table = 'company';
 
-//        $validate = new ValidateUserInput($rawInputs, $crudMethod, $table);
         $validate = new ValidateUserInput();
         dd($validate->validate($rawInputs, $crudMethod, $table));
 
