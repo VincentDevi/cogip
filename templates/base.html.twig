@@ -7,14 +7,14 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/public/assets/css/reset.css" rel="stylesheet" type="text/css">
+        <link href="{{ root }}assets/css/reset.css" rel="stylesheet" type="text/css">
         {% block stylesheets %}
-        <link href="/public/assets/css/styles.css" rel="stylesheet" type="text/css">
+        <link href="{{ root }}assets/css/styles.css" rel="stylesheet" type="text/css">
         {% endblock %}
         <title>{% block title %}{{pageTitle}}{% endblock %}</title>
     </head>
     {% endblock %}
-    
+
     {% block body %}
     <body>
 {# --------------------------- HEADER CONTENT------------------------------- #}
@@ -33,7 +33,7 @@
         {% endblock %}
 
         {% block javascripts %}
-            <script src="/public/assets/javascript/script.js"></script>
+            <script src="{{ root }}assets/javascript/script.js"></script>
         {% endblock %}
     </body>
     {% endblock %}

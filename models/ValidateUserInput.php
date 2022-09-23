@@ -20,7 +20,7 @@ class ValidateUserInput extends ValidationTable
      * @param $rawInputs - Array of raw input. Typically, $_POST
      * @param $crudMethod - create|read|update|delete
      * @param $table - table to query
-     * @return null|[]
+     * @return null|array
      */
     public function validate($rawInputs, $crudMethod, $table){
         $validationTable = $this->getValidationTable($crudMethod, $table);
