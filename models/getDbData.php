@@ -26,7 +26,6 @@ class getDbData extends Dbh
             "invoices"=> $this->rowCount("invoices"),
             "contacts"=> $this->rowCount("contacts")
         ];
-
     }
     public function createArray(): array{
         $comp = $this->getInfo("companies", 5);
