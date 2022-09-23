@@ -8,17 +8,17 @@ class ValidateUserInputTest
 {
 
     function __construct() {
-        $this->testCreateCompany();
+        $this->testCreateInvoice();
     }
 
-    public function testCreateCompany() {
+    public function testCreateInvoice() {
         $rawInputs = [
             'reference' => 'A-2_1022',
             'price' => 3,
             'company' => 'my super-company',
         ];
         $crudMethod = 'create';
-        $table = 'company';
+        $table = 'invoice';
 
         $validate = new ValidateUserInput();
         dd($validate->validate($rawInputs, $crudMethod, $table));

@@ -6,6 +6,7 @@ class ValidationTable
 {
     /**
      * Return the name of the method according to the provided crud method and tha table.
+     * found regex here : https://ihateregex.io
      *
      * @param $crudMethod
      * @param $table
@@ -16,14 +17,44 @@ class ValidationTable
     }
 
     /**
+     * Return rules table for create invoice.
+     *
+     * @return string[]
+     */
+    protected function getCreateInvoiceTable() {
+        return [
+            'reference' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
+            'price' => 'required|numeric',
+            'company' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
+        ];
+    }
+
+    /**
      * Return rules table for create company.
      *
      * @return string[]
      */
     protected function getCreateCompanyTable() {
         return [
-            'reference' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
-            'price' => 'required|numeric',
+            'name' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
+            'country' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
+            'tva' => 'required|regex:numeric',
+            'phone' => 'required|regex:/^\d{2}(?: ?\d+)*$/',//https://stackoverflow.com/questions/6028553/regex-allowing-spaces-for-a-phone-number-regex
+        ];
+    }
+
+    // todo : enhance tva regex.
+    // todo : make regex for contact
+    /**
+     * Return rules table for create contact.
+     *
+     * @return string[]
+     */
+    protected function getCreateContactTable() {
+        return [
+            'name' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
+            'email' => 'required|numeric',
+            'phone' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
             'company' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
         ];
     }
