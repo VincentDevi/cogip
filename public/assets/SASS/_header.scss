@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
     font-family: 'Roboto';
-    .header__menu{
+    &__menu{
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -23,13 +23,17 @@
                 font-size: 48px;
                 line-height: 56px;            
             }
+            .header__menu__hamburger{
+                width: 25px;
+                height: 25px;
+            }
             .header__menu__nav{
-
                 display: flex;
                 justify-content: flex-start;
                 font-weight: 600;
                 font-size: 20px;
                 line-height: 23px;
+
                 li{
                     padding: 10px;
                     cursor: pointer;
@@ -38,6 +42,9 @@
                 li:hover{
                     border: solid 0.5px;
                 }
+            }
+            .header__menu__nav .icon{
+                display: none;
             }
         }
         .header__menu__connection{
@@ -83,11 +90,18 @@
             font-family: 'Inter';
             font-weight: 900;
             font-size: 3.5rem;
+            @media only screen and (max-width: 413px){
+                font-size: 1.5rem;
+                line-height: 20px;
+            }
             line-height: 79px;
             width: 50%;
         }
         .header__banner__image{
-            width: 40%;           
+            width: 40%;
+            @media only screen and (max-width: 413px){
+                width: 50%;
+            }           
         }
     }
     .header__mask{

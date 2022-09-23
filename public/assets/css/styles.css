@@ -42,7 +42,7 @@
   align-items: center;
   font-family: "Roboto";
 }
-.header .header__menu {
+.header__menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -50,37 +50,44 @@
   width: 80%;
   margin: 50px 0px;
 }
-.header .header__menu .header__menu__left {
+.header__menu .header__menu__left {
   display: flex;
   align-items: center;
   gap: 10%;
   width: 65%;
 }
-.header .header__menu .header__menu__left .header__menu__logo {
+.header__menu .header__menu__left .header__menu__logo {
   font-weight: 900;
   font-size: 48px;
   line-height: 56px;
 }
-.header .header__menu .header__menu__left .header__menu__nav {
+.header__menu .header__menu__left .header__menu__hamburger {
+  width: 25px;
+  height: 25px;
+}
+.header__menu .header__menu__left .header__menu__nav {
   display: flex;
   justify-content: flex-start;
   font-weight: 600;
   font-size: 20px;
   line-height: 23px;
 }
-.header .header__menu .header__menu__left .header__menu__nav li {
+.header__menu .header__menu__left .header__menu__nav li {
   padding: 10px;
   cursor: pointer;
   border: 0.5px;
 }
-.header .header__menu .header__menu__left .header__menu__nav li:hover {
+.header__menu .header__menu__left .header__menu__nav li:hover {
   border: solid 0.5px;
 }
-.header .header__menu .header__menu__connection {
+.header__menu .header__menu__left .header__menu__nav .icon {
+  display: none;
+}
+.header__menu .header__menu__connection {
   display: flex;
   align-items: center;
 }
-.header .header__menu .header__menu__connection .menu__connection__signUp {
+.header__menu .header__menu__connection .menu__connection__signUp {
   font-family: "Roboto";
   font-weight: 600;
   font-size: 20px;
@@ -92,10 +99,10 @@
   margin: 0px 20px;
   cursor: pointer;
 }
-.header .header__menu .header__menu__connection .menu__connection__signUp:hover {
+.header__menu .header__menu__connection .menu__connection__signUp:hover {
   background-color: rgb(251, 255, 134);
 }
-.header .header__menu .header__menu__connection .menu__connection__login {
+.header__menu .header__menu__connection .menu__connection__login {
   font-family: "Roboto";
   font-weight: 600;
   font-size: 20px;
@@ -105,7 +112,7 @@
   cursor: pointer;
   border: 0.5px;
 }
-.header .header__menu .header__menu__connection .menu__connection__login:hover {
+.header__menu .header__menu__connection .menu__connection__login:hover {
   border: solid 0.5px;
 }
 .header .header__banner {
@@ -122,8 +129,19 @@
   line-height: 79px;
   width: 50%;
 }
+@media only screen and (max-width: 413px) {
+  .header .header__banner .header__banner__slogan {
+    font-size: 1.5rem;
+    line-height: 20px;
+  }
+}
 .header .header__banner .header__banner__image {
   width: 40%;
+}
+@media only screen and (max-width: 413px) {
+  .header .header__banner .header__banner__image {
+    width: 50%;
+  }
 }
 .header .header__mask {
   width: 90%;
@@ -287,4 +305,4 @@
 
 .ordertriangle {
   display: none;
-}
+}/*# sourceMappingURL=styles.css.map */
