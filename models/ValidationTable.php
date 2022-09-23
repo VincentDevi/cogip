@@ -53,7 +53,7 @@ class ValidationTable
     protected function getCreateContactTable() {
         return [
             'name' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
-            'email' => 'required|numeric',
+            'email' => 'required|email',
             'phone' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
             'company' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
         ];

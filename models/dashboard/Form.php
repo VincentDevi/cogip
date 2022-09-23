@@ -11,12 +11,12 @@ class Form extends Dbh
         return $this->fetchInformation($query);
     }
     public function checkIfValueExist($table, $nameToCheck): bool{
-        if (! $this->countRowDb($table,$nameToCheck)) {
-            $isNotDB = false;
+        if ( $this->countRowDb($table,$nameToCheck) !=0) {
+            $isNotInDB = false;
         }else{
-            $isNotDB = true;
+            $isNotInDB = true;
         }
-        return $isNotDB;
+        return $isNotInDB;
     }
     public function createDb($table,$arrayOfInput){
         $con = $this->connexion();
@@ -30,7 +30,7 @@ class Form extends Dbh
     }
 
     private function countRowDb($table,$nameToCheck): array{
-        $query = "SELECT COUNT(*)"." FROM :table WHERE :tableName LIKE :nameTocheck";
+        $query = "SELECT COUNT(*)"." FROM :table WHERE :table"."_name = :nameTocheck";
         return $this->fetchInformation($query,[
             "table"=>$table,
             "nameToCheck"=> $nameToCheck
@@ -42,11 +42,10 @@ class Form extends Dbh
     }
 
 
-    private function fectchCompanyName($company_id){
-        $query= "SELECT companies_name" ."FROM companies"." WHERE companies.id = ".$company_id;
-        $con = $this->connexion();
+    private function fectchCompanyName($company_name){
+        $query= "SELECT companies.id" ."FROM companies"." WHERE companies.names = ".$company_name;
         $arr = $this->fetchInformation($query);
-        return $arr["companies_name"];
+        return $arr["companies.id"];
     }
 
     private function selectCreateQuery($table): string{
@@ -72,7 +71,7 @@ class Form extends Dbh
                 "updated_at" => $array["created_at"],
                 "phone" => $array["phone"]
             ];
-        }elseif ( $table=== "contacts"){
+        }elseif ( $table === "contacts"){
             $arr = [
                 "contacts_name" => $array["name"],
                 "company_id" => $array["company_id"],
