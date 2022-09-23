@@ -32,7 +32,7 @@ $router->get('/', function() {
  (new HomeController)->index();
 });
 
-$router->get('companies', function() {
+$router->get('/companies', function() {
     (new CompaniesController)->index();
  //   echo 'companies';
 });
