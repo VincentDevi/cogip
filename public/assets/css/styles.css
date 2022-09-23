@@ -238,16 +238,62 @@
   color: var(--color-greyfootertext);
 }
 
+.main {
+  z-index: -1;
+}
+
+.main__section--downbanner {
+  z-index: 1;
+  width: 100%;
+  padding-top: 6rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.downbanner__content {
+  z-index: 1;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.downbanner__content__slogan {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-family-title);
+  font-weight: var(--font-weight-black);
+  font-size: 4rem;
+  line-height: 79px;
+  width: 50%;
+}
+.downbanner__content__image {
+  z-index: 1;
+  width: 30rem;
+}
+
+body, .main {
+  overflow-x: hidden;
+}
+
+.downbanner__background {
+  margin: 0;
+  position: absolute;
+  z-index: -1;
+  width: 75%;
+  left: 10rem;
+}
+
 .main__section {
   width: 85%;
   margin: auto;
+  margin-bottom: 3rem;
 }
 .main__section__title {
   font-family: var(--font-family-title);
   font-weight: var(--font-weight-black);
   font-size: 3.75rem;
-  margin: 3.25rem 0 5rem 0;
-  border: 2px solid greenyellow;
+  margin: 3.25rem 0 7rem 0;
+  padding-left: 1rem;
 }
 .main__section__table {
   border-collapse: collapse;
@@ -266,25 +312,37 @@
   height: 55px;
 }
 .main__section__table .table__header__row__title {
+  padding: 0 1.3rem 0 1.6rem;
   vertical-align: middle;
   text-align: left;
   white-space: nowrap;
+  border: none;
+}
+.main__section__table .table__header__row__title:first-child {
+  padding-left: 2.3rem;
 }
 .main__section__table .table__header__row__title:nth-last-child(1) {
   width: 100%;
 }
 .main__section__table .table__body__row {
   height: 55px;
+  padding: 0 1rem;
 }
 .main__section__table .table__body__row:nth-of-type(even) {
   background-color: var(--color-lightgreytablerows);
 }
 .main__section__table .table__body__row__cell {
+  padding: 0 1.3rem;
   vertical-align: middle;
   text-align: left;
   white-space: nowrap;
 }
+.main__section__table .table__body__row__cell:first-child {
+  padding-left: 2rem;
+}
 
 .ordertriangle {
-  display: none;
+  font-size: 25px;
+  vertical-align: middle;
+  line-height: unset !important;
 }

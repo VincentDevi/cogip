@@ -3,3 +3,4 @@ cache
 .idea
 
 models/dbSettings.php
+templates/exemple.html.twig

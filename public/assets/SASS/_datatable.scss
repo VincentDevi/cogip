@@ -1,12 +1,15 @@
 .main__section {
+
+
     width: 85%;
     margin: auto;
+    margin-bottom: 3rem;
     &__title {
         font-family: var(--font-family-title);
         font-weight: var(--font-weight-black);
         font-size: 3.75rem;
-        margin: 3.25rem 0 5rem 0;
-        border: 2px solid greenyellow;
+        margin: 3.25rem 0 7rem 0;
+        padding-left: 1rem;
 
         
     };
@@ -25,9 +28,16 @@
                 background-color: var(--color-yellow);
                 height: 55px;
                 &__title {
+                    // = yello cell/col
+                    padding: 0 1.3rem 0 1.6rem;
                     vertical-align: middle;
                     text-align: left;
                     white-space:nowrap;
+                    border: none;
+
+                    &:first-child {
+                        padding-left: 2.3rem;
+                    }
 
                     &:nth-last-child(1){
                         width:100%;
@@ -40,14 +50,21 @@
         .table__body {
             &__row  {
                 height: 55px;
+                padding: 0 1rem;
+
                 &:nth-of-type(even) {
                     background-color:var(--color-lightgreytablerows);
                 };
 
                 &__cell {
+                    padding: 0 1.3rem;
                     vertical-align: middle;
                     text-align: left;
                     white-space:nowrap;
+
+                    &:first-child {
+                        padding-left: 2rem;
+                    }
                     
                 };
             };
@@ -58,5 +75,7 @@
 
 
 .ordertriangle {
-    display:none;
+    font-size: 25px;
+    vertical-align: middle;
+    line-height:unset !important;
 }

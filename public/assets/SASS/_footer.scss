@@ -105,4 +105,60 @@
             color: var(--color-greyfootertext);
         }
     }
+};
+
+
+// Section above banner on welcome page:
+.main{
+    z-index: -1;
+}
+.main__section--downbanner {
+    z-index: 1;
+    // background-image: url('../img/Rectangle17.png');
+    // background-repeat: no-repeat;
+    // background-position: 40rem;
+    width: 100%;
+    padding-top: 6rem;
+    display:flex;
+    flex-direction: row;
+
+
+
+}
+
+.downbanner__content {
+    z-index: 1;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__slogan {
+        
+        position:relative;
+        z-index:1;
+        font-family: var(--font-family-title);
+        font-weight: var(--font-weight-black);
+        font-size: 4rem;
+        line-height: 79px;
+        width: 50%;
+    };
+
+    &__image {
+        z-index:1;
+        width: 30rem;
+
+    };
+    
+};
+
+body, .main {
+    overflow-x: hidden;
+}
+.downbanner__background {
+    margin: 0;
+    position:absolute;
+    z-index: -1;
+    width:75%;
+    left: 10rem;
 }
