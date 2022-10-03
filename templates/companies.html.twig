@@ -39,7 +39,7 @@
             {% for company in _context %}
         
         <tr class="table__body__row">
-            <td scope="col" class="table__body__row__cell"><a href="/company/{{company.id}}">{{company.companies_name}}</a></td>
+            <td scope="col" class="table__body__row__cell"><a href="{{ root }}/company/{{company.id}}">{{company.companies_name}}</a></td>
             <td scope="col" class="table__body__row__cell">{{company.tva}}</td>
             <td scope="col" class="table__body__row__cell">{{company.country}}</td>
             <td scope="col" class="table__body__row__cell">{{company.types_name}}</td>

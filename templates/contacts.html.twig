@@ -34,7 +34,7 @@
             {% for contact in _context %}
         
             <tr class="table__body__row">
-                <td scope="col" class="table__body__row__cell"><a href="/company/{{contact.id}}">{{contact.contacts_name}}</a></td>
+                <td scope="col" class="table__body__row__cell"><a href="{{ root }}/contact/{{contact.id}}">{{contact.contacts_name}}</a></td>
                 <td scope="col" class="table__body__row__cell">{{contact.contacts_phone}}</td>
                 <td scope="col" class="table__body__row__cell">{{contact.email}}</td>
                 <td scope="col" class="table__body__row__cell">{{contact.companies_name}}</td>
