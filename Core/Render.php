@@ -19,7 +19,12 @@ class Render
 //        $twig = new Environment($loader, [
 //            'cache' => __ROOT__.'/cache',
 //        ]);
-        $twig = new Environment($loader);
+        $twig = new Environment($loader, [
+            'debug' => true,
+            // ...
+        ]);
+
+        $twig->addExtension(new \Twig\Extension\DebugExtension());
 
         // Add the root of the project: public folder.
         $data['root'] = HOST_SITE;
