@@ -1,6 +1,7 @@
 .header{
     background-color: var(--color-yellow);
     width: 100%;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,12 +28,12 @@
             }
             .header__menu__logo{
                 font-weight: 900;
-                font-size: 48px;
+                font-size: 6vw;
                 line-height: 56px;            
             }
             .toggle-button{
 
-                display: flex;
+                // display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 width: 30px;
@@ -50,7 +51,6 @@
                 font-weight: 600;
                 font-size: 20px;
                 line-height: 23px;
-
                 li{
                     padding: 10px;
                     cursor: pointer;
@@ -71,7 +71,7 @@
                     margin: 0px 20px;
                     cursor: pointer;
                     @media (max-width: 800px){
-                        background-color: aqua;
+                        background-color: rgb(255, 255, 255);
                     }
                 }
                 .menu__connection__signUp:hover{
@@ -102,12 +102,15 @@
         .header__banner__slogan{
             font-family: 'Inter';
             font-weight: 900;
-            font-size: 3.5rem;
-            @media only screen and (max-width: 413px){
-                font-size: 1.5rem;
-                line-height: 20px;
-            }
-            line-height: 79px;
+            font-size: 5vw;
+            // @media only screen and (max-width: 413px){
+            //     font-size: 1.5rem;
+            //     line-height: 20px;
+            // }
+            // @media only screen and (min-width:413px) and (max-width: 811px){
+            //     font-size: 2.25rem;
+            //     line-height: 50px;
+            // }
             width: 50%;
         }
         .header__banner__image{
@@ -122,10 +125,10 @@
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 811px) {
     .navbar {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: flex-end;
     }
 
     .toggle-button {
@@ -134,15 +137,23 @@
 
     .navbar-links {
         display: none;
+        justify-content: center;
         position: absolute;
         width: 100%;
+        top: 30%;
         background-color: var(--color-yellow);
-        top: 90px;
+
+        .header__menu__nav{
+            width: 80%;
+            border-top: solid;
+            border-bottom: solid;
+        }
     }
 
     .navbar-links ul {
         width: 100%;
         flex-direction: column;
+        align-items: center;
     }
 
     .navbar-links ul li {
@@ -156,6 +167,7 @@
 
     .navbar-links.active {
         display: flex;
+        width: 100%;
     }
     .menu__connection__signUp{ 
         background-color: rgb(108, 75, 220);
