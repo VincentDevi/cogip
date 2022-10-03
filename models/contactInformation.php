@@ -8,7 +8,7 @@ class contactInformation extends Dbh
         $query = "SELECT contacts_name, contacts_phone, email, companies.companies_name"." FROM contacts". " INNER JOIN companies ON companies.id=company_id"
         ." WHERE contacts.id = :id ";
 
-        return $this->fetchInformation($query,["id"=>$contactId]);
+        return $this->fetchData($query,["id"=>$contactId]);
 
     }
 }

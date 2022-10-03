@@ -10,9 +10,9 @@ class companyInformation extends Dbh
         $idArray = [
             "id"=> $companyId
         ];
-        $invArr = $this->fetchInformation($this->getQuery("invoices"),$idArray);
-        $contArr = $this->fetchInformation($this->getQuery("contacts"), $idArray);
-        $compArr = $this->fetchInformation($this->getQuery("companies"), $idArray);
+        $invArr = $this->fetchData($this->getQuery("invoices"),$idArray);
+        $contArr = $this->fetchData($this->getQuery("contacts"), $idArray);
+        $compArr = $this->fetchData($this->getQuery("companies"), $idArray);
         $arrAll = ["invoices"=>$invArr,
                 "contacts"=>$contArr,
                 "companies"=>$compArr];

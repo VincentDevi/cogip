@@ -22,7 +22,7 @@ class Form extends Dbh
     public function fetchAutocompleteFormData($table):array{
         $query = $this->queryFormAutocomplete($table);
 
-        return $this->fetchInformation($query);
+        return $this->fetchData($query);
     }
 
     /**
@@ -88,7 +88,7 @@ class Form extends Dbh
      */
     private function countRowDb($table,$nameToCheck): array{
         $query = "SELECT COUNT(*)"." FROM :table WHERE :tableName LIKE :nameTocheck";
-        return $this->fetchInformation($query,[
+        return $this->fetchData($query,[
             "table"=>$table,
             "nameToCheck"=> $nameToCheck
         ]);
@@ -103,7 +103,7 @@ class Form extends Dbh
      */
     private function fectchCompanyName($company_id){
         $query= "SELECT companies_name" ."FROM companies"." WHERE companies.id = ".$company_id;
-        $arr = $this->fetchInformation($query);
+        $arr = $this->fetchData($query);
         return $arr["companies_name"];
     }
 

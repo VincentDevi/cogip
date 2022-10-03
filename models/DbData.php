@@ -18,7 +18,7 @@ class DbData extends Dbh
     public function getData($table, int $limit=0): array{
         $query = $this->getQuery($table, $limit);
 
-        return $this->fetchInformation($query, NULL, $this);
+        return $this->fetchData($query, NULL, $this);
     }
 
     public function getRowCount(): array{
@@ -53,7 +53,7 @@ class DbData extends Dbh
 
         $query = $this->getQuery($table, NULL, $input);
 
-        return $this->fetchInformation($query, [
+        return $this->fetchData($query, [
             "search" => $input
         ], $this);
     }
