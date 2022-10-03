@@ -1,41 +1,57 @@
 <?php
 
 namespace App\models;
-use PDO;
+
 class CompanyData extends DbData
 {
 
+    /**
+     * Returns the data's from the company according to the provided ID.
+     * If no id is provided, returns all the companies data's.
+     *
+     * @param $companyId
+     * @return array
+     */
     public function getCompanyData($companyId = NULL): array
     {
+        $limit = 5;
+
         if ($companyId) {
             $idArray = [
                 "id"=> $companyId
             ];
-            $invArr = $this->fetchData($this->getQuery("invoices"),$idArray);
-            $contArr = $this->fetchData($this->getQuery("contacts"), $idArray);
-            $compArr = $this->fetchData($this->getQuery("companies"), $idArray);
-            $arrAll = ["invoices"=>$invArr,
+            $invArr = $this->fetchData($this->getQuery("invoices", $limit),$idArray);
+            $contArr = $this->fetchData($this->getQuery("contacts", $limit), $idArray);
+            $compArr = $this->fetchData($this->getQuery("companies", $limit), $idArray);
+            return ["invoices"=>$invArr,
                 "contacts"=>$contArr,
                 "companies"=>$compArr];
-            return $arrAll;
         } else {
             return $this->getData('companies');
         }
     }
 
-    private function getQuery($table): string
+    // todo : refactor to do only one query for all.
+    /**
+     * Return the Query according to the provided table and limit.
+     *
+     * @param $table
+     * @param $limit
+     * @return string|null
+     */
+    private function getQuery($table, $limit): ?string
     {
-        $limit = 5;
         if ( $table === "invoices"){
-            $query = "SELECT ref, due_date, companies.companies_name, invoices_created_at"." FROM ".$table." INNER JOIN companies ON companies.id= id_company"
+            return "SELECT ref, due_date, companies.companies_name, invoices_created_at"." FROM ".$table." INNER JOIN companies ON companies.id= id_company"
                 ." WHERE companies.id = :id "." LIMIT ".$limit.";";
         }elseif ( $table === "contacts"){
-            $query = "SELECT contacts_name"." FROM ".$table." INNER JOIN companies ON companies.id = company_id"." WHERE companies.id = :id ;";
+            return "SELECT contacts_name"." FROM ".$table." INNER JOIN companies ON companies.id = company_id"." WHERE companies.id = :id ;";
 
-        }else{
-            $query = "SELECT companies_name, tva, country, companies_phone"." FROM ".$table." WHERE companies.id = :id ;";
+        }elseif ( $table === "companies"){
+            return "SELECT companies_name, tva, country, companies_phone"." FROM ".$table." WHERE companies.id = :id ;";
+        }else {
+            return NULL;
         }
-        return $query;
     }
 
 }
