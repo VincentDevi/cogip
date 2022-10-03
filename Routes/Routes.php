@@ -6,6 +6,7 @@ namespace App\Routes;
 use App\Controllers\DashboardHomeController;
 use App\Views\CompanyViews;
 use App\Views\ContactViews;
+use App\Views\NotFoundView;
 use Bramus\Router\Router;
 use App\Controllers\HomeController;
 use App\Controllers\NotFoundController;
@@ -25,7 +26,7 @@ $router = new Router();
 
 $router->set404(function() {
     header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
-    (new NotFoundController)->index();
+    (new NotFoundView())->show();
 });
 
 $router->get('/', function() {

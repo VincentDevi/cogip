@@ -16,20 +16,24 @@ class Render
         $templateFile = $page.'.html.twig';
 
         $loader = new FilesystemLoader(__ROOT__.'/templates');
+        // todo: make cache working
 //        $twig = new Environment($loader, [
 //            'cache' => __ROOT__.'/cache',
 //        ]);
+
         $twig = new Environment($loader, [
             'debug' => true,
-            // ...
         ]);
 
         $twig->addExtension(new \Twig\Extension\DebugExtension());
 
         // Add the root of the project: public folder.
+        if (!defined("HOST_SITE")) {
+            require_once '../models/dbSettings.php';
+        }
+
         $data['root'] = HOST_SITE;
 
         echo $twig->render($templateFile, $data);
     }
 }
-
