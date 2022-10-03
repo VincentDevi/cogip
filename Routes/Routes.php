@@ -6,6 +6,7 @@ namespace App\Routes;
 use App\Controllers\DashboardHomeController;
 use App\Views\CompanyViews;
 use App\Views\ContactViews;
+use App\Views\InvoiceView;
 use App\Views\NotFoundView;
 use Bramus\Router\Router;
 use App\Controllers\HomeController;
@@ -46,7 +47,7 @@ $router->get('/contacts', function() {
 
 $router->get('/invoices', function() {
 //    echo 'invoices';
-    (new InvoicesController())->index();
+    (new InvoiceView())->showAll();
 });
 
 $router->get('/test', function() {
