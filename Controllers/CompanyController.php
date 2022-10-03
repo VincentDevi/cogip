@@ -14,7 +14,7 @@ class CompanyController extends Controller
     }
 
     public function read($id = NULL) {
-        return $id ? (new CompanyData())->getCompanyData($id) : (new DbData())->getData("companies");
+        return (new CompanyData())->getCompanyData($id);
     }
 
     public function update($data, $id) {

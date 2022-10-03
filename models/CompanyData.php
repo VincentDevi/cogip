@@ -2,21 +2,25 @@
 
 namespace App\models;
 use PDO;
-class CompanyData extends Dbh
+class CompanyData extends DbData
 {
 
-    public function getCompanyData($companyId): array
+    public function getCompanyData($companyId = NULL): array
     {
-        $idArray = [
-            "id"=> $companyId
-        ];
-        $invArr = $this->fetchData($this->getQuery("invoices"),$idArray);
-        $contArr = $this->fetchData($this->getQuery("contacts"), $idArray);
-        $compArr = $this->fetchData($this->getQuery("companies"), $idArray);
-        $arrAll = ["invoices"=>$invArr,
+        if ($companyId) {
+            $idArray = [
+                "id"=> $companyId
+            ];
+            $invArr = $this->fetchData($this->getQuery("invoices"),$idArray);
+            $contArr = $this->fetchData($this->getQuery("contacts"), $idArray);
+            $compArr = $this->fetchData($this->getQuery("companies"), $idArray);
+            $arrAll = ["invoices"=>$invArr,
                 "contacts"=>$contArr,
                 "companies"=>$compArr];
-        return $arrAll;
+            return $arrAll;
+        } else {
+            return $this->getData('companies');
+        }
     }
 
     private function getQuery($table): string
