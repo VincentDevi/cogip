@@ -15,6 +15,7 @@
 //define("HOST", "localhost");
 //define("PORT", 3306);
 //define("DATABASE", "database");
+//define("HOST_SITE", "http://localhost:8000/");
 
 //// with environment variable
 //define("USER", getenv('USER'));
@@ -22,4 +23,4 @@
 //define("HOST", getenv('HOST'));
 //define("PORT", getenv('PORT'));
 //define("DATABASE", getenv('DATABASE'));
-
+//define("HOST_SITE", "http://localhost:8000/");

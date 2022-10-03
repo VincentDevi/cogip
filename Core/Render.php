@@ -21,6 +21,9 @@ class Render
 //        ]);
         $twig = new Environment($loader);
 
+        // Add the root of the project: public folder.
+        $data['root'] = HOST_SITE;
+
         echo $twig->render($templateFile, $data);
     }
 }
