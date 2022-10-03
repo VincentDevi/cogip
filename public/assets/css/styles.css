@@ -47,62 +47,75 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 5%;
+  margin-bottom: 3%;
   width: 80%;
-  margin: 50px 0px;
 }
-.header__menu .header__menu__left {
+.header__menu .navbar {
   display: flex;
   align-items: center;
   gap: 10%;
-  width: 65%;
+  width: 100%;
 }
-.header__menu .header__menu__left .header__menu__logo {
+.header__menu .navbar .header__dropdown {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__menu .navbar .header__menu__logo {
   font-weight: 900;
   font-size: 48px;
   line-height: 56px;
 }
-.header__menu .header__menu__left .header__menu__hamburger {
-  width: 25px;
-  height: 25px;
+.header__menu .navbar .toggle-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
 }
-.header__menu .header__menu__left .header__menu__nav {
+.header__menu .navbar .toggle-button .bar {
+  height: 3px;
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  border-radius: 10px;
+}
+.header__menu .navbar .header__menu__nav {
   display: flex;
   justify-content: flex-start;
   font-weight: 600;
   font-size: 20px;
   line-height: 23px;
 }
-.header__menu .header__menu__left .header__menu__nav li {
+.header__menu .navbar .header__menu__nav li {
   padding: 10px;
   cursor: pointer;
   border: 0.5px;
 }
-.header__menu .header__menu__left .header__menu__nav li:hover {
+.header__menu .navbar .header__menu__nav li:hover {
   border: solid 0.5px;
 }
-.header__menu .header__menu__left .header__menu__nav .icon {
-  display: none;
-}
-.header__menu .header__menu__connection {
-  display: flex;
-  align-items: center;
-}
-.header__menu .header__menu__connection .menu__connection__signUp {
+.header__menu .navbar .header__menu__nav .menu__connection__signUp {
   font-family: "Roboto";
   font-weight: 600;
   font-size: 20px;
   white-space: nowrap;
   border: none;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
   padding: 5px 10px;
   margin: 0px 20px;
   cursor: pointer;
 }
-.header__menu .header__menu__connection .menu__connection__signUp:hover {
+@media (max-width: 800px) {
+  .header__menu .navbar .header__menu__nav .menu__connection__signUp {
+    background-color: aqua;
+  }
+}
+.header__menu .navbar .header__menu__nav .menu__connection__signUp:hover {
   background-color: rgb(251, 255, 134);
 }
-.header__menu .header__menu__connection .menu__connection__login {
+.header__menu .navbar .header__menu__nav .menu__connection__login {
   font-family: "Roboto";
   font-weight: 600;
   font-size: 20px;
@@ -112,7 +125,7 @@
   cursor: pointer;
   border: 0.5px;
 }
-.header__menu .header__menu__connection .menu__connection__login:hover {
+.header__menu .navbar .header__menu__nav .menu__connection__login:hover {
   border: solid 0.5px;
 }
 .header .header__banner {
@@ -147,6 +160,39 @@
   width: 90%;
 }
 
+@media (max-width: 800px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .toggle-button {
+    display: flex;
+  }
+  .navbar-links {
+    display: none;
+    position: absolute;
+    width: 100%;
+    background-color: var(--color-yellow);
+    top: 90px;
+  }
+  .navbar-links ul {
+    width: 100%;
+    flex-direction: column;
+  }
+  .navbar-links ul li {
+    text-align: center;
+    padding: 50px 0px;
+  }
+  .navbar-links ul li a {
+    padding: 0.5rem 1rem;
+  }
+  .navbar-links.active {
+    display: flex;
+  }
+  .menu__connection__signUp {
+    background-color: rgb(108, 75, 220);
+  }
+}
 .footer {
   display: flex;
   flex-direction: column;
