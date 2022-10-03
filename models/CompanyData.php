@@ -2,10 +2,10 @@
 
 namespace App\models;
 use PDO;
-class companyInformation extends Dbh
+class CompanyData extends Dbh
 {
 
-    public function getCompanyInfo($companyId): array
+    public function getCompanyData($companyId): array
     {
         $idArray = [
             "id"=> $companyId
@@ -18,6 +18,7 @@ class companyInformation extends Dbh
                 "companies"=>$compArr];
         return $arrAll;
     }
+
     private function getQuery($table): string
     {
         $limit = 5;
