@@ -38,13 +38,12 @@ class ValidationTable
         return [
             'name' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
             'country' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
+            // todo : enhance tva regex.
             'tva' => 'required|regex:numeric',
             'phone' => 'required|regex:/^\d{2}(?: ?\d+)*$/',//https://stackoverflow.com/questions/6028553/regex-allowing-spaces-for-a-phone-number-regex
         ];
     }
 
-    // todo : enhance tva regex.
-    // todo : make regex for contact
     /**
      * Return rules table for create contact.
      *
@@ -53,8 +52,8 @@ class ValidationTable
     protected function getCreateContactTable() {
         return [
             'name' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
-            'email' => 'required|numeric',
-            'phone' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
+            'email' => 'required|email',
+            'phone' => 'required|regex:/^\d{2}(?: ?\d+)*$/',
             'company' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
         ];
     }
