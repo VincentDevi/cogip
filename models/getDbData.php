@@ -21,6 +21,22 @@ class getDbData extends Dbh
         return $this->fetchInformation($query, NULL, $this);
     }
 
+    public function getRowCount(): array{
+        return ["companies" => $this->rowCount("companies"),
+            "invoices"=> $this->rowCount("invoices"),
+            "contacts"=> $this->rowCount("contacts")
+        ];
+    }
+    public function createArray(): array{
+        $comp = $this->getInfo("companies", 5);
+        $inv = $this->getInfo("invoices", 5);
+        $cont = $this->getInfo("contacts", 5);
+        $rowCounts = $this->getRowCount();
+        return ["companies"  => $comp,
+            "invoices"=> $inv,
+            "contacts"=> $cont,
+            "stats"=> $rowCounts];
+    }
     /**
      * Return an array with infos according to the provided table and provided limit.
      * Limit argument will limit the length of the array. E.g.  5 will return an array with 5 elements.
@@ -29,6 +45,7 @@ class getDbData extends Dbh
      * @param $input
      * @return array
      */
+
     public function getSearchInfos($table, $input): array
     { // replace searchInfo
         $input = $this->validateSearchInput($input);
@@ -59,6 +76,9 @@ class getDbData extends Dbh
             return "";
         }
     }
+    private function rowCount($table): string{
+        return "SELECT COUNT(*)"." FROM ".$table;
+    }
 
     /**
      * Return the limit to append to the query string according to the provided limit parameter.
@@ -88,15 +108,15 @@ class getDbData extends Dbh
         $queryCondition = $this->getCondition($condition);
 
         if ($table ==="contacts"){
-            $query = "SELECT contacts.id, contacts.contacts_name, contacts.contacts_phone, contacts.email, contacts.contacts_created_at, companies.companies_name"." FROM ".$table
+            $query = "SELECT contacts.id,contacts.contacts_name, contacts.contacts_phone, contacts.email, contacts.contacts_created_at, companies.companies_name"." FROM ".$table
                 ." INNER JOIN companies ON companies.id = contacts.company_id".$queryLimit.$queryCondition.";";
         }
         elseif ($table ==="companies"){
-            $query = "SELECT companies.id, companies.companies_name, companies.tva, companies.country, companies.companies_created_at, types.types_name"." FROM ".$table
+            $query = "SELECT companies.id,companies.companies_name, companies.tva, companies.country, companies.companies_created_at, types.types_name"." FROM ".$table
                 ." INNER JOIN types ON types.id = companies.type_id".$queryLimit.$queryCondition.";";
         }
         else{
-            $query = "SELECT ref, invoices.id_company, invoices.id, invoices.due_date, invoices.invoices_created_at, companies.companies_name" . " FROM ".$table
+            $query = "SELECT invoices.id,ref, invoices.due_date, invoices.invoices_created_at, companies.companies_name" . " FROM ".$table
                 ." INNER JOIN companies ON companies.id = invoices.id_company".$queryLimit.$queryCondition.";";
         }
         return $query;

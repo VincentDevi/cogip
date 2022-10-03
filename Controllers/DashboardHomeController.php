@@ -3,20 +3,23 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\models\createDbData;
 use App\models\getDbData;
 
-class HomeController extends Controller
+class DashboardHomeController extends Controller
 {
     /**
-     * return view
+     * Show the companies view.
      *
-     * @param $data
      * @return void
      */
     public function index()
     {
         $data = new getDbData();
         $datas = $data->createArray();
-        $this->view('welcome', $datas);
+
+        $datas['user'] = CURRENT_USER;
+
+        $this->view('dashboardglobal',$datas);
     }
 }

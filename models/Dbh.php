@@ -13,7 +13,7 @@ require_once 'dbSettings.php';
 class Dbh
 {
 
-
+    // todo : refactor name to fetchData
     /**
      * Execute the provided query to the database and return the results.
      * Optional $vars parameter specifies an array of variables to pass to the query.
@@ -36,6 +36,11 @@ class Dbh
         return $output;
     }
 
+    /**
+     * Return the PDO Connexion object.
+     *
+     * @return PDO|void
+     */
     protected function connexion()
     {
         try {
