@@ -15,7 +15,7 @@ use App\Controllers\ContactController;
 
 use App\Test\ValidateUserInputTest;
 
-use App\models\getDbData;
+use App\models\DbData;
 
 $router = new Router();
 
@@ -33,7 +33,7 @@ $router->get('/', function() {
 });
 
 $router->get('/companies', function() {
-    (new CompaniesController)->index();
+    (new CompanyController)->showAll();
  //   echo 'companies';
 });
 
@@ -68,7 +68,7 @@ $router->get('/contact/([0-9]+)', function($name) {
 $router->get('/company/([0-9]+)', function($name) {
     // get data's from DB here and pass it to index function
 
-        (new CompanyController())->index($name);
+        (new CompanyController())->show($name);
 });
 
 $router->put('/create/invoice/reference/price/company', function($reference, $price, $company) {

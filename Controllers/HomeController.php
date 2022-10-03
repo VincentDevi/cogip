@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\models\getDbData;
+use App\models\DbData;
 
 class HomeController extends Controller
 {
@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = new getDbData();
+        $data = new DbData();
         $datas = $data->createArray();
         $this->view('welcome', $datas);
     }

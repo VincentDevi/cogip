@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\models\companyInformation;
+use App\models\DbData;
+
 class CompanyController extends Controller
 {
     /**
@@ -19,23 +21,27 @@ class CompanyController extends Controller
         $this->view('company', $datas);
     }
 
-//    public function create() {
-//
-//    }
-//
-//    public function update() {
-//
-//    }
-//
-//    public function delete() {
-//
-//    }
-//
-//    public function showAll() {
-//
-//    }
-//
-//    public function showCompany() {
-//
-//    }
+    public function create($data) {
+
+    }
+
+    public function update($data, $id) {
+
+    }
+
+    public function delete($id) {
+
+    }
+
+    public function showAll() {
+        $data = (new DbData())->getData("companies");
+
+        $this->view('companies', $data);
+    }
+
+    public function show($companyId) {
+        $data = (new companyInformation())->getCompanyInfo($companyId);
+
+        $this->view('company', $data);
+    }
 }

@@ -5,7 +5,7 @@ use Rakit\Validation\ErrorBag;
 use Rakit\Validation\Validator;
 use PDO;
 
-class getDbData extends Dbh
+class DbData extends Dbh
 {
     /**
      * Return an array with infos according to the provided table and provided limit.
@@ -15,7 +15,7 @@ class getDbData extends Dbh
      * @param int $limit
      * @return array
      */
-    public function getInfo($table, int $limit=0): array{
+    public function getData($table, int $limit=0): array{
         $query = $this->getQuery($table, $limit);
 
         return $this->fetchInformation($query, NULL, $this);
@@ -28,9 +28,9 @@ class getDbData extends Dbh
         ];
     }
     public function createArray(): array{
-        $comp = $this->getInfo("companies", 5);
-        $inv = $this->getInfo("invoices", 5);
-        $cont = $this->getInfo("contacts", 5);
+        $comp = $this->getData("companies", 5);
+        $inv = $this->getData("invoices", 5);
+        $cont = $this->getData("contacts", 5);
         $rowCounts = $this->getRowCount();
         return ["companies"  => $comp,
             "invoices"=> $inv,

@@ -20,7 +20,7 @@ class Dbh
      *
      * @param $query : E.g. ["search"=>'John']
      * @param null $vars
-     * @param getDbData $instance
+     * @param DbData $instance
      * @return array
      */
     public function fetchInformation($query, $vars = NULL): array

@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\models\getDbData;
+use App\models\DbData;
 
 class InvoicesController extends Controller
 {
@@ -15,8 +15,8 @@ class InvoicesController extends Controller
      */
     public function index( )
     {
-        $data = new getDbData();
-        $datas = $data->getInfo("invoices");
+        $data = new DbData();
+        $datas = $data->getData("invoices");
         $this->view('invoices', $datas);
     }
 }
