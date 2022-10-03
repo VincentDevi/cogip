@@ -5,6 +5,7 @@ namespace App\Routes;
 
 use App\Controllers\DashboardHomeController;
 use App\Views\CompanyViews;
+use App\Views\ContactViews;
 use Bramus\Router\Router;
 use App\Controllers\HomeController;
 use App\Controllers\NotFoundController;
@@ -39,7 +40,7 @@ $router->get('/companies', function() {
 
 $router->get('/contacts', function() {
 ////    echo 'contacts';
-    (new ContactsController())->index();
+    (new ContactViews())->showAll();
 });
 
 $router->get('/invoices', function() {
@@ -59,7 +60,7 @@ $router->get('/test', function() {
 $router->get('/contact/([0-9]+)', function($name) {
     // get data's from DB here and pass it to index function
 
-    (new ContactController())->index($name);
+    (new ContactViews())->show($name);
 });
 //$router->get('company', function() {
   //  (new CompanyController())->index();
