@@ -4,19 +4,26 @@
 {% block header %}
     <header class="header">
         <nav class="header__menu">
-            <div class="header__menu__left">
-                <div class="header__menu__logo" >COGIP</div>
-                <ul class="header__menu__nav">
-                    <li class="menu__nav__home">Home</li>
-                    <li class="menu__nav__invoices">Invoices</li>
-                    <li class="menu__nav__companies">Companies</li>
-                    <li class="menu__nav__contacts">Contacts</li>
-                </ul>
-            </div>
-            
-            <div class ="header__menu__connection">
-                <button class="menu__connection__signUp">Sign up</button>
-                <button class="menu__connection__login">Login</button>
+            <div class="header__menu navbar">
+                <div class="header__dropdown">
+                    <div class="header__menu__logo" >COGIP</div>
+                    <a href="#" class="toggle-button">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </a>
+                </div>
+                
+                <div class="navbar-links">
+                    <ul class="header__menu__nav">
+                        <li class="menu__nav__home">Home</li>
+                        <li class="menu__nav__invoices">Invoices</li>
+                        <li class="menu__nav__companies">Companies</li>
+                        <li class="menu__nav__contacts">Contacts</li>
+                        <button class="menu__connection__signUp">Sign up</button>
+                        <button class="menu__connection__login">Login</button>
+                    </ul>
+                </div>  
             </div>
         </nav>
         {% block banner %}
