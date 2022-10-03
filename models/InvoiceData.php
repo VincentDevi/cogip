@@ -14,4 +14,14 @@ class InvoiceData extends DbData
     {
         return $this->getData('invoices');
     }
+
+    public function getLastInvoicesData($limit) {
+        return $this->getData("invoices", $limit);
+    }
+
+    public function getRowCount() {
+        $query = $this->getRowCountQuery('invoices');
+
+        return $this->fetchData($query, NULL, $this);
+    }
 }

@@ -31,6 +31,16 @@ class CompanyData extends DbData
         }
     }
 
+    public function getLastCompaniesData($limit) {
+        return $this->getData("companies", $limit);
+    }
+
+    public function getRowCount() {
+        $query = $this->getRowCountQuery('companies');
+
+        return $this->fetchData($query, NULL, $this);
+    }
+
     // todo : refactor to do only one query for all.
     /**
      * Return the Query according to the provided table and limit.

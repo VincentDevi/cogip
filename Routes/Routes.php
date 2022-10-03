@@ -6,6 +6,7 @@ namespace App\Routes;
 use App\Controllers\DashboardHomeController;
 use App\Views\CompanyViews;
 use App\Views\ContactViews;
+use App\Views\HomeView;
 use App\Views\InvoiceView;
 use App\Views\NotFoundView;
 use Bramus\Router\Router;
@@ -25,7 +26,7 @@ $router->set404(function() {
 });
 
 $router->get('/', function() {
-    (new HomeController)->index();
+    (new HomeView())->show();
 });
 
 $router->get('/companies', function() {

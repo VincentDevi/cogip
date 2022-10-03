@@ -21,4 +21,14 @@ class contactData extends DbData
             return $this->getData('contacts');
         }
     }
+
+    public function getLastContactsData($limit) {
+        return $this->getData("contacts", $limit);
+    }
+
+    public function getRowCount() {
+        $query = $this->getRowCountQuery('contacts');
+
+        return $this->fetchData($query, NULL, $this);
+    }
 }

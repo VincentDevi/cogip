@@ -21,22 +21,6 @@ class DbData extends Dbh
         return $this->fetchData($query, NULL, $this);
     }
 
-    public function getRowCount(): array{
-        return ["companies" => $this->rowCount("companies"),
-            "invoices"=> $this->rowCount("invoices"),
-            "contacts"=> $this->rowCount("contacts")
-        ];
-    }
-    public function createArray(): array{
-        $comp = $this->getData("companies", 5);
-        $inv = $this->getData("invoices", 5);
-        $cont = $this->getData("contacts", 5);
-        $rowCounts = $this->getRowCount();
-        return ["companies"  => $comp,
-            "invoices"=> $inv,
-            "contacts"=> $cont,
-            "stats"=> $rowCounts];
-    }
     /**
      * Return an array with infos according to the provided table and provided limit.
      * Limit argument will limit the length of the array. E.g.  5 will return an array with 5 elements.
@@ -76,8 +60,9 @@ class DbData extends Dbh
             return "";
         }
     }
-    private function rowCount($table): string{
-        return "SELECT COUNT(*)"." FROM ".$table;
+
+    protected function GetRowCountQuery($table): string{
+        return "SELECT COUNT(*) AS Quantity FROM ".$table;
     }
 
     /**
@@ -149,5 +134,4 @@ class DbData extends Dbh
 
         return !$validation->fails() ? TRUE : $validation->errors();
     }
-
 }
