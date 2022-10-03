@@ -18,4 +18,24 @@ class CompanyController extends Controller
         $datas = $data->getCompanyInfo($company);
         $this->view('company', $datas);
     }
+
+//    public function create() {
+//
+//    }
+//
+//    public function update() {
+//
+//    }
+//
+//    public function delete() {
+//
+//    }
+//
+//    public function showAll() {
+//
+//    }
+//
+//    public function showCompany() {
+//
+//    }
 }
