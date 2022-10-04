@@ -10,6 +10,7 @@ use App\models\Dbh;
  */
 class Form extends Dbh
 {
+
     // todo: give better names to theses method's names.
 
     /**
@@ -19,51 +20,24 @@ class Form extends Dbh
      * @param $table
      * @return array
      */
-    public function fetchAutocompleteFormData($table):array{
-        $query = $this->queryFormAutocomplete($table);
+    public function fetchDataToAutocompleteAnInput($table):array{
+        $query = $this->getAllNamesOfATable($table);
 
         return $this->fetchData($query);
     }
+
 
     /**
      * Return the query for fetchAutocompleteFormData.
      * @param $table
      * @return string
      */
-    private function queryFormAutocomplete($table): string{
-        return "SELECT ".$table."_name"." FROM ".$table;
+    private function getAllNamesOfATable($table): string{
+        $tableName = $table."_name";
+        return "SELECT ".$tableName." FROM ".$table;
     }
 
-    /**
-     * check if value name exist in provided table.
-     * E.g. : checkIfValueExist(contacts, 'toto'); will check if
-     * toto exist in table contacts in contacts_name column.
-     *
-     * @param $table
-     * @param $nameToCheck
-     * @return bool
-     */
-    public function checkIfValueExist($table, $nameToCheck): bool{
-        if (! $this->countRowDb($table,$nameToCheck)) {
-            return FALSE;
-        }else{
-            return TRUE;
-        }
-    }
 
-    /**
-     * Possible duplicate of Dbh->fetchInformation() function.
-     *
-     * @param $table
-     * @param $arrayOfInput
-     * @return void
-     */
-    public function createDb($table,$arrayOfInput){
-        $con = $this->connexion();
-        $stmt = $con->prepare($this->selectCreateQuery($table));
-        $stmt->execute($this->createArrayExecute($table,$arrayOfInput));
-        $stmt = null;
-    }
 
     /**
      * Return formatted today date.
@@ -74,26 +48,6 @@ class Form extends Dbh
         return date('Y-m-d');
     }
 
-    // todo: to check if that work.
-    /**
-     * query db for matching names according to given table.
-     * Used in checkIfValueExist. So probably need to merge the two functions.
-     *
-     * E.g. : checkIfValueExist(contacts, 'toto'); will check if
-     * toto exist in table contacts in contacts_name column.
-     *
-     * @param $table
-     * @param $nameToCheck
-     * @return array
-     */
-    private function countRowDb($table,$nameToCheck): array{
-        $query = "SELECT COUNT(*)"." FROM :table WHERE :tableName LIKE :nameTocheck";
-        return $this->fetchData($query,[
-            "table"=>$table,
-            "nameToCheck"=> $nameToCheck
-        ]);
-
-    }
 
     /**
      * Return company's id according to given name.
@@ -101,10 +55,11 @@ class Form extends Dbh
      * @param $company_id
      * @return mixed
      */
-    private function fectchCompanyName($company_id){
-        $query= "SELECT companies_name" ."FROM companies"." WHERE companies.id = ".$company_id;
+    private function fetchCompanyId($companyName):string{
+        $query= "SELECT companies.id" ."FROM companies"." WHERE companies_name LIKE ".$companyName;
+
         $arr = $this->fetchData($query);
-        return $arr["companies_name"];
+        return $arr["companies.id"];
     }
 
     /**
@@ -113,57 +68,105 @@ class Form extends Dbh
      * @param $table
      * @return string
      */
-    private function selectCreateQuery($table): string{
-        if ($table === "companies"){
-            $query = "INSERT INTO ".$table." (companies_name, country, tva, companies_created_at, companies_updated_at, companies_phone)"
-            ." VALUES (:companies_name, :country, :tva, :created_at, :updated_at, :phone)";
-        }elseif ($table === "contacts"){
-            $query = "INSERT INTO ".$table." (contacts_name, company_id, email, contacts_phone, contacts_created_at, contacts_updated_at)"
-                ." VALUES (:contacts_name, :company_id, :email, :phone,:created_at, :updated_at)";
-        }elseif ($table === 'invoices'){
-            $query = "INSERT INTO ".$table." (ref, id_company,invoices_created_at, invoices_updated_at, due_date)"
-                ." VALUES (:ref, :id_company, :created_at, :updated_at, :due_date)";
+    protected function setUpdateOrCreateQuery($table, $id = null): string{
+        if ($id != null) {
+            $query = $this->selectUpdateQuery($table, $id);
+        }else{
+            $query = $this->selectCreateQuery($table);
         }
         return $query;
     }
 
+
+    protected function selectCreateQuery ($table): string{
+        $query="";
+        switch ($table){
+            case "companies":
+                $query = "INSERT INTO " . $table ." (companies_name, country, tva, companies_created_at, companies_updated_at, companies_phone)"
+                    . " VALUES (:companies_name, :country, :tva, :created_at, :updated_at, :phone)";
+                break;
+            case "contacts":
+                $query = "INSERT INTO " . $table ." (contacts_name, company_id, email, contacts_phone, contacts_created_at, contacts_updated_at)"
+                    . " VALUES (:contacts_name, :company_id, :email, :phone,:created_at, :updated_at)";
+                break;
+            case  "invoices":
+                $query = "INSERT INTO " . $table ." (ref, id_company,invoices_created_at, invoices_updated_at, due_date)"
+                    . " VALUES (:ref, :company_id, :created_at, :updated_at, :due_date)";
+                break;
+        }
+        return $query;
+    }
+
+
+    private function selectUpdateQuery ($table,$id): string {
+        $query="";
+        $idName = $id."id";
+        switch ($table){
+            case "companies":
+                $query = "UPDATE " .$table. " SET companies_name = :companies_name, country = :country, tva = :tva, companies_updated_at = :updated_at, companies_phone = :phone"
+                    ." WHERE ".$idName." = ".$id;
+                break;
+            case "contacts":
+                $query = "UPDATE ".$table ." SET contacts_name = :contacts_name, contacts_firstname = :contacts_firstname company_id = : company_id, email = :email, contacts_phone = :phone, contacts_updated_at = updated_at"
+                    ." WHERE ".$idName." = ".$id;
+                break;
+            case "invoices":
+                $query = "UPDATE ".$table ." SET ref = :ref, id_company = :company_id, invoices_updated_at = :updated_at, due_date = :due_date"
+                    ." WHERE ".$idName." = ".$id;
+                break;
+        }
+        return $query;
+
+    }
     /**
-     * Return the $vars to pass to fetchInformation method, according to
+     * Return the $vars to pass to createDbData method, according to
      * provided table.
      *
      * @param $table
      * @param $array
      * @return array
      */
-    private function createArrayExecute($table,$array): array{
-        if( $table === "companies") {
-            $arr = [
-                "companies_name" => $array["name"],
-                "country" => $array["country"],
-                "tva" => $array["tva"],
-                "created_at" => $array["created_at"],
-                "updated_at" => $array["created_at"],
-                "phone" => $array["phone"]
-            ];
-        }elseif ( $table=== "contacts"){
-            $arr = [
-                "contacts_name" => $array["name"],
-                "company_id" => $array["company_id"],
-                "email" => $array["email"],
-                "created_at" => $array["created_at"],
-                "updated_at" => $array["created_at"],
-                "phone" => $array["phone"]
-                ];
+        protected function createArrayExecute($table,$array, $id=null): array{
+
+            $arr = $this->selectArrayToBeExecuted($table,$array);
+
+            if ($id == null){
+                $arr["created_at"] = $this->getTodayDate();
+            }
+            return $arr;
         }
-        elseif ( $table=== "invoices") {
-            $arr = [
-                "ref" => $array["ref"],
-                "id_company" => $array["id_company"],
-                "due_date" => $array["due_date"],
-                "created_at" => $array["created_at"],
-                "updated_at" => $array["created_at"],
-                ];
+
+        private function selectArrayToBeExecuted ($table,$array):array{
+            $arr=[];
+            switch ($table){
+                case "contacts":
+                    $arr = [
+                        "contacts_name" => $array["name"],
+                        "contacts_firstname"=>$array["firstname"],
+                        "email" => $array["email"],
+                        "phone"=> $array["phone"],
+                        "updated_at"=> $this->getTodayDate(),
+                        "company_id"=> $this->fetchCompanyId($array["company_name"])
+                    ];
+                    break;
+                case "invoices":
+                    $arr=[
+                        "ref"=>$array["ref"],
+                        "due_date"=>$array["due_date"],
+                        "updated_at"=>$this->getTodayDate(),
+                        "company_id"=>$this->fetchCompanyId($array["company_name"])
+                    ];
+                    break;
+                case "companies":
+                    $arr = [
+                        "company_name"=>$array["name"],
+                        "country"=>$array["country"],
+                        "tva"=>$array["tva"],
+                        "phone"=>$array["phone"],
+                        "updated_at"=>$this->getTodayDate()
+                    ];
+                    break;
+            }
+            return $arr;
         }
-        return $arr;
-    }
 }

@@ -14,6 +14,7 @@ class contactData extends DbData
     public function getContactData($contactId = NULL): array
     {
         if($contactId) {
+
             $query = $this->getQuery();
 
             return $this->fetchData($query,["id"=>$contactId]);
@@ -25,6 +26,7 @@ class contactData extends DbData
     private function getQuery() {
         return "
                 SELECT contacts_name AS name, 
+                       contacts_firstname AS firstname,
                        contacts_phone AS phone, 
                        email, 
                        companies.companies_name AS company_name
