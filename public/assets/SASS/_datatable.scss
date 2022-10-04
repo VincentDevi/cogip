@@ -1,19 +1,91 @@
 .main__section {
-
-
+    
     width: 85%;
     margin: auto;
     margin-bottom: 3rem;
+    
+    // necessary div with relative position to add yellow "underline" in absolute
+    .div__title {
+        width: 100%;
+        height:fit-content;
+        position: relative;
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        // border:2px solid brown;
+        align-items: center;
+
+    };
+
     &__title {
         font-family: var(--font-family-title);
         font-weight: var(--font-weight-black);
         font-size: 3.75rem;
-        margin: 3.25rem 0 7rem 0;
+        margin: 5rem 0 5rem 0;
         padding-left: 1rem;
+        min-width: fit-content;
+        width: fit-content;
+        padding-right: 100px;
 
+        &--yellowshadow {
+            margin-bottom: 5.5rem;
         
+            &::before {
+                z-index:-1;
+                content: "";
+                position:absolute;
+                width: 21rem;
+                height: 0.5em;
+                left: 3em;
+                top:7.4rem;
+                background: var(--color-yellow);
+            };
+        };
+
+        &--company {
+            text-transform: uppercase;
+
+            &::before {
+                z-index:-1;
+                content: "";
+                position:absolute;
+                width: 21rem;
+                height: 0.5em;
+                left: 0.8em;
+                top:7.4rem;
+                background: var(--color-yellow);
+            };
+        };
+
+        &--companycontactstitle {
+            margin: 2.875rem 0 4.063rem 0;
+            padding:0
+        };
+
     };
 
+    .searchinput {
+        width: fit-content;
+        height: fit-content;
+        text-align: left;
+        padding: 0.8rem 0.2rem 0.8rem 0.6rem;
+        margin: 5rem 0.7rem 0 0;
+        border-radius: var(--border-radius-lg);
+        border: 1px solid var(--color-lightgreysearchinput);
+        font-size: large;
+
+    };
+
+    // company page "Contact persons" section
+    &--companycontacts {
+        border-top: 1px solid var(--color-lightgreybordercontacts);
+        border-bottom: 1px solid var(--color-lightgreybordercontacts);
+    };
+
+
+
+    // ---------------------- DATATABLE STYLES (yellow pages)---------------------------
     &__table {
         border-collapse: collapse;
         width:100%;
@@ -71,11 +143,84 @@
         };
     };
 
+    &__contacts {
+        display:flex;
+        flex-wrap: wrap;
+        margin-bottom: 5.25rem;
+
+        .contact__card {
+            background: var(--color-lightgreytablerows);
+            width:fit-content;
+            height: fit-content;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--border-radius-2xl);
+            margin-right: 3.6rem;
+            box-shadow: 0px 0px 3.5rem -1.813rem rgba(0, 0, 0, 0.25);
+
+            &__piccontainer {
+                margin: 1.875rem;
+                margin-left: 1.75rem;
+                position: relative;
+                width: 8.25rem;
+                height: 8.25rem;
+                border-radius: 50%;
+                overflow: hidden;
+
+                .contactpic {
+                    position: absolute;
+                    object-position: 50%;
+                    left:-2rem;
+                    object-fit: contain;
+                    height:100%;
+                    width:auto;
+                };
+            };
+
+            &__name {
+                font-family: var(--font-family-header);
+                font-weight: var(--font-weight-black);
+                font-size: 2.188rem;
+                width:min-content;
+                white-space: break-space;
+                margin: 0 2.8rem 0 0.875rem;
+
+                // white-space: pre-wrap;
+            };
+
+        };
+
+    };
+
 };
 
-
+// -----------span triangle "arrow" in tableheader (yellow rows)
 .ordertriangle {
     font-size: 25px;
     vertical-align: middle;
     line-height:unset !important;
 }
+
+
+// ----------------- contacts informations from Company & Contact Pages -------------
+
+.contact {
+    width: fit-content;
+    padding: 1rem;
+    font-family: var(--font-family-header);
+    font-size: 1.563rem;
+
+    .bold {
+        font-weight: var(--font-weight-bold);
+    };
+
+    .firstletterup {
+        text-transform: capitalize;
+    };
+
+    .tvacapitalize {
+        text-transform: uppercase;
+    }
+};
