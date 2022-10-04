@@ -2,9 +2,9 @@
 
 namespace App\Views;
 
-class AdminContactsView
+class AdminContactsView extends Views
 {
     public function show() {
-
+        $this->view('dashboard/dashboard_contacts');
     }
 }

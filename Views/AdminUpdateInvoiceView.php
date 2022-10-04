@@ -2,9 +2,9 @@
 
 namespace App\Views;
 
-class AdminUpdateInvoiceView
+class AdminUpdateInvoiceView extends Views
 {
     public function show() {
-
+        $this->view('dashboard/dashboard_update_invoice');
     }
 }
