@@ -56,7 +56,7 @@ $router->get('/test', function() {
 ////    echo 'contacts';
 //    (new ContactController())->index();
 //});
-$router->get('/contact/d+)', function($name) {
+$router->get('/contact/([0-9]+)', function($name) {
     // get data's from DB here and pass it to index function
 
     (new ContactController())->index($name);
@@ -65,7 +65,7 @@ $router->get('/contact/d+)', function($name) {
   //  (new CompanyController())->index();
     //   echo 'companies';
 //});
-$router->get('/company/d+)', function($name) {
+$router->get('/company/([0-9]+)', function($name) {
     // get data's from DB here and pass it to index function
 
         (new CompanyController())->index($name);
