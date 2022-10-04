@@ -107,7 +107,7 @@ class Form extends Dbh
                     ." WHERE ".$idName." = ".$id;
                 break;
             case "contacts":
-                $query = "UPDATE ".$table ." SET contacts_name = :contacts_name, company_id = : company_id, email = :email, contacts_phone = :phone, contacts_updated_at = updated_at"
+                $query = "UPDATE ".$table ." SET contacts_name = :contacts_name, contacts_firstname = :contacts_firstname company_id = : company_id, email = :email, contacts_phone = :phone, contacts_updated_at = updated_at"
                     ." WHERE ".$idName." = ".$id;
                 break;
             case "invoices":
@@ -142,6 +142,7 @@ class Form extends Dbh
                 case "contacts":
                     $arr = [
                         "contacts_name" => $array["name"],
+                        "contacts_firstname"=>$array["firstname"],
                         "email" => $array["email"],
                         "phone"=> $array["phone"],
                         "updated_at"=> $this->getTodayDate(),
