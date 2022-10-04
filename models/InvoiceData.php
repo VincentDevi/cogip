@@ -12,6 +12,7 @@ class InvoiceData extends DbData
      */
     public function getInvoiceData(): array
     {
+        // todo: make invoices get by id SQL request like in contactData.php
         return $this->getData('invoices');
     }
 

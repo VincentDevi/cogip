@@ -2,7 +2,6 @@
 
 namespace App\Routes;
 
-
 use App\Controllers\DashboardHomeController;
 use App\Views\AdminCompaniesView;
 use App\Views\AdminContactsView;
@@ -20,7 +19,6 @@ use App\Views\HomeView;
 use App\Views\InvoiceView;
 use App\Views\NotFoundView;
 use Bramus\Router\Router;
-use App\Controllers\HomeController;
 
 use App\Test\ValidateUserInputTest;
 
@@ -91,16 +89,16 @@ $router->get('/admin/invoice/create', function() {
     (new AdminCreateInvoiceView())->show();
 });
 
-$router->get('/admin/contact/update', function() {
-    (new AdminUpdateContactView())->show();
+$router->get('/admin/contact/update/([0-9]+)', function($id) {
+    (new AdminUpdateContactView())->show($id);
 });
 
-$router->get('/admin/company/update', function() {
-    (new AdminUpdateCompanyView())->show();
+$router->get('/admin/company/update/([0-9]+)', function($id) {
+    (new AdminUpdateCompanyView())->show($id);
 });
 
-$router->get('/admin/invoice/update', function() {
-    (new AdminUpdateInvoiceView())->show();
+$router->get('/admin/invoice/update/([0-9]+)', function($id) {
+    (new AdminUpdateInvoiceView())->show($id);
 });
 
 
