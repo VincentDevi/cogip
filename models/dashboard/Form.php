@@ -23,7 +23,7 @@ class Form extends Dbh
     public function fetchDataToAutocompleteAnInput($table):array{
         $query = $this->getAllNamesOfATable($table);
 
-        return $this->fetchInformation($query);
+        return $this->fetchData($query);
     }
 
 
@@ -48,15 +48,17 @@ class Form extends Dbh
         return date('Y-m-d');
     }
 
+
     /**
      * Return company's id according to given name.
      *
      * @param $company_id
      * @return mixed
      */
-    private function fetchCompanyId($company_id):string{
-        $query= "SELECT companies_name" ."FROM companies"." WHERE companies.id = ".$company_id;
-        $arr = $this->fetchInformation($query);
+    private function fetchCompanyId($companyName):string{
+        $query= "SELECT companies.id" ."FROM companies"." WHERE companies_name LIKE ".$companyName;
+
+        $arr = $this->fetchData($query);
         return $arr["companies.id"];
     }
 

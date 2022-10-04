@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\models\createDbData;
-use App\models\getDbData;
+use App\models\DbData;
 
 class DashboardHomeController extends Controller
 {
@@ -15,7 +15,7 @@ class DashboardHomeController extends Controller
      */
     public function index()
     {
-        $data = new getDbData();
+        $data = new DbData();
         $datas = $data->createArray();
 
         $datas['user'] = CURRENT_USER;

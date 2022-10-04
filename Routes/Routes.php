@@ -4,18 +4,16 @@ namespace App\Routes;
 
 
 use App\Controllers\DashboardHomeController;
+use App\Views\CompanyViews;
+use App\Views\ContactViews;
+use App\Views\HomeView;
+use App\Views\InvoiceView;
+use App\Views\NotFoundView;
 use Bramus\Router\Router;
 use App\Controllers\HomeController;
-use App\Controllers\NotFoundController;
-use App\Controllers\CompaniesController;
-use App\Controllers\ContactsController;
-use App\Controllers\InvoicesController;
-use App\Controllers\CompanyController;
-use App\Controllers\ContactController;
 
 use App\Test\ValidateUserInputTest;
 
-use App\models\getDbData;
 
 $router = new Router();
 
@@ -24,51 +22,35 @@ $router = new Router();
 
 $router->set404(function() {
     header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
-    (new NotFoundController)->index();
+    (new NotFoundView())->show();
 });
 
 $router->get('/', function() {
-//   echo 'home';
- (new HomeController)->index();
+    (new HomeView())->show();
 });
 
 $router->get('/companies', function() {
-    (new CompaniesController)->index();
- //   echo 'companies';
+    (new CompanyViews)->showAll();
 });
 
 $router->get('/contacts', function() {
-////    echo 'contacts';
-    (new ContactsController())->index();
+    (new ContactViews())->showAll();
 });
 
 $router->get('/invoices', function() {
-//    echo 'invoices';
-    (new InvoicesController())->index();
+    (new InvoiceView())->showAll();
 });
 
 $router->get('/test', function() {
-//    echo 'invoices';
     (new validateUserInputTest());
 });
 
-//$router->get('/contact', function() {
-////    echo 'contacts';
-//    (new ContactController())->index();
-//});
 $router->get('/contact/([0-9]+)', function($name) {
-    // get data's from DB here and pass it to index function
-
-    (new ContactController())->index($name);
+    (new ContactViews())->show($name);
 });
-//$router->get('company', function() {
-  //  (new CompanyController())->index();
-    //   echo 'companies';
-//});
-$router->get('/company/([0-9]+)', function($name) {
-    // get data's from DB here and pass it to index function
 
-        (new CompanyController())->index($name);
+$router->get('/company/([0-9]+)', function($name) {
+    (new CompanyViews())->show($name);
 });
 
 $router->put('/create/invoice/reference/price/company', function($reference, $price, $company) {
