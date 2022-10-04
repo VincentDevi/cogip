@@ -107,9 +107,9 @@ $router->get('/submitest', function() {
 });
 
 $router->post('/submitest/submit', function() {
-//    echo post;
-    $data = [file_get_contents("php://input")];
-    print_r(file_get_contents("php://input"));
+    $data = [
+        'test2' => $_POST,
+    ];
     (new SubmitTestView())->showReturn($data);
 });
 

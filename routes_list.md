@@ -4,7 +4,7 @@
 
 - / : homepage
 - /companies : show all companies
-- /conacts : show all contacts
+- /contacts : show all contacts
 - /invoices : show all invoices
 - /contact/*contactId* : show contact that has id *contactId*
 - /company/*companyId* : show company that has id *companyId*
@@ -22,4 +22,7 @@
 - /admin/invoice/create : show admin invoice create. template : dashboard/dashboard_create_invoice
 - /admin/invoice/update/*invoiceId* : show admin invoice update that has id *invoiceId*. template : dashboard/dashboard_update_invoice
 
-## Routes for form submission when click submit not yet implemented!
+## Submit routes
+Routes for form submission when click submit not yet implemented!
+
+- /submitest : test submitting forms. Template : test/submit_test . Use it as example for forms.
