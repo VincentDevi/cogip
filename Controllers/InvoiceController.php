@@ -11,8 +11,8 @@ class InvoiceController extends Controller
 
     }
 
-    public function read() {
-        return (new InvoiceData())->getInvoiceData();
+    public function read($id = NULL) {
+        return (new InvoiceData())->getInvoiceData($id);
     }
 
     public function update($data, $id) {
