@@ -18,6 +18,7 @@ use App\Views\ContactViews;
 use App\Views\HomeView;
 use App\Views\InvoiceView;
 use App\Views\NotFoundView;
+use App\Views\SubmitTestView;
 use Bramus\Router\Router;
 
 use App\Test\ValidateUserInputTest;
@@ -99,6 +100,17 @@ $router->get('/admin/company/update/([0-9]+)', function($id) {
 
 $router->get('/admin/invoice/update/([0-9]+)', function($id) {
     (new AdminUpdateInvoiceView())->show($id);
+});
+
+$router->get('/submitest', function() {
+    (new SubmitTestView())->show();
+});
+
+$router->post('/submitest/submit', function() {
+//    echo post;
+    $data = [file_get_contents("php://input")];
+    print_r(file_get_contents("php://input"));
+    (new SubmitTestView())->showReturn($data);
 });
 
 

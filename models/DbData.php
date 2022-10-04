@@ -93,15 +93,15 @@ class DbData extends Dbh
         $queryCondition = $this->getCondition($condition);
 
         if ($table ==="contacts"){
-            $query = "SELECT contacts.id,contacts.contacts_name, contacts.contacts_phone, contacts.email, contacts.contacts_created_at, companies.companies_name"." FROM ".$table
+            $query = "SELECT contacts.id,contacts.contacts_name AS name, contacts.contacts_phone AS phone, contacts.email, contacts.contacts_created_at AS created_at, companies.companies_name AS company_name"." FROM ".$table
                 ." INNER JOIN companies ON companies.id = contacts.company_id".$queryLimit.$queryCondition.";";
         }
         elseif ($table ==="companies"){
-            $query = "SELECT companies.id,companies.companies_name, companies.tva, companies.country, companies.companies_created_at, types.types_name"." FROM ".$table
+            $query = "SELECT companies.id,companies.companies_name AS name, companies.tva AS vat, companies.country, companies.companies_created_at AS created_at, types.types_name AS type"." FROM ".$table
                 ." INNER JOIN types ON types.id = companies.type_id".$queryLimit.$queryCondition.";";
         }
-        else{
-            $query = "SELECT invoices.id,ref, invoices.due_date, invoices.invoices_created_at, companies.companies_name" . " FROM ".$table
+        elseif ($table ==="invoices") {
+            $query = "SELECT invoices.id, ref, invoices.due_date, invoices.invoices_created_at AS created_at, companies.companies_name AS company_name" . " FROM ".$table
                 ." INNER JOIN companies ON companies.id = invoices.id_company".$queryLimit.$queryCondition.";";
         }
         return $query;
