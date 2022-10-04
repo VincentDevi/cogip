@@ -53,6 +53,29 @@ $router->get('/company/([0-9]+)', function($name) {
     (new CompanyViews())->show($name);
 });
 
+$router->get('/admin', function() {
+});
+
+$router->get('/admin/contact/create', function() {
+});
+
+$router->get('/admin/company/create', function() {
+});
+
+$router->get('/admin/invoice/create', function() {
+});
+
+$router->get('/admin/contact/update', function() {
+});
+
+$router->get('/admin/company/update', function() {
+});
+
+$router->get('/admin/invoice/update', function() {
+});
+
+
+
 $router->put('/create/invoice/reference/price/company', function($reference, $price, $company) {
     //    (new CreateInvoiceController())->index($reference, $price, $company);
 });
@@ -69,6 +92,7 @@ $router->get('/dashboard', function() {
 //    echo 'invoices';
     (new DashboardHomeController())->index();
 });
+
 $router->run();
 
 
