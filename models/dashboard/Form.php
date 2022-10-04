@@ -26,6 +26,7 @@ class Form extends Dbh
         return $this->fetchInformation($query);
     }
 
+
     /**
      * Return the query for fetchAutocompleteFormData.
      * @param $table
