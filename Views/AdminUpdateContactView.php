@@ -2,12 +2,12 @@
 
 namespace App\Views;
 
-use App\Controllers\ContactController;
+use App\Controllers\AdminContactController;
 
 class AdminUpdateContactView extends Views
 {
     public function show($id) {
-        $data = (new ContactController())->read($id);
+        $data = (new AdminContactController())->read($id);
         $this->view('dashboard/dashboard_update_contact', $data);
     }
 }

@@ -2,9 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Core\Controller;
-
-class AdminCompanyController extends Controller
+class AdminCompanyController extends CompanyController
 {
 
 }

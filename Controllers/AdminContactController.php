@@ -2,9 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Core\Controller;
-
-class AdminContactController extends Controller
+class AdminContactController extends ContactController
 {
 
 }

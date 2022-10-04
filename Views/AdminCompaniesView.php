@@ -2,12 +2,12 @@
 
 namespace App\Views;
 
-use App\Controllers\CompanyController;
+use App\Controllers\AdminCompanyController;
 
 class AdminCompaniesView extends Views
 {
     public function show() {
-        $data = (new companyController())->read();
+        $data = (new AdminCompanyController())->read();
         $this->view('dashboard/dashboard_companies', $data);
     }
 }
