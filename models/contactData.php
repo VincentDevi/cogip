@@ -14,7 +14,7 @@ class contactData extends DbData
     public function getContactData($contactId = NULL): array
     {
         if($contactId) {
-            $query = "SELECT contacts_name, contacts_phone, email, companies.companies_name FROM contacts INNER JOIN companies ON companies.id=company_id WHERE contacts.id = :id ;";
+            $query = "SELECT contacts_name, contacts_firstname,contacts_phone, email, companies.companies_name FROM contacts INNER JOIN companies ON companies.id=company_id WHERE contacts.id = :id ;";
 
             return $this->fetchData($query,["id"=>$contactId]);
         } else {

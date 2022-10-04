@@ -78,7 +78,7 @@ class Form extends Dbh
     }
 
 
-    private function selectCreateQuery ($table): string{
+    protected function selectCreateQuery ($table): string{
         $query="";
         switch ($table){
             case "companies":
