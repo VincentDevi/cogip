@@ -5,7 +5,7 @@ use Rakit\Validation\ErrorBag;
 use Rakit\Validation\Validator;
 use PDO;
 
-class getDbData extends Dbh
+class DbData extends Dbh
 {
     /**
      * Return an array with infos according to the provided table and provided limit.
@@ -15,28 +15,12 @@ class getDbData extends Dbh
      * @param int $limit
      * @return array
      */
-    public function getInfo($table, int $limit=0): array{
+    public function getData($table, int $limit=0): array{
         $query = $this->getQuery($table, $limit);
 
-        return $this->fetchInformation($query, NULL, $this);
+        return $this->fetchData($query, NULL, $this);
     }
 
-    public function getRowCount(): array{
-        return ["companies" => $this->rowCount("companies"),
-            "invoices"=> $this->rowCount("invoices"),
-            "contacts"=> $this->rowCount("contacts")
-        ];
-    }
-    public function createArray(): array{
-        $comp = $this->getInfo("companies", 5);
-        $inv = $this->getInfo("invoices", 5);
-        $cont = $this->getInfo("contacts", 5);
-        $rowCounts = $this->getRowCount();
-        return ["companies"  => $comp,
-            "invoices"=> $inv,
-            "contacts"=> $cont,
-            "stats"=> $rowCounts];
-    }
     /**
      * Return an array with infos according to the provided table and provided limit.
      * Limit argument will limit the length of the array. E.g.  5 will return an array with 5 elements.
@@ -53,7 +37,7 @@ class getDbData extends Dbh
 
         $query = $this->getQuery($table, NULL, $input);
 
-        return $this->fetchInformation($query, [
+        return $this->fetchData($query, [
             "search" => $input
         ], $this);
     }
@@ -76,8 +60,9 @@ class getDbData extends Dbh
             return "";
         }
     }
-    private function rowCount($table): string{
-        return "SELECT COUNT(*)"." FROM ".$table;
+
+    protected function GetRowCountQuery($table): string{
+        return "SELECT COUNT(*) AS Quantity FROM ".$table;
     }
 
     /**
@@ -108,7 +93,7 @@ class getDbData extends Dbh
         $queryCondition = $this->getCondition($condition);
 
         if ($table ==="contacts"){
-            $query = "SELECT contacts.id,contacts.contacts_name, contacts.contacts_phone, contacts.email, contacts.contacts_created_at, companies.companies_name"." FROM ".$table
+            $query = "SELECT contacts.id,contacts.contacts_name, contacts_firstname, contacts.contacts_phone, contacts.email, contacts.contacts_created_at, companies.companies_name"." FROM ".$table
                 ." INNER JOIN companies ON companies.id = contacts.company_id".$queryLimit.$queryCondition.";";
         }
         elseif ($table ==="companies"){
@@ -149,5 +134,4 @@ class getDbData extends Dbh
 
         return !$validation->fails() ? TRUE : $validation->errors();
     }
-
 }

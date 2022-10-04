@@ -4,6 +4,7 @@ namespace App\models;
 
 use PDO;
 use PDOException;
+use App\models\dashboard\Form;
 
 require_once 'dbSettings.php';
 
@@ -20,10 +21,10 @@ class Dbh
      *
      * @param $query : E.g. ["search"=>'John']
      * @param null $vars
-     * @param getDbData $instance
+     * @param DbData $instance
      * @return array
      */
-    public function fetchInformation($query, $vars = NULL): array
+    public function fetchData($query, $vars = NULL): array
     {
         $connexion = $this->connexion();
         $stmt = $connexion->prepare($query);
@@ -34,6 +35,20 @@ class Dbh
         $connexion = NULL;
         $stmt = NULL;
         return $output;
+    }
+
+    /**
+     * Possible duplicate of Dbh->fetchInformation() function.
+     *
+     * @param $table
+     * @param $arrayOfInput
+     * @return void
+     */
+    public function createDbData($table,$arrayOfInput, $id=null){
+        $con = $this->connexion();
+        $stmt = $con->prepare($this->selectCreateQuery($table));
+        $stmt->execute($this->createArrayExecute($table,$arrayOfInput));
+        $stmt = null;
     }
 
     /**

@@ -3,39 +3,24 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\models\companyInformation;
+use App\models\CompanyData;
+
 class CompanyController extends Controller
 {
-    /**
-     * Show the company view with data's about the company.
-     *
-     * @param $data
-     * @return void
-     */
-    public function index($company)
-    {
-        $data = new companyInformation();
-        $datas = $data->getCompanyInfo($company);
-        $this->view('company', $datas);
+
+    public function create($data) {
+
     }
 
-//    public function create() {
-//
-//    }
-//
-//    public function update() {
-//
-//    }
-//
-//    public function delete() {
-//
-//    }
-//
-//    public function showAll() {
-//
-//    }
-//
-//    public function showCompany() {
-//
-//    }
+    public function read($id = NULL) {
+        return (new CompanyData())->getCompanyData($id);
+    }
+
+    public function update($data, $id) {
+
+    }
+
+    public function delete($id) {
+
+    }
 }

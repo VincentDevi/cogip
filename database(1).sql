@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 21, 2022 at 03:24 PM
+-- Generation Time: Oct 04, 2022 at 02:48 PM
 -- Server version: 8.0.30-0ubuntu0.22.04.1
 -- PHP Version: 8.1.2
 
@@ -45,8 +45,8 @@ CREATE TABLE `companies` (
 INSERT INTO `companies` (`id`, `companies_name`, `type_id`, `country`, `tva`, `companies_created_at`, `companies_updated_at`, `companies_phone`) VALUES
 (2, 'raviga', 1, 'United States', 'US456 654 321', '2022-09-20 16:11:43', '2022-09-20 16:11:43', '5555-8767'),
 (3, 'dunder mufflin', 2, 'United States', 'US676 787 767', '2022-09-20 16:13:51', '2022-09-20 16:13:51', '5555-4529'),
-(4, 'Belgalol', 1, 'Belgium', 'BEO087 876 787', '2022-09-20 16:14:45', '2022-09-20 16:14:45', '5555-8105'),
-(5, 'pierre cailloux', 1, 'France', 'FR676 676 676', '2022-09-20 16:15:26', '2022-09-20 16:15:26', '5555-8717'),
+(4, 'Becode', 1, 'Belgium', 'BEO087 876 787', '2022-09-20 16:14:45', '2022-09-20 16:14:45', '5555-8105'),
+(5, 'tech trop bien', 1, 'France', 'FR676 676 676', '2022-09-20 16:15:26', '2022-09-20 16:15:26', '5555-8717'),
 (6, 'Jouet Jean-Michel', 2, 'France', 'FR787 776 999', '2022-09-20 16:16:12', '2022-09-20 16:16:12', '5555-1841'),
 (7, 'Pied Pipper', 2, 'Belgium', 'BE87 876 767 565', '2022-09-20 16:17:36', '2022-09-20 16:17:36', '5555-9978');
 
@@ -59,6 +59,7 @@ INSERT INTO `companies` (`id`, `companies_name`, `type_id`, `country`, `tva`, `c
 CREATE TABLE `contacts` (
   `id` int NOT NULL,
   `contacts_name` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `contacts_firstname` varchar(50) NOT NULL,
   `company_id` int NOT NULL,
   `email` varchar(50) NOT NULL,
   `contacts_phone` varchar(50) CHARACTER SET utf8 NOT NULL,
@@ -70,12 +71,12 @@ CREATE TABLE `contacts` (
 -- Dumping data for table `contacts`
 --
 
-INSERT INTO `contacts` (`id`, `contacts_name`, `company_id`, `email`, `contacts_phone`, `contacts_created_at`, `contacts_updates_at`) VALUES
-(1, 'Peter Gregory', 2, 'peter.gregory@raviga.com', '555-4667', '2022-09-20 16:42:00', '2022-09-20 16:42:00'),
-(2, 'Michael Scott', 3, 'michael.scott@dunder.com', '555-9867', '2022-09-20 16:43:28', '2022-09-20 16:43:28'),
-(3, 'George God', 4, 'gearge.god@belga.com', '555-6734', '2022-09-20 16:44:30', '2022-09-20 16:44:30'),
-(4, 'Pierre Cailloux', 5, 'pierre.cailloux@cailloux.com', '555-6712', '2022-09-20 16:45:31', '2022-09-20 16:45:31'),
-(5, 'Jean-Michel', 6, 'jeanmichel@gmail.com', '555-9371', '2022-09-20 16:46:10', '2022-09-20 16:46:10');
+INSERT INTO `contacts` (`id`, `contacts_name`, `contacts_firstname`, `company_id`, `email`, `contacts_phone`, `contacts_created_at`, `contacts_updates_at`) VALUES
+(1, 'Gregory', 'Peter', 2, 'peter.gregory@raviga.com', '555-4667', '2022-09-20 16:42:00', '2022-09-20 16:42:00'),
+(2, 'Scott', 'Michael', 3, 'michael.scott@dunder.com', '555-9867', '2022-09-20 16:43:28', '2022-09-20 16:43:28'),
+(3, 'God', 'George', 4, 'gearge.god@belga.com', '555-6734', '2022-09-20 16:44:30', '2022-09-20 16:44:30'),
+(4, 'Cailloux', 'Pierre', 5, 'pierre.cailloux@cailloux.com', '555-6712', '2022-09-20 16:45:31', '2022-09-20 16:45:31'),
+(5, 'Boulette', 'Jean-Michel', 6, 'jeanmichel@gmail.com', '555-9371', '2022-09-20 16:46:10', '2022-09-20 16:46:10');
 
 -- --------------------------------------------------------
 
