@@ -2,9 +2,12 @@
 
 namespace App\Views;
 
+use App\Controllers\InvoiceController;
+
 class AdminInvoicesView extends Views
 {
     public function show() {
-        $this->view('dashboard/dashboard_invoices');
+        $data = (new InvoiceController())->read();
+        $this->view('dashboard/dashboard_invoices', $data);
     }
 }
