@@ -2,52 +2,9 @@
 
 namespace App\models;
 
-class contactData extends DbData
+class ContactQueries extends DbData
 {
-    /**
-     * Returns the data's from the company according to the provided ID.
-     * If no id is provided, returns all the companies data's.
-     *
-     * @param $contactId
-     * @return array
-     */
-    public function getContactData($contactId = NULL): array
-    {
-        if($contactId) {
-
-            $query = $this->getQuery();
-
-            return $this->fetchData($query,["id"=>$contactId]);
-        } else {
-            return $this->getData('contacts');
-        }
-    }
-
-    public function createContact($data): bool
-    {
-        $query = $this->createQuery();
-
-        return $this->executeQuery($query, $data);
-    }
-
-    public function updateContact($data): bool
-    {
-        $query = $this->updateQuery();
-
-        return $this->executeQuery($query, $data);
-    }
-
-    public function deleteContact($id): bool
-    {
-        $query = $this->deleteQuery();
-        $data = [
-            'id' => $id,
-        ];
-
-        return $this->executeQuery($query, $data);
-    }
-
-    private function getQuery(): string
+    protected function getUniqueQuery(): string
     {
         return "
                 SELECT contacts_name AS name, 
@@ -64,7 +21,7 @@ class contactData extends DbData
             ";
     }
 
-    private function createQuery(): string
+    protected function createQuery(): string
     {
         return "
                 INSERT INTO contacts 
@@ -89,7 +46,7 @@ class contactData extends DbData
             ";
     }
 
-    private function updateQuery(): string
+    protected function updateQuery(): string
     {
         return "
                 UPDATE contacts
@@ -103,24 +60,11 @@ class contactData extends DbData
         ";
     }
 
-    private function deleteQuery(): string
+    protected function deleteQuery(): string
     {
         return "
                 DELETE FROM contacts 
                 WHERE id = :id;
         ";
-
-    }
-
-    public function getLastContactsData($limit): array
-    {
-        return $this->getData("contacts", $limit);
-    }
-
-    public function getRowCount(): array
-    {
-        $query = $this->getRowCountQuery('contacts');
-
-        return $this->fetchData($query);
     }
 }

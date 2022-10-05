@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\models\CompanyData;
-use App\models\contactData;
+use App\models\ContactData;
 use App\models\InvoiceData;
 
 class HomeController extends Controller
@@ -21,7 +21,7 @@ class HomeController extends Controller
         return [
                 "companies"  => (new CompanyData())->getLastCompaniesData($limit),
                 "invoices"=> (new InvoiceData())->getLastInvoicesData($limit),
-                "contacts"=> (new contactData())->getLastContactsData($limit),
+                "contacts"=> (new ContactData())->getLastContactsData($limit),
                 "stats"=> $this->getStats()
             ];
     }
@@ -36,7 +36,7 @@ class HomeController extends Controller
         return [
                 "companies" => (new CompanyData())->getRowCount()[0],
                 "invoices"=> (new InvoiceData())->getRowCount()[0],
-                "contacts"=> (new contactData())->getRowCount()[0]
+                "contacts"=> (new ContactData())->getRowCount()[0]
             ];
     }
 }
