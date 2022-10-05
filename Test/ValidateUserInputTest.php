@@ -24,4 +24,5 @@ class ValidateUserInputTest
         dd($validate->validate($rawInputs, $table));
 
     }
+
 }

@@ -4,11 +4,14 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\models\contactData;
+use App\models\ValidateUserInput;
 
 class ContactController extends Controller
 {
     public function create($data) {
-        return (new contactData())->createContact($data);
+        $validatedData = (new ValidateUserInput())->validate($data, 'contact');
+
+        return $validatedData ? (new contactData())->createContact($validatedData) : NULL;
     }
 
     public function read($id = NULL) {

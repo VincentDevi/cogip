@@ -22,6 +22,9 @@ class AdminContactView extends Views
         if ($created === TRUE) {
             $data['message'] = 'Contact successfully created.';
             $this->view('dashboard/dashboard_contacts', $data);
+        } else {
+            $data['message'] = 'Something went wrong.';
+            $this->view('dashboard/dashboard_create_contact', $data);
         }
     }
 }

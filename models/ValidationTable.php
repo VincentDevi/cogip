@@ -55,7 +55,7 @@ class ValidationTable
             'firstname' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
             'email' => 'required|email',
             'phone' => 'required|regex:/^\d{2}(?: ?\d+)*$/',
-            'company' => 'required|numeric',
+            'company_id' => 'required|numeric',
         ];
     }
 }
