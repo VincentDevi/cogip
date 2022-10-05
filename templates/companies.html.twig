@@ -36,7 +36,7 @@
 
 
         {% block tablebodyrows %}
-            {% for company in _context %}
+            {% for company in _context.companies %}
         
         <tr class="table__body__row">
             <td scope="col" class="table__body__row__cell"><a href="/company/{{company.id}}">{{company.companies_name}}</a></td>

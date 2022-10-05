@@ -2,7 +2,7 @@
 
 namespace App\models;
 
-class InvoiceData extends DbData
+class InvoiceModel extends DbData
 {
     /**
      * Returns the data's from all the invoices.

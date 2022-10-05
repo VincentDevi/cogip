@@ -7,6 +7,7 @@ use PDO;
 
 class DbData extends Dbh
 {
+    // todo : transfer this to contactModel, CompanyModel, InvoiceModel
     /**
      * Return an array with infos according to the provided table and provided limit.
      * Limit argument will limit the length of the array. E.g.  5 will return an array with 5 elements.
@@ -93,7 +94,7 @@ class DbData extends Dbh
         $queryCondition = $this->getCondition($condition);
 
         if ($table ==="contacts"){
-            $query = "SELECT contacts.id,contacts.contacts_name, contacts_firstname, contacts.contacts_phone, contacts.email, contacts.contacts_created_at, companies.companies_name"." FROM ".$table
+            $query = "SELECT contacts.id,contacts.contacts_name, contacts_firstname, contacts.contacts_phone, contacts.email, contacts.contacts_created_at, companies.companies_name, companies.id AS company_id"." FROM ".$table
                 ." INNER JOIN companies ON companies.id = contacts.company_id".$queryLimit.$queryCondition.";";
         }
         elseif ($table ==="companies"){
