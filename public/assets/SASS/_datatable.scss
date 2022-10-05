@@ -263,45 +263,49 @@ main{
 
 // ----------------- contacts informations from Company & Contact Pages -------------
 
-.contact {
-    width: fit-content;
-    padding: 1rem;
-    font-family: var(--font-family-header);
-    font-size: 1.563rem;
-    margin-bottom: 4.625rem;
+    .contact {
+        width: fit-content;
+        padding: 1rem;
+        font-family: var(--font-family-header);
+        font-size: 1.563rem;
+        margin-bottom: 4.625rem;
 
-    .bold {
-        font-weight: var(--font-weight-bold);
+        .bold {
+            font-weight: var(--font-weight-bold);
+        };
+
+        .firstletterup {
+            text-transform: capitalize;
+        };
+
+        .tvacapitalize {
+            text-transform: uppercase;
+        }
     };
 
-    .firstletterup {
-        text-transform: capitalize;
-    };
-
-    .tvacapitalize {
-        text-transform: uppercase;
-    }
-};
-
-.contact__pic {
-    width: 15.938rem;
-    height: 15.938rem;
-    position: relative;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-right: 5rem;
-    margin-top: -1rem;
-    
-    .contactbigpic {
-        position: absolute;
-        object-position: 0%;
-        // left:-2rem;
-        object-fit: contain;
-        height:100%;
-        width:auto;
+    .contact__pic {
+        width: 15.938rem;
+        height: 15.938rem;
+        position: relative;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 5rem;
+        margin-top: -1rem;
         
+        .contactbigpic {
+            position: absolute;
+            object-position: 0%;
+            // left:-2rem;
+            object-fit: contain;
+            height:100%;
+            width:auto;
+            
+
+        };
 
     };
-
-};
 }
+
+
+
+// src highlight text http://codepen.io/OxyDesign/pen/eHAac

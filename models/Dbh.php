@@ -45,6 +45,7 @@ class Dbh
      * @param $arrayOfInput
      * @return bool
      */
+
     public function createEntry($query, $data){
         $connexion = $this->connexion();
         $stmt = $connexion->prepare($query);

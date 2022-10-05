@@ -33,7 +33,7 @@
 
         {% block tablebodyrows %}
 
-            {% for contact in _context %}
+            {% for contact in _context.contacts %}
         
             <tr class="table__body__row">
                 <td scope="col" class="table__body__row__cell"><a href="{{ root }}/contact/{{contact.id}}">{{contact.contacts_name}}</a></td>
