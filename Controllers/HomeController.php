@@ -19,10 +19,10 @@ class HomeController extends Controller
     public function read(int $limit = SHORT_LIST_ITEM_QUANTITY): array
     {
         return [
-                "companies"  => (new CompanyModel())->getLastCompaniesData($limit),
-                "invoices"=> (new InvoiceModel())->getLastInvoicesData($limit),
-                "contacts"=> (new ContactModel())->getLastContactsData($limit),
-                "stats"=> $this->getStats()
+                "companies" => (new CompanyModel())->getLastCompaniesData($limit),
+                "invoices" => (new InvoiceModel())->getLastInvoicesData($limit),
+                "contacts" => (new ContactModel())->getLastContactsData($limit),
+                "stats" => $this->getStats()
             ];
     }
 
@@ -35,8 +35,8 @@ class HomeController extends Controller
     {
         return [
                 "companies" => (new CompanyModel())->getRowCount()[0],
-                "invoices"=> (new InvoiceModel())->getRowCount()[0],
-                "contacts"=> (new ContactModel())->getRowCount()[0]
+                "invoices" => (new InvoiceModel())->getRowCount()[0],
+                "contacts" => (new ContactModel())->getRowCount()[0]
             ];
     }
 }

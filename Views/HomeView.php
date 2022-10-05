@@ -8,7 +8,7 @@ use App\Controllers\InvoiceController;
 class HomeView extends Views
 {
     /**
-     * Shows the home page.
+     * Shows the home page with the last contacts, companies, invoices.
      *
      * @return void
      */

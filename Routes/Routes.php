@@ -7,7 +7,7 @@ use App\Views\AdminContactView;
 use App\Views\AdminInvoicesView;
 use App\Views\AdminView;
 use App\Views\CompanyViews;
-use App\Views\ContactViews;
+use App\Views\ContactView;
 use App\Views\HomeView;
 use App\Views\InvoiceView;
 use App\Views\NotFoundView;
@@ -36,7 +36,7 @@ $router->get('/companies', function() {
 });
 
 $router->get('/contacts', function() {
-    (new ContactViews())->showAll();
+    (new ContactView())->showAll();
 });
 
 $router->get('/invoices', function() {
@@ -48,7 +48,7 @@ $router->get('/test', function() {
 });
 
 $router->get('/contact/([0-9]+)', function($name) {
-    (new ContactViews())->show($name);
+    (new ContactView())->show($name);
 });
 
 $router->get('/company/([0-9]+)', function($name) {
@@ -62,7 +62,7 @@ $router->get('/admin', function() {
 
 
 $router->get('/admin/contacts', function() {
-    (new AdminContactView())->showEntries();
+    (new AdminContactView())->showAll();
 });
 
 $router->get('/admin/contact/create', function() {

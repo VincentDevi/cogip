@@ -4,7 +4,7 @@ namespace App\Views;
 
 use App\Controllers\ContactController;
 
-class ContactViews extends Views
+class ContactView extends Views
 {
     /**
      * Shows the contact view with data's about the contact with provided id.
@@ -18,12 +18,13 @@ class ContactViews extends Views
     }
 
     /**
-     * Shows the contacts view with all contacts.
+     * Shows the view with all contacts.
      *
      * @return void
      */
     public function showAll() {
         $data = (new ContactController())->read();
+
         $this->view('contacts', $data);
     }
 }

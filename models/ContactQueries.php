@@ -4,6 +4,11 @@ namespace App\models;
 
 class ContactQueries extends DbData
 {
+    /**
+     * Returns the query to find one contact.
+     *
+     * @return string
+     */
     protected function getUniqueQuery(): string
     {
         return "
@@ -21,6 +26,11 @@ class ContactQueries extends DbData
             ";
     }
 
+    /**
+     * Returns the query to create a new contact.
+     *
+     * @return string
+     */
     protected function createQuery(): string
     {
         return "
@@ -46,6 +56,11 @@ class ContactQueries extends DbData
             ";
     }
 
+    /**
+     * Returns the query to update a contact.
+     *
+     * @return string
+     */
     protected function updateQuery(): string
     {
         return "
@@ -60,6 +75,11 @@ class ContactQueries extends DbData
         ";
     }
 
+    /**
+     * Returns the query to delete a contact.
+     *
+     * @return string
+     */
     protected function deleteQuery(): string
     {
         return "

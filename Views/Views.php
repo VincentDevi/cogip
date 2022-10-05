@@ -6,9 +6,11 @@ use App\Core\Render;
 
 class Views
 {
-        /*
-    * @var $view, $data
-    * return view
+    /**
+     * Render the provided view with the given parameters.
+     *
+     * @var $view, $data
+     * return view
     */
     public function view($view, $data = [])
     {

@@ -2,12 +2,17 @@
 
 namespace App\Views;
 
-use App\Controllers\AdminController;
+use App\Controllers\HomeController;
 
 class AdminView extends Views
 {
+    /**
+     * Show the dashboard with the last entries from contacts, companies and invoices.
+     *
+     * @return void
+     */
     public function show() {
-        $data = (new AdminController())->read();
+        $data = (new HomeController())->read();
 
         $data['user'] = CURRENT_USER;
 
