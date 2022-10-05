@@ -17,11 +17,11 @@ class ValidateUserInputTest
             'price' => 3,
             'company' => 'my super-company',
         ];
-        $crudMethod = 'create';
+//        $crudMethod = 'create';
         $table = 'invoice';
 
         $validate = new ValidateUserInput();
-        dd($validate->validate($rawInputs, $crudMethod, $table));
+        dd($validate->validate($rawInputs, $table));
 
     }
 }

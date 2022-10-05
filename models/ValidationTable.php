@@ -12,8 +12,8 @@ class ValidationTable
      * @param $table
      * @return string
      */
-    protected function getTableMethodName($crudMethod, $table) {
-        return 'get'.ucfirst($crudMethod).ucfirst($table).'Table';
+    protected function getTableMethodName($table) {
+        return 'get'.ucfirst($table).'Table';
     }
 
     /**
@@ -21,7 +21,7 @@ class ValidationTable
      *
      * @return string[]
      */
-    protected function getCreateInvoiceTable() {
+    protected function getInvoiceTable() {
         return [
             'reference' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
             'price' => 'required|numeric',
@@ -34,7 +34,7 @@ class ValidationTable
      *
      * @return string[]
      */
-    protected function getCreateCompanyTable() {
+    protected function getCompanyTable() {
         return [
             'name' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
             'country' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
@@ -49,12 +49,13 @@ class ValidationTable
      *
      * @return string[]
      */
-    protected function getCreateContactTable() {
+    protected function getContactTable() {
         return [
             'name' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
+            'firstname' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
             'email' => 'required|email',
             'phone' => 'required|regex:/^\d{2}(?: ?\d+)*$/',
-            'company' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
+            'company' => 'required|numeric',
         ];
     }
 }
