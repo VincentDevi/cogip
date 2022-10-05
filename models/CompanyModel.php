@@ -52,13 +52,13 @@ class CompanyModel extends DbData
     private function getQuery($table, $limit): ?string
     {
         if ( $table === "invoices"){
-            return "SELECT ref, due_date, companies.companies_name, invoices_created_at"." FROM ".$table." INNER JOIN companies ON companies.id= id_company"
+            return "SELECT ref, due_date, companies.companies_name, invoices_created_at, invoices.id"." FROM ".$table." INNER JOIN companies ON companies.id= id_company"
                 ." WHERE companies.id = :id "." LIMIT ".$limit.";";
         }elseif ( $table === "contacts"){
-            return "SELECT contacts_name, contacts_firstname"." FROM ".$table." INNER JOIN companies ON companies.id = company_id"." WHERE companies.id = :id ;";
+            return "SELECT contacts_name, contacts_firstname, contacts.id"." FROM ".$table." INNER JOIN companies ON companies.id = company_id"." WHERE companies.id = :id ;";
 
         }elseif ( $table === "companies"){
-            return "SELECT companies_name, tva, country, companies_phone"." FROM ".$table." WHERE companies.id = :id ;";
+            return "SELECT companies_name, tva, country, companies_phone, id"." FROM ".$table." WHERE companies.id = :id ;";
         }else {
             return NULL;
         }
