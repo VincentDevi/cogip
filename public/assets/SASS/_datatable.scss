@@ -125,6 +125,32 @@ main{
             border-bottom: 1px solid var(--color-lightgreybordercontacts);
         };
 
+        .section__datanav {
+            height: fit-content;
+            margin: 3.125rem auto;
+            display:flex;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            &__btn {
+                width: 2rem;
+                height: 2rem;
+                border:1.2px solid var(--color-lightgreypagesbtns);
+                border-radius: var(--border-radius-sm);
+                text-align: center;
+                line-height: 2rem;
+                margin: 0 0.25rem;
+                font-family: var(--font-family-header);
+                font-size: 0.875rem;
+                font-weight: var(--font-weight-bold);
+
+                &--arrow {
+                    color: var(--color-yellow);
+                };
+
+            };
+        }
+
 
 
         // ---------------------- DATATABLE STYLES (yellow pages)---------------------------
@@ -251,7 +277,7 @@ main{
 
     };
 
-};
+    };
 
 // -----------span triangle "arrow" in tableheader (yellow rows)
 .ordertriangle {

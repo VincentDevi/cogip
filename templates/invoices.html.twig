@@ -36,7 +36,7 @@
     
 
         {% block tablebodyrows %}
-            {% for invoice in _context.invoices %}
+            {% for invoice in _context.invoices|slice(0,10) %}
         
         <tr class="table__body__row">
             <td scope="col" class="table__body__row__cell"><a href="/company/{{invoice.id_company}}">{{invoice.ref}}</a></td>

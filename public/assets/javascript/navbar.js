@@ -19,3 +19,4 @@ headerlinks.forEach(link => {
 
 })
 
+// [aria-current] source: https://codepen.io/Coding-in-Public/pen/MWroExJ
