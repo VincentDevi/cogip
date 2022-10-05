@@ -10,27 +10,16 @@
 
     {% block body %}
     <body>
-{# --------------------------- HEADER DASHBOARD------------------------------- #}
-        {% block header %}
-            {% include 'headerdashboard.html.twig' %}
-        {% endblock %}
-
-        {% block aside %}
-            {% include 'asidedashboard.html.twig' %}
-        {% endblock %}
-        <main>
-
 {# --------------------------- MAIN CONTENT--------------------------------- #}
-        {% block content %}
+    {% block aside %}
+        {% include 'asidedashboard.html.twig' %}
+    {% endblock %}
 
-        {% endblock %}
+    {% block main %}
+        {% include 'dashboard_home.html.twig' %}
+    {% endblock %}
 
-{# --------------------------- FOOTER CONTENT------------------------------- #}        
-        {% block footer %}
-            {# no footer here, see FIGMA template #}
-        {% endblock %}
-        </main>
-
+{# --------------------------- FOOTER CONTENT------------------------------- #}
         {% block javascripts %}
             {# ! change script sheet? #}
             <script src="{{ root }}/assets/javascript/script.js"></script>

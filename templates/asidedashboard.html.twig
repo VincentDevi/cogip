@@ -1,33 +1,59 @@
-{# ELEMENT TO INCLUDE: #}
-{# Dashboard Aside Menu ==> To include on dashboardlayout.html #}
+{# ELEMENT TO INCLUDE: #} {# Dashboard Aside Menu ==> To include on
+dashboardlayout.html #}
 
 <aside class="aside">
     <section class="aside__section aside__section--user">
         <div class="section__user__pic">
-            {# <img src=""> #}
+            <img
+                class="avatar"
+                src="{{ root }}/assets/img/avatar.svg"
+                alt="personal picture"
+            />
         </div>
-        <h3 class="section__user__name">Henry George</h3>
-
+        <h3 class="section__user__name">
+            Henry <br />
+            George
+        </h3>
     </section>
 
     <section class="aside__section aside__section--nav">
         <nav class="aside__section__nav">
             <ul class="nav__list">
-                <li class="nav__list__item"><span class="icon icon--dashboard"></span>Dashboards</li>
-                <li class="nav__list__item"><span class="icon icon--invoices"></span>Invoices</li>
-                <li class="nav__list__item"><span class="icon icon--companies"></span>Companies</li>
-                <li class="nav__list__item"><span class="icon icon--contacts"></span>Contacts</li>
+                <li class="nav__list__item">
+                    <img
+                        src="{{ root }}/assets/img/icons/Icon_dashboard.svg"
+                        alt=""
+                    /><span>Dashboards</span>
+                </li>
+                <li class="nav__list__item">
+                    <img
+                        src="{{ root }}/assets/img/icons/Icon_Invoices.svg"
+                        alt=""
+                    /><span>Invoices</span>
+                </li>
+                <li class="nav__list__item">
+                    <img
+                        src="{{ root }}/assets/img/icons/Icon_Companies.svg"
+                        alt=""
+                    /><span>Companies</span>
+                </li>
+                <li class="nav__list__item">
+                    <img
+                        src="{{ root }}/assets/img/icons/Icon_contact.svg"
+                        alt=""
+                    /><span>Contacts</span>
+                </li>
             </ul>
         </nav>
-
     </section>
 
     <section class="aside__section aside__section--logout">
-        <div class="section__logout__pic">
-            {# <img src=""> #}
-        </div>
+        <img
+            class="smallAvatar"
+            src="{{ root }}/assets/img/avatar.svg"
+            alt="personal picture"
+        />
+
         <h6 class="section__logout__p">Logout</h6>
-
     </section>
-
 </aside>

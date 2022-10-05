@@ -10,6 +10,7 @@
   --color-purpledashboard: rgba(150, 152, 214, 1);
   --color-darkpurpledashboard: rgba(77, 76, 172, 1);
   --color-pinkdashboard: rgba(255, 128, 139, 1);
+  --color-backgroundDash: rgba(245, 245, 251, 1);
   --font-family-header: "Roboto", sans-serif;
   --font-family-title: "Inter", sans-serif;
   --font-size-body: 1rem;
@@ -31,4 +32,92 @@
   --border-radius-2xl: 2rem;
   --border-radius-pill: 50rem;
   --border-radius-circle: 50%: ;
+}
+
+body {
+  display: flex;
+  font-family: var(--font-family-title);
+}
+body .aside {
+  height: 100vh;
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+body .aside__section--user {
+  border: 1px solid #E7E7E7;
+  padding: 20%;
+  text-align: center;
+}
+body .aside__section--user img {
+  width: 70%;
+}
+body .aside__section--nav .aside__section__nav ul {
+  display: flex;
+  flex-direction: column;
+}
+body .aside__section--nav .aside__section__nav ul li {
+  display: flex;
+  align-items: center;
+}
+body .aside__section--logout {
+  border-top: 1px solid #E7E7E7;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body .aside__section--logout img {
+  width: 25%;
+}
+body .main {
+  width: 85%;
+  padding: 3%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background-color: var(--color-backgroundDash);
+}
+body .main .header {
+  width: 92%;
+  position: relative;
+}
+body .main .header__legend {
+  margin-bottom: 5%;
+}
+body .main .header__legend__title {
+  font-weight: 900;
+  font-size: 2vw;
+}
+body .main .header__welcome {
+  background-color: var(--color-purpledashboard);
+  border-radius: 10px;
+  padding: 5%;
+}
+body .main .header__welcome h2 {
+  font-size: 2vw;
+  color: white;
+}
+body .main .header__welcome p {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+}
+body .main .header__illustration {
+  position: absolute;
+  bottom: 35%;
+  left: 60%;
+  width: 30%;
+}
+body .main__section--statistique {
+  width: 45%;
+  background-color: white;
+  border-radius: 10px;
+}
+body .main__section--datatable {
+  width: 45%;
+  background-color: white;
+  border-radius: 10px;
 }/*# sourceMappingURL=dashboard.css.map */

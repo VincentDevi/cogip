@@ -1,1 +1,95 @@
 @import "mixin","variables";
+
+body{
+    display: flex;
+    font-family: var(--font-family-title);
+    .aside{
+        height: 100vh;
+        width: 15%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &__section--user{
+            border: 1px solid #E7E7E7;
+            padding: 20%;
+            text-align: center;
+            img{
+                width: 70%;
+            }
+        }
+        &__section--nav{
+            .aside__section__nav{
+                ul{
+                    display: flex;
+                    flex-direction: column;
+                    li{
+                        display: flex;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+        &__section--logout{
+            border-top: 1px solid #E7E7E7;
+
+            bottom: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            img{
+                width: 25%;
+            }
+        }
+    }
+    .main{
+        width: 85%;
+        padding: 3%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        background-color: var(--color-backgroundDash);
+        .header{
+            width: 92%;
+            position: relative;
+            &__legend{
+                margin-bottom: 5%;
+                &__title{
+                    font-weight: 900;
+                    font-size: 2vw;
+                }
+            }
+            &__welcome{
+                background-color: var(--color-purpledashboard);
+                border-radius: 10px;
+                padding: 5%;
+                h2{
+                    font-size: 2vw;
+                    color: white;
+                }
+                p{
+                    font-size: 15px;
+                    font-weight: 300;
+                    color: rgba(255, 255, 255, 0.8);
+                }
+            }
+            &__illustration{
+                position: absolute;
+                bottom: 35%;
+                left: 60%;
+                width: 30%;
+            }
+        }
+        &__section--statistique{
+            width: 45%;
+            background-color: white;
+            border-radius: 10px;
+        }
+        &__section--datatable{
+            width: 45%;
+            background-color: white;
+            border-radius: 10px;
+        }
+    }
+}
