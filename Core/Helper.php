@@ -74,3 +74,25 @@ if ( ! function_exists('todayDate'))
         return date('Y-m-d');
     }
 }
+
+/**
+ * Remove duplicate rows from a provided 2 dimensional array.
+ * https://stackoverflow.com/questions/3598298/php-remove-duplicate-values-from-multidimensional-array
+ *
+ * @param $array
+ * @return array
+ */
+function removeDuplicateRows($array)
+{
+    $result = array_map("unserialize", array_unique(array_map("serialize", $array)));
+
+    foreach ($result as $key => $value)
+    {
+        if ( is_array($value) )
+        {
+            $result[$key] = removeDuplicateRows($value);
+        }
+    }
+
+    return $result;
+}

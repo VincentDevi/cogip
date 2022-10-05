@@ -2,7 +2,7 @@
 
 namespace App\models;
 
-class CompanyQueries
+class CompanyQueries extends DbData
 {
     protected function getAllQuery(): string
     {
