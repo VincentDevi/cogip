@@ -93,7 +93,7 @@ class DbData extends Dbh
         $queryCondition = $this->getCondition($condition);
 
         if ($table ==="contacts"){
-            $query = "SELECT contacts.id,contacts.contacts_name, contacts_firstname, contacts.contacts_phone, contacts.email, contacts.contacts_created_at, companies.companies_name"." FROM ".$table
+            $query = "SELECT contacts.id,contacts.contacts_name, contacts_firstname, contacts.contacts_phone, contacts.email, contacts.contacts_created_at, companies.companies_name, companies.id AS company_id"." FROM ".$table
                 ." INNER JOIN companies ON companies.id = contacts.company_id".$queryLimit.$queryCondition.";";
         }
         elseif ($table ==="companies"){

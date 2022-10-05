@@ -40,7 +40,8 @@ class contactData extends DbData
                        contacts_firstname AS firstname,
                        contacts_phone AS phone, 
                        email, 
-                       companies.companies_name AS company_name
+                       companies.companies_name AS company_name, 
+                       companies.id AS company_id 
                 FROM contacts
                 INNER JOIN companies
                 ON companies.id=company_id
@@ -52,13 +53,14 @@ class contactData extends DbData
     {
         return "
                 INSERT INTO contacts 
-                ( contacts_name, 
-                 contacts_firstname,
-                 company_id, 
-                 email, 
-                 contacts_phone, 
-                 contacts_created_at, 
-                 contacts_updates_at) 
+                            (
+                             contacts_name, 
+                             contacts_firstname,
+                             company_id, 
+                             email, 
+                             contacts_phone, 
+                             contacts_created_at, 
+                             contacts_updates_at) 
                 VALUES (
                         :name,
                         :firstname,
