@@ -7,6 +7,10 @@
 
 {% block content %}
 
+    <pre>
+        {{ dump() }}
+    </pre>
+
     {% for company in _context %}
 
                 <h2 class="main__section__title main__section__title--company">{{company.companies_name}}</h2>
