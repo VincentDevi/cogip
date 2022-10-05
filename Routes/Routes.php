@@ -2,17 +2,9 @@
 
 namespace App\Routes;
 
-use App\Controllers\ContactController;
-use App\Controllers\DashboardHomeController;
 use App\Views\AdminCompaniesView;
 use App\Views\AdminContactView;
-use App\Views\AdminCreateCompanyView;
-use App\Views\AdminCreateContactView;
-use App\Views\AdminCreateInvoiceView;
 use App\Views\AdminInvoicesView;
-use App\Views\AdminUpdateCompanyView;
-use App\Views\AdminUpdateContactView;
-use App\Views\AdminUpdateInvoiceView;
 use App\Views\AdminView;
 use App\Views\CompanyViews;
 use App\Views\ContactViews;
