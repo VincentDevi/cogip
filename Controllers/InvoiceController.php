@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\models\InvoiceData;
+use App\models\InvoiceModel;
 
 class InvoiceController extends Controller
 {
@@ -12,7 +12,7 @@ class InvoiceController extends Controller
     }
 
     public function read($id = NULL) {
-        return (new InvoiceData())->getInvoiceData($id);
+        return (new InvoiceModel())->getInvoiceData($id);
     }
 
     public function update($data, $id) {

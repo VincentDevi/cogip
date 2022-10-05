@@ -3,9 +3,9 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\models\CompanyData;
-use App\models\ContactData;
-use App\models\InvoiceData;
+use App\models\CompanyModel;
+use App\models\ContactModel;
+use App\models\InvoiceModel;
 
 class HomeController extends Controller
 {
@@ -19,9 +19,9 @@ class HomeController extends Controller
     public function read(int $limit = SHORT_LIST_ITEM_QUANTITY): array
     {
         return [
-                "companies"  => (new CompanyData())->getLastCompaniesData($limit),
-                "invoices"=> (new InvoiceData())->getLastInvoicesData($limit),
-                "contacts"=> (new ContactData())->getLastContactsData($limit),
+                "companies"  => (new CompanyModel())->getLastCompaniesData($limit),
+                "invoices"=> (new InvoiceModel())->getLastInvoicesData($limit),
+                "contacts"=> (new ContactModel())->getLastContactsData($limit),
                 "stats"=> $this->getStats()
             ];
     }
@@ -34,9 +34,9 @@ class HomeController extends Controller
     private function getStats(): array
     {
         return [
-                "companies" => (new CompanyData())->getRowCount()[0],
-                "invoices"=> (new InvoiceData())->getRowCount()[0],
-                "contacts"=> (new ContactData())->getRowCount()[0]
+                "companies" => (new CompanyModel())->getRowCount()[0],
+                "invoices"=> (new InvoiceModel())->getRowCount()[0],
+                "contacts"=> (new ContactModel())->getRowCount()[0]
             ];
     }
 }

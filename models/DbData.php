@@ -7,6 +7,7 @@ use PDO;
 
 class DbData extends Dbh
 {
+    // todo : transfer this to contactModel, CompanyModel, InvoiceModel
     /**
      * Return an array with infos according to the provided table and provided limit.
      * Limit argument will limit the length of the array. E.g.  5 will return an array with 5 elements.

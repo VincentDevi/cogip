@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\models\ContactData;
+use App\models\ContactModel;
 use App\models\ValidateUserInput;
 
 class ContactController extends Controller
@@ -13,21 +13,21 @@ class ContactController extends Controller
         $validatedData['created_at'] = todayDate();
         $validatedData['updated_at'] = todayDate();
 
-        return $validatedData ? (new ContactData())->createContact($validatedData) : NULL;
+        return $validatedData ? (new ContactModel())->createContact($validatedData) : NULL;
     }
 
     public function read($id = NULL) {
-        return (new ContactData())->getContactData($id);
+        return (new ContactModel())->getContactData($id);
     }
 
     public function update($data) {
         $validatedData = (new ValidateUserInput())->validate($data, 'contact');
         $validatedData['updated_at'] = todayDate();
 
-        return $validatedData ? (new ContactData())->updateContact($validatedData) : NULL;
+        return $validatedData ? (new ContactModel())->updateContact($validatedData) : NULL;
     }
 
     public function delete($id) {
-        return (new ContactData())->deleteContact($id);
+        return (new ContactModel())->deleteContact($id);
     }
 }

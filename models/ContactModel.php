@@ -2,7 +2,7 @@
 
 namespace App\models;
 
-class ContactData extends ContactQueries
+class ContactModel extends ContactQueries
 {
     /**
      * Returns the data's from the company according to the provided ID.

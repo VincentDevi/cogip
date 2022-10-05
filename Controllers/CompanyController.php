@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\models\CompanyData;
+use App\models\CompanyModel;
 
 class CompanyController extends Controller
 {
@@ -13,7 +13,7 @@ class CompanyController extends Controller
     }
 
     public function read($id = NULL) {
-        return (new CompanyData())->getCompanyData($id);
+        return (new CompanyModel())->getCompanyData($id);
     }
 
     public function update($data, $id) {
