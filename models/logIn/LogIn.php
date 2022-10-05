@@ -3,34 +3,56 @@
 namespace App\models\logIn;
 
 use App\models\Dbh;
+use Rakit\Validation\Validator;
 
 class LogIn extends Dbh
 {
-    public function logIn($password, $email){
-    $_SESSION=$email;
+
+
+    //SQL REQUEST
+    public function getUser($email, $password){
+        $result = $this->fetchData($this->checkEmailPasswordQuery(),$this->logInDataRequest($email,$password));
     }
 
-    private function validationLogin():array{
+    //query to execute the getData()
+    private function checkEmailPasswordQuery():string{
+        return "SELECT count(*) " ."FROM users"."WHERE email = :email AND password = :password";
+    }
+    // values to execute the getData()
+    private function logInDataRequest($email, $password){
+        return $this->sanitizeLogIn($email,$password);
+    }
+
+
+
+    // VALIDATION AND SANITATION
+    private function sanitizeLogIn($email, $password):array{
+        $email = htmlspecialchars($email);
+        $password = htmlspecialchars($password);
+
+        return ["email"=>$email,
+                "password=>$password"];
+    }
+
+    private function ruleValidationLogin():array{
         return [
-          "email"=>"required|email",
-          "password"=>"required|regex:/^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':\\|,.<>\/?]*$/"
+            "email"=>"required|email",
+            "password"=>"required|regex:/^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':\\|,.<>\/?]*$/"
         ];
     }
-    private function validationRuleCreateUser ():array{
-        return [
-            "email"=> "required|email",
-            "password"=> "required|regex:^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$",
-            "confirm_password"=> "required|same:password"
+    private function logInValidation ($email, $password){
+        $validator = new Validator();
+        $valuesArray = $this->sanitizeLogIn($email,$password);
+        $values =[
+                "email"=>$valuesArray["email"],
+                "password"=>$valuesArray["password"]
         ];
-    }
+        $rules = $this->ruleValidationLogin();
+        $validation = $validator->make($values,$rules);
+        $validation->validate();
 
-    private function checkEmailPasswordQuery($emailForm, $passwordForm):string{
-        return "SELECT count(*) " ."FROM users"."WHERE email = ".$emailForm." AND password = ".$passwordForm;
+        return !$validation->fails() ? $valuesArray : null;
     }
-    private function readLogin($email, $password){
-        return $this->fetchData($this->checkEmailPasswordQuery($email,$password));
-    }
-
 
 
 }

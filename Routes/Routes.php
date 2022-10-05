@@ -2,14 +2,17 @@
 
 namespace App\Routes;
 
+use App\models\logIn\CreateUser;
 use App\Views\AdminCompaniesView;
 use App\Views\AdminContactView;
 use App\Views\AdminInvoicesView;
 use App\Views\AdminView;
 use App\Views\CompanyViews;
 use App\Views\ContactViews;
+use App\Views\CreateUserView;
 use App\Views\HomeView;
 use App\Views\InvoiceView;
+use App\Views\LogInView;
 use App\Views\NotFoundView;
 use App\Views\SubmitTestView;
 use Bramus\Router\Router;
@@ -21,7 +24,16 @@ $router = new Router();
 
 //$router->setBasePath('/');
 
-
+$router->before('POST', '/login', function() {
+    if (!isset($_SESSION['users.id'])) {
+        //header('location: /auth/login');
+        //exit();
+        (new LogInView())->show();
+    }
+});
+$router->get('/createUser', function() {
+    (new CreateUserView())->show();
+});
 $router->set404(function() {
     header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
     (new NotFoundView())->show();
