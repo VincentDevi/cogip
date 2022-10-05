@@ -12,7 +12,7 @@ main{
         
         width: 85%;
         margin: auto;
-        margin-bottom: 3rem;
+        // margin-bottom: 3rem;
         
         // necessary div with relative position to add yellow "underline" in absolute
         .div__title {
@@ -24,6 +24,7 @@ main{
             justify-content: space-between;
             flex-wrap: wrap;
             align-items: center;
+            margin-bottom: 2rem;
 
         };
 
@@ -31,7 +32,7 @@ main{
             font-family: var(--font-family-title);
             font-weight: var(--font-weight-black);
             font-size: 3.75rem;
-            margin: 5rem 0 5rem 0;
+            margin: 0 0 5rem 0;
             padding-left: 1rem;
             min-width: fit-content;
             width: fit-content;
@@ -98,7 +99,10 @@ main{
                         z-index:-1;
 
                     };
+            };
 
+            &--companyinvoices {
+                margin-top: 6.875rem;
             };
 
         };
@@ -264,6 +268,7 @@ main{
     padding: 1rem;
     font-family: var(--font-family-header);
     font-size: 1.563rem;
+    margin-bottom: 4.625rem;
 
     .bold {
         font-weight: var(--font-weight-bold);
