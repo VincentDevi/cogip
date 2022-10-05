@@ -73,9 +73,9 @@ $router->post('/admin/contact/create', function() {
     (new AdminContactView())->showCreateSubmit($_POST);
 });
 
-//$router->get('/admin/contact/update/([0-9]+)', function($id) {
-//    (new AdminUpdateContactView())->show($id);
-//});
+$router->get('/admin/contact/update/([0-9]+)', function($id) {
+    (new AdminContactView())->showUpdateForm($id);
+});
 //
 //$router->post('/admin/contact/update', function() {
 //    (new ContactController())->update($_POST);

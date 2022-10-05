@@ -9,6 +9,7 @@ class AdminContactView extends Views
 {
     public function showEntries() {
         $data = (new ContactController())->read();
+
         $this->view('dashboard/dashboard_contacts', $data);
     }
 
@@ -24,10 +25,19 @@ class AdminContactView extends Views
 
         if ($created === TRUE) {
             $data['message'] = 'Contact successfully created.';
+
             $this->view('dashboard/dashboard_contacts', $data);
         } else {
             $data['message'] = 'Something went wrong.';
+
             $this->view('dashboard/dashboard_create_contact', $data);
         }
+    }
+
+    public function showUpdateForm($id) {
+        $data['companies'] = (new CompanyController())->read();
+        $data['contact'] = (new ContactController())->read($id);
+
+        $this->view('dashboard/dashboard_update_contact', $data);
     }
 }
