@@ -33,7 +33,9 @@ class CompanyModel extends CompanyQueries
         return [
             'company_id' => $data[0]['company_id'],
             'company_name' => $data[0]['company_name'],
-            'company_vat' => $data[0]['company_vat']
+            'company_vat' => $data[0]['company_vat'],
+            'company_country' => $data[0]['company_country'],
+            'company_phone' => $data[0]['company_phone'],
         ];
     }
 
