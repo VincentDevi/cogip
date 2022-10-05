@@ -1,22 +1,66 @@
 {# *HTML VUE  #}
-{# ALL INVOICES Page #}
+{# *ALL INVOICES Page #}
+{# see exemple page for datavalues #}
+
+{# TODO: 1. correct road for links to company/id pages #}
+{# TODO: 2. order data by date (from the most recent to the oldest) #}
+{# TODO: 3. withdraw hour in "created at" ?? #}
 
 {% extends "welcome.html.twig" %}
 
-{% block title %}Invoices{% endblock %}
+{% block title %}All Invoices{% endblock %}
 
-{% block tabletitlesection %}
-    {# TODO: replace h2 title + inputplaceholder by variable #}
-    <h2 class="main__section__title main__section__title--yellowshadow">ALL INVOICES</h2>
-    <input class "searchinput" type="search" placeholder="Search company" name="searchinput" id="searchinput"></input>
-{% endblock %}
+
 
 
 {% block content %}
 
-    {% include 'datadetails.html.twig' %}
+    {% embed 'datadetails.html.twig' %}
+    {# "embed" function allow to update block content as "extends" does.
+    /!\ the "include" function does NOT. #}
 
-    {# ! Maybe other modifications in tableheadercells and tablebodyrows blocks #}
-    {# ! 4 th (cols) #}
+    {% block tabletitlesection %}
+        <h2 class="main__section__title main__section__title--yellowshadow">All invoices</h2>
+        <input class "searchinput" type="search" placeholder="Search company" name="searchinput" id="searchinput"></input>
+    {% endblock %}
+
+        {% block tableheadercells %}
+
+        <th scope="col" class="table__header__row__title">Invoice Number</th>
+        <th scope="col" class="table__header__row__title">Due dates <span class="ordertriangle">&#9662;</span></th>
+        <th scope="col" class="table__header__row__title">Company</th>
+        <th scope="col" class="table__header__row__title">Created at</th>
+        {% endblock %}
+    
+
+        {% block tablebodyrows %}
+            {% for invoice in _context %}
+        
+        <tr class="table__body__row">
+            <td scope="col" class="table__body__row__cell"><a href="/company/{{invoice.id_company}}">{{invoice.ref}}</a></td>
+            <td scope="col" class="table__body__row__cell">{{invoice.due_date}}</td>
+            <td scope="col" class="table__body__row__cell">{{invoice.companies_name}}</td>
+            <td scope="col" class="table__body__row__cell">{{invoice.invoices_created_at}}</td>
+        </tr>
+            {% endfor %}
+
+        {% endblock %}
+        
+
+    {% endembed %}
 
 {% endblock %}
+
+
+
+{# 
+    
+1st col "Invoice number" => value = "ref" (/!\: add links with value "=id" to number to redirect to a new Invoice detail page = company page);
+
+2nd col "Due dates" => vamue = "due_date"(/!\ : from the most recent to the oldest. Add ordertriangle) 
+
+3rd col: "Company" => value = "companies_name"
+
+4th col "Created at" => value = "created_at"
+
+#}

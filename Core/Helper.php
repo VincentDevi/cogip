@@ -60,5 +60,17 @@ if ( ! function_exists('dd'))
 
         echo "</code></pre></fieldset><div><br>";
     }
-} 
+}
 
+/**
+ * Return formatted today date.
+ *
+ * @return string
+ */
+if ( ! function_exists('todayDate'))
+{
+    function todayDate()
+    {
+        return date('Y-m-d');
+    }
+}

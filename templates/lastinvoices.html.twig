@@ -1,0 +1,30 @@
+{# ELEMENT TO INCLUDE : #}
+{# Last invoices table ==> to include on welcome.html.twig Page AND on dashboardglobal.html.twig #}
+{# TODO: update styles on dashboard.scss #}
+{# TODO: order Last invoices by date (most recent to oldest) #}
+
+
+{% extends 'datatabletemplate.html.twig' %}
+
+    {% block tabletitlesection %}
+        <h2 class="main__section__title">Last invoices</h2>
+    {% endblock %}
+
+    {% block tableheadercells %}
+        <th scope="col" class="table__header__row__title">Invoice number</th>
+        <th scope="col" class="table__header__row__title">Dates due</th>
+        <th scope="col" class="table__header__row__title">Company</th>
+        <th scope="col" class="table__header__row__title">Created at</th>
+    {% endblock %}
+
+    {% block tablebodyrows %}
+
+        {% for invoice in _context.invoices %}
+            <tr class="table__body__row">
+                <td scope="col" class="table__body__row__cell">{{invoice.ref}}</td>
+                <td scope="col" class="table__body__row__cell">{{invoice.due_date}}</td>
+                <td scope="col" class="table__body__row__cell">{{invoice.companies_name}}</td>
+                <td scope="col" class="table__body__row__cell">{{invoice.invoices_created_at}}</td>
+            </tr>
+        {% endfor %}
+    {% endblock %}

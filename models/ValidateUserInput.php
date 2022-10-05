@@ -22,8 +22,8 @@ class ValidateUserInput extends ValidationTable
      * @param $table - table to query
      * @return null|array
      */
-    public function validate($rawInputs, $crudMethod, $table){
-        $validationTable = $this->getValidationTable($crudMethod, $table);
+    public function validate($rawInputs, $table){
+        $validationTable = $this->getValidationTable($table);
 
         if ($validationTable) {
             return $this->validateData($rawInputs, $validationTable);
@@ -39,8 +39,8 @@ class ValidateUserInput extends ValidationTable
      * @param $table
      * @return string
      */
-    private function getValidationTable($crudMethod, $table) {
-        $validationTable = $this->getTableMethodName($crudMethod, $table);
+    private function getValidationTable($table) {
+        $validationTable = $this->getTableMethodName($table);
 
         if (method_exists($this, $validationTable)) {
             return $this->$validationTable();

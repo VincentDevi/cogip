@@ -34,6 +34,7 @@ class Dbh
 
         $connexion = NULL;
         $stmt = NULL;
+
         return $output;
     }
 
@@ -42,13 +43,18 @@ class Dbh
      *
      * @param $table
      * @param $arrayOfInput
-     * @return void
+     * @return bool
      */
-    public function createDbData($table,$arrayOfInput, $id=null){
-        $con = $this->connexion();
-        $stmt = $con->prepare($this->setUpdateOrCreateQuery($table,$id));
-        $stmt->execute($this->createArrayExecute($table,$arrayOfInput,$id));
+
+    public function createEntry($query, $data){
+        $connexion = $this->connexion();
+        $stmt = $connexion->prepare($query);
+        $stmt->execute($data);
+
+        $connexion = NULL;
         $stmt = null;
+
+        return TRUE;
     }
 
     /**

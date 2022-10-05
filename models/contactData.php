@@ -23,7 +23,18 @@ class contactData extends DbData
         }
     }
 
-    private function getQuery() {
+    public function createContact($data): bool
+    {
+        $query = $this->createQuery();
+
+        $data['created_at'] = todayDate();
+        $data['updated_at'] = todayDate();
+
+        return $this->createEntry($query, $data);
+    }
+
+    private function getQuery(): string
+    {
         return "
                 SELECT contacts_name AS name, 
                        contacts_firstname AS firstname,
@@ -37,13 +48,37 @@ class contactData extends DbData
             ";
     }
 
-    public function getLastContactsData($limit) {
+    private function createQuery(): string
+    {
+        return "
+                INSERT INTO contacts 
+                ( contacts_name, 
+                 contacts_firstname,
+                 company_id, 
+                 email, 
+                 contacts_phone, 
+                 contacts_created_at, 
+                 contacts_updates_at) 
+                VALUES (
+                        :name,
+                        :firstname,
+                        :company_id, 
+                        :email, 
+                        :phone, 
+                        :created_at, 
+                        :updated_at) ;
+            ";
+    }
+
+    public function getLastContactsData($limit): array
+    {
         return $this->getData("contacts", $limit);
     }
 
-    public function getRowCount() {
+    public function getRowCount(): array
+    {
         $query = $this->getRowCountQuery('contacts');
 
-        return $this->fetchData($query, NULL, $this);
+        return $this->fetchData($query);
     }
 }

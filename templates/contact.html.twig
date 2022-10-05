@@ -1,25 +1,40 @@
 {# *HTML VUE  #}
 {# = "SHOW_CONTACT" page (see Figma) #}
+{# TODO: update block contactpic #}
 
 {% extends "welcome.html.twig" %}
 
-
-
 {% block content %}
 
-            {# TODO: replace <h2>.innerhtml by variable #}
-            <h2 class="main__section__title main__section__title--contact">BERTRAM GILFOYLE</h2>
+    {% for contact in _context %}
+        <h2 class="main__section__title main__section__title--contact">{{contact.contacts_name}}</h2>
+    
+        {% block informations %}
 
-    {% block informations %}
-        {% include 'informations.html.twig' %}
-
-            {% block contactpic %}
-                <div class="contact__pic">
-                    {# <img src=""> #}
+        {% embed 'informations.html.twig' %}
+                
+            {% block infotemplate %}
+                <div class="contact">
+                    <ul class="contact__infos">
+                        <li class="contact__info__item"><span class="bold">Contact:&nbsp;</span>{{contact.contacts_name}}</li>
+                        <li class="contact__info__item"><span class="bold">Phone:&nbsp;</span>{{contact.contacts_phone}}</li>
+                        <li class="contact__info__item"><span class="bold">Mail:&nbsp;</span>{{contact.email}}</li>
+                        <li class="contact__info__item"><span class="bold">Company:&nbsp;</span>{{contact.companies_name}}</li>
+                    </ul>
                 </div>
             {% endblock %}
 
-    {% endblock %}
+                {% block contactpic %}
+                    <div class="contact__pic">
+                        {# <img src=""> #}
+                    </div>
+                {% endblock %}
+                
+            {% endembed %}
 
+        {% endblock %}
+
+    {% endfor %}
+    
 
 {% endblock %}

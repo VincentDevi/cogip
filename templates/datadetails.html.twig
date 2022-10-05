@@ -1,16 +1,24 @@
 {# ELEMENT TO EXTEND/INCLUDE #}
 {# Data table layout for "ALL INVOICES", "ALL CONTACTS" and "ALL COMPANIES" pages #}
 
-{% extends "lastdata.html.twig" %}
+{% extends "datatabletemplate.html.twig" %}
+
+    {% block tabletitlesection %}
+    
+        <h2 class="main__section__title main__section__title--yellowshadow">All INVOICES</h2>
+        <input class "searchinput" type="search" placeholder="Search Company" name="searchinput" id="searchinput"></input>
+    
+    {% endblock %}
 
 
-{% block tabletitlesection %}
-    {# TODO: replace h2 title + inputplaceholder by variable #}
-    <h2 class="main__section__title main__section__title--yellowshadow">LAST INVOICES</h2>
-    <input class "searchinput" type="search" placeholder="Search Company" name="searchinput" id="searchinput"></input>
-{% endblock %}
+        {% block tableheadercells %}
+        {# TODO: replace <th>.innerhtml #}
+        <th scope="col" class="table__header__row__title"><span class="ordertriangle">&#9662;</span></th>
+        <th scope="col" class="table__header__row__title"><span class="ordertriangle">&#9662;</span></th>
+        <th scope="col" class="table__header__row__title"><span class="ordertriangle">&#9662;</span></th>
+        <th scope="col" class="table__header__row__title"><span class="ordertriangle">&#9662;</span></th>
+        {% endblock %}
 
-{# {% block tableheadercells %} #}
 {# TODO: write loop function + Replace <th>.innerhtml by variables #}
 {# {% endblock %} #}
 

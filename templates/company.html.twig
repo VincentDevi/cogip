@@ -7,31 +7,53 @@
 
 {% block content %}
 
-            <h2 class="main__section__title main__section__title--company">PIED PIPPER</h2>
+    {% for company in _context %}
 
-    {% block informations %}
-        {% include 'informations.html.twig' %}
-    {% endblock %}
+                <h2 class="main__section__title main__section__title--company">{{company.companies_name}}</h2>
 
-    {% block companycontact %}
-        <section class="main__section">
-            <h2 class="main__section__title">Contact persons</h2>
-                <div class="main__section__contacts">
-                    {# contains contact cards #}
-                    <div class="contact__card">
-                        <img class="contact__card__pic">
-                        <h3 class="contact__card__name">Bertram<br>Gilfoyle</h3>
-                    </div>
-                    <div class="contact__card">
-                        <img class="contact__card__pic">
-                        <h3 class="contact__card__name">Henry<br>George</h3>
-                    </div>
+        {% block informations %}
+            {% embed 'informations.html.twig' %}
+                    
+            {% block infotemplate %}
+                <div class="contact">
+                    <ul class="contact__infos">
+                        <li class="contact__info__item"><span class="bold">Name:&nbsp;</span>{{cmpany.contacts_name}}</li>
+                        <li class="contact__info__item"><span class="bold">TVA:&nbsp;</span>{{contact.contacts_phone}}</li>
+                        <li class="contact__info__item"><span class="bold">Country:&nbsp;</span>{{contact.email}}</li>
+                        <li class="contact__info__item"><span class="bold">Phone:&nbsp;</span>{{contact.companies_name}}</li>
+                    </ul>
                 </div>
-        </section>
-    {% endblock %}
+            {% endblock %}
 
-    {# Import table template: #}
-    {% include 'lastdata.html.twig' %}
+                {% block contactpic %}
+                    <div class="contact__pic">
+                        {# <img src=""> #}
+                    </div>
+                {% endblock %}
+                
+            {% endembed %}
+        {% endblock %}
 
+        {% block companycontact %}
+            <section class="main__section">
+                <h2 class="main__section__title">Contact persons</h2>
+                    <div class="main__section__contacts">
+                        {# contains contact cards #}
+                        <div class="contact__card">
+                            <img class="contact__card__pic">
+                            <h3 class="contact__card__name">Bertram<br>Gilfoyle</h3>
+                        </div>
+                        <div class="contact__card">
+                            <img class="contact__card__pic">
+                            <h3 class="contact__card__name">Henry<br>George</h3>
+                        </div>
+                    </div>
+            </section>
+        {% endblock %}
+
+        {# Import table template: #}
+        {% include 'datatabletemplate.html.twig' %}
+
+    {% endfor %}
 
 {% endblock %}
