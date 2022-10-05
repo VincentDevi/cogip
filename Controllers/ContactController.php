@@ -10,6 +10,8 @@ class ContactController extends Controller
 {
     public function create($data) {
         $validatedData = (new ValidateUserInput())->validate($data, 'contact');
+        $validatedData['created_at'] = todayDate();
+        $validatedData['updated_at'] = todayDate();
 
         return $validatedData ? (new contactData())->createContact($validatedData) : NULL;
     }
@@ -19,7 +21,10 @@ class ContactController extends Controller
     }
 
     public function update($data) {
+        $validatedData = (new ValidateUserInput())->validate($data, 'contact');
+        $validatedData['updated_at'] = todayDate();
 
+        return $validatedData ? (new contactData())->updateContact($validatedData) : NULL;
     }
 
     public function delete($id) {

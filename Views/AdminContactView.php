@@ -40,4 +40,19 @@ class AdminContactView extends Views
 
         $this->view('dashboard/dashboard_update_contact', $data);
     }
+
+    public function showUpdateSubmit($inputs)
+    {
+        $created = (new ContactController())->update($inputs);
+
+        if ($created === TRUE) {
+            $data['message'] = 'Contact successfully updated.';
+
+            $this->view('dashboard/dashboard_contacts', $data);
+        } else {
+            $data['message'] = 'Something went wrong.';
+
+            $this->view('dashboard/dashboard_update_contact', $data);
+        }
+    }
 }
