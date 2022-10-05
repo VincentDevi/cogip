@@ -68,7 +68,7 @@ class Form extends Dbh
      * @param $table
      * @return string
      */
-    protected function setUpdateOrCreateQuery($table, $id = null): string{
+    protected function setUpdateOrCreateQuery($table, $id): string{
         if ($id != null) {
             $query = $this->selectUpdateQuery($table, $id);
         }else{
@@ -103,7 +103,7 @@ class Form extends Dbh
         $idName = $id."id";
         switch ($table){
             case "companies":
-                $query = "UPDATE " .$table. " SET companies_name = :companies_name, country = :country, tva = :tva, companies_updated_at = :updated_at, companies_phone = :phone"
+                $query = "UPDATE " .$table. " SET companies_name = :companies_name, country = :country,type_id=:types_id tva = :tva, companies_updated_at = :updated_at, companies_phone = :phone"
                     ." WHERE ".$idName." = ".$id;
                 break;
             case "contacts":
@@ -163,10 +163,17 @@ class Form extends Dbh
                         "country"=>$array["country"],
                         "tva"=>$array["tva"],
                         "phone"=>$array["phone"],
+                        "type_id"=>$this->getCompanyTypeId($array["type"]),
                         "updated_at"=>$this->getTodayDate()
                     ];
                     break;
             }
             return $arr;
+        }
+        private function getCompanyTypeId($typeName){
+            $query= "SELECT types.id" ."FROM types"." WHERE types_name LIKE ".$typeName;
+
+            $arr = $this->fetchData($query);
+            return $arr["types.id"];
         }
 }

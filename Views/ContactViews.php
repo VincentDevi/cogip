@@ -23,7 +23,7 @@ class ContactViews extends Views
      * @return void
      */
     public function showAll() {
-        $data = (new ContactController())->read();
+        $data["contacts"] = (new ContactController())->read();
         $this->view('contacts', $data);
     }
 }
