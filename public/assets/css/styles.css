@@ -32,7 +32,7 @@
   --border-radius-xl: 1rem;
   --border-radius-2xl: 2rem;
   --border-radius-pill: 50rem;
-  --border-radius-circle: 50%;
+  --border-radius-circle: 50%: ;
 }
 
 .header {
@@ -318,34 +318,58 @@ body, .main {
   padding-right: 100px;
 }
 .main__section__title--yellowshadow {
+  display: block;
+  float: left;
+  position: relative;
   margin-bottom: 5.5rem;
 }
 .main__section__title--yellowshadow::before {
-  z-index: -1;
+  display: block;
   content: "";
   position: absolute;
-  width: 21rem;
-  height: 0.5em;
-  left: 3em;
-  top: 7.4rem;
+  z-index: -1;
+  width: 70%;
+  bottom: -0.5rem;
+  left: 10rem;
+  height: 2rem;
   background: var(--color-yellow);
 }
 .main__section__title--company {
   text-transform: uppercase;
+  display: block;
+  float: left;
+  position: relative;
 }
 .main__section__title--company::before {
-  z-index: -1;
+  display: block;
   content: "";
   position: absolute;
-  width: 21rem;
-  height: 0.5em;
-  left: 0.8em;
-  top: 7.4rem;
+  width: 100%;
+  bottom: -0.5rem;
+  left: 3rem;
+  height: 2rem;
   background: var(--color-yellow);
+  z-index: -1;
 }
 .main__section__title--companycontactstitle {
   margin: 2.875rem 0 4.063rem 0;
   padding: 0;
+}
+.main__section__title--contact {
+  display: block;
+  float: left;
+  position: relative;
+}
+.main__section__title--contact::before {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 80%;
+  bottom: -0.5rem;
+  left: 3rem;
+  height: 2rem;
+  background: var(--color-yellow);
+  z-index: -1;
 }
 .main__section .searchinput {
   width: -webkit-fit-content;
@@ -410,9 +434,16 @@ body, .main {
 .main__section__table .table__body__row__cell:first-child {
   padding-left: 2rem;
 }
+.main__section--contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
 .main__section__contacts {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
   margin-bottom: 5.25rem;
 }
 .main__section__contacts .contact__card {
@@ -424,7 +455,7 @@ body, .main {
   height: -moz-fit-content;
   height: fit-content;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   border-radius: var(--border-radius-2xl);
@@ -454,11 +485,17 @@ body, .main {
   font-family: var(--font-family-header);
   font-weight: var(--font-weight-black);
   font-size: 2.188rem;
-  width: -webkit-min-content;
-  width: -moz-min-content;
-  width: min-content;
-  white-space: break-space;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   margin: 0 2.8rem 0 0.875rem;
+}
+.main__section__contacts .contact__card__link {
+  text-decoration: none;
+  color: var(--color-blacktext);
+}
+.main__section__contacts .contact__card__link:hover {
+  color: var(--color-purpledashboard);
 }
 
 .ordertriangle {
@@ -483,4 +520,23 @@ body, .main {
 }
 .contact .tvacapitalize {
   text-transform: uppercase;
+}
+
+.contact__pic {
+  width: 15.938rem;
+  height: 15.938rem;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 5rem;
+  margin-top: -1rem;
+}
+.contact__pic .contactbigpic {
+  position: absolute;
+  -o-object-position: 0%;
+     object-position: 0%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 100%;
+  width: auto;
 }

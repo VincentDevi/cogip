@@ -6,35 +6,44 @@
 
 {% block content %}
 
-    {% for contacts in _context %}
-        <h2 class="main__section__title main__section__title--contact">{{contacts.contacts_name}}</h2>
-    
-        {% block informations %}
+
+    {% block informations %}
 
         {% embed 'informations.html.twig' %}
-                
-            {% block infotemplate %}
-                <div class="contact">
-                    <ul class="contact__infos">
-                        <li class="contact__info__item"><span class="bold">Contact:&nbsp;</span>{{contacts.contacts_name}}</li>
-                        <li class="contact__info__item"><span class="bold">Phone:&nbsp;</span>{{contacts.contacts_phone}}</li>
-                        <li class="contact__info__item"><span class="bold">Mail:&nbsp;</span>{{contacts.email}}</li>
-                        <li class="contact__info__item"><span class="bold">Company:&nbsp;</span>{{contacts.companies_name}}</li>
-                    </ul>
+
+            {% block sectioncompanycontact %}
+            <section class="main__section main__section--contact">
+                <div class="main__section__contacttext">
+            
+                    {% block sectiontitle %}
+                        <h2 class="main__section__title main__section__title--contact">{{_context[0].firstname}}&nbsp;{{_context[0].name}}</h2>
+                    {% endblock %}
+                        
+                    {% block infotemplate %}
+                        <div class="contact">
+                            <ul class="contact__infos">
+                                <li class="contact__info__item"><span class="bold">Contact:&nbsp;</span><span class="firstletterup">{{_context[0].firstname}}&nbsp;{{_context[0].name}}</span></li>
+                                <li class="contact__info__item"><span class="bold">Phone:&nbsp;</span>{{_context[0].phone}}</li>
+                                <li class="contact__info__item"><span class="bold">Mail:&nbsp;</span>{{_context[0].email}}</li>
+                                <li class="contact__info__item"><span class="bold">Company:&nbsp;</span><span class="firstletterup">{{_context[0].company_name}}</span></li>
+                            </ul>
+                        </div>
+                    {% endblock %}
                 </div>
-            {% endblock %}
 
                 {% block contactpic %}
                     <div class="contact__pic">
-                        {# <img src=""> #}
+                        <img src="{{ root }}/assets/img/contactpics/close-up-portrait-handsome-stylish-young-man-standing-profile-turn-head-with-beaming-smile-express-satisfaction-enthusiasm-standing-white-wall-pleased_176420-33957.jpg" class="contactbigpic" alt="contactpic">
                     </div>
                 {% endblock %}
-                
-            {% endembed %}
+            
+            </section>
+            {% endblock %}
+                    
+        {% endembed %}
 
-        {% endblock %}
+    {% endblock %}
 
-    {% endfor %}
     
 
 {% endblock %}

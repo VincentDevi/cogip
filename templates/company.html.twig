@@ -1,6 +1,8 @@
 {# *HTML VUE  #}
 {# = "SHOW_INVOICE" page (see Figma) #}
-{# TODO: update pics variable "src" and "alt" #}
+{# TODO: update pics variable "src" and "alt"#}
+{# TODO: Links to contact + ID #}
+{# TODO: custom contacts card container scrowl (js function) #}
 
 {% extends "welcome.html.twig" %}
 
@@ -8,31 +10,23 @@
 
 {% block content %}
 
-
-{# {{ dump() }} #}
     
 
         {% block informations %}
             {% embed 'informations.html.twig' %}
 
-            {% block sectiontitle %}
-                <h2 class="main__section__title main__section__title--company">{{companies[0].companies_name}}</h2>
-            {% endblock %}
-                    
-            {% block infotemplate %}
-                <div class="contact">
-                    <ul class="contact__infos">
-                        <li class="contact__info__item"><span class="bold">Name:&nbsp;</span><span class="firstletterup">{{companies[0].companies_name}}</span></li>
-                        <li class="contact__info__item"><span class="bold">TVA:&nbsp;</span><span class="tvacapitalize">{{companies[0].tva}}</span></li>
-                        <li class="contact__info__item"><span class="bold">Country:&nbsp;</span><span class="firstletterup">{{companies[0].country}}</span></li>
-                        <li class="contact__info__item"><span class="bold">Phone:&nbsp;</span>{{companies[0].companies_phone}}</li>
-                    </ul>
-                </div>
-            {% endblock %}
-
-                {% block contactpic %}
-                    <div class="contact__pic">
-                        {# <img src=""> #}
+                {% block sectiontitle %}
+                    <h2 class="main__section__title main__section__title--company">{{companies[0].companies_name}}</h2>
+                {% endblock %}
+                        
+                {% block infotemplate %}
+                    <div class="contact">
+                        <ul class="contact__infos">
+                            <li class="contact__info__item"><span class="bold">Name:&nbsp;</span><span class="firstletterup">{{companies[0].companies_name}}</span></li>
+                            <li class="contact__info__item"><span class="bold">TVA:&nbsp;</span><span class="tvacapitalize">{{companies[0].tva}}</span></li>
+                            <li class="contact__info__item"><span class="bold">Country:&nbsp;</span><span class="firstletterup">{{companies[0].country}}</span></li>
+                            <li class="contact__info__item"><span class="bold">Phone:&nbsp;</span>{{companies[0].companies_phone}}</li>
+                        </ul>
                     </div>
                 {% endblock %}
                 
@@ -42,23 +36,20 @@
         {% block companycontact %}
             <section class="main__section main__section--companycontacts">
                 <h2 class="main__section__title main__section__title--companycontactstitle">Contact persons</h2>
-                    <div class="main__section__contacts">
-                        {# contains contact cards #}
+
+                <div class="main__section__contacts">
+                    {# contains contact cards #}
+
+                    {# LOOP through contacts + update pics variable "src" and "alt" #}
+                    {% for contact in _context.contacts %}
                         <div class="contact__card">
-                            {# TODO: LOOP through contacts + update pics variable "src" and "alt" #}
                             <div class="contact__card__piccontainer">
                                 <img src="{{ root }}/assets/img/contactpics/close-up-portrait-handsome-stylish-young-man-standing-profile-turn-head-with-beaming-smile-express-satisfaction-enthusiasm-standing-white-wall-pleased_176420-33957.jpg" class="contactpic" alt="contactpic">
                             </div>
-                            <h3 class="contact__card__name">{{contacts[0].contacts_name}}</h3>
+                            <a href="#" class="contact__card__link"><h3 class="contact__card__name">{{contact.contacts_firstname}}<br>{{contact.contacts_name}}</h3></a>
                         </div>
-                        <div class="contact__card">
-                            {# TODO: update pics variable "src" and "alt" #}
-                            <div class="contact__card__piccontainer">
-                                <img src="{{ root }}/assets/img/contactpics/close-up-portrait-handsome-stylish-young-man-standing-profile-turn-head-with-beaming-smile-express-satisfaction-enthusiasm-standing-white-wall-pleased_176420-33957.jpg" class="contactpic" alt="contactpic">
-                            </div>
-                            <h3 class="contact__card__name">{{contacts[1].contacts_name}}</h3>
-                        </div>
-                    </div>
+                    {% endfor %}
+                </div>
                     
             </section>
         {% endblock %}

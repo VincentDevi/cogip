@@ -29,38 +29,67 @@
         padding-right: 100px;
 
         &--yellowshadow {
+            display: block;
+            float:left;
+            position:relative;
             margin-bottom: 5.5rem;
         
             &::before {
-                z-index:-1;
+                display: block;
                 content: "";
                 position:absolute;
-                width: 21rem;
-                height: 0.5em;
-                left: 3em;
-                top:7.4rem;
+                z-index:-1;
+                width: 70%;
+                bottom:-0.5rem;
+                    left:10rem;
+                    height:2rem;
                 background: var(--color-yellow);
             };
         };
 
         &--company {
             text-transform: uppercase;
+            display: block;
+            float:left;
+            position:relative;
 
-            &::before {
-                z-index:-1;
-                content: "";
-                position:absolute;
-                width: 21rem;
-                height: 0.5em;
-                left: 0.8em;
-                top:7.4rem;
-                background: var(--color-yellow);
-            };
+                &::before {
+                    display: block;
+                    content:'';
+                    position:absolute;
+                    width:100%;
+                    bottom:-0.5rem;
+                    left:3rem;
+                    height:2rem;
+                    background:var(--color-yellow);
+                    z-index:-1;
+
+                };
         };
 
         &--companycontactstitle {
             margin: 2.875rem 0 4.063rem 0;
             padding:0
+        };
+
+        &--contact {
+            display: block;
+            float:left;
+            position:relative;
+
+                &::before {
+                    display: block;
+                    content:'';
+                    position:absolute;
+                    width:80%;
+                    bottom:-0.5rem;
+                    left:3rem;
+                    height:2rem;
+                    background:var(--color-yellow);
+                    z-index:-1;
+
+                };
+
         };
 
     };
@@ -143,9 +172,19 @@
         };
     };
 
+    &--contact {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+    };
+
+    // ! contacts section from "Company/id" page (contacts cards) != contact section from "Contact/id" page
     &__contacts {
         display:flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
         margin-bottom: 5.25rem;
 
         .contact__card {
@@ -153,7 +192,7 @@
             width:fit-content;
             height: fit-content;
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             justify-content: center;
             align-items: center;
             border-radius: var(--border-radius-2xl);
@@ -183,11 +222,17 @@
                 font-family: var(--font-family-header);
                 font-weight: var(--font-weight-black);
                 font-size: 2.188rem;
-                width:min-content;
-                white-space: break-space;
+                width:fit-content;
                 margin: 0 2.8rem 0 0.875rem;
+            };
 
-                // white-space: pre-wrap;
+            &__link {
+                text-decoration: none;
+                color: var(--color-blacktext);
+
+                &:hover {
+                    color: var(--color-purpledashboard);
+                };
             };
 
         };
@@ -223,4 +268,26 @@
     .tvacapitalize {
         text-transform: uppercase;
     }
+};
+
+.contact__pic {
+    width: 15.938rem;
+    height: 15.938rem;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 5rem;
+    margin-top: -1rem;
+    
+    .contactbigpic {
+        position: absolute;
+        object-position: 0%;
+        // left:-2rem;
+        object-fit: contain;
+        height:100%;
+        width:auto;
+        
+
+    };
+
 };
