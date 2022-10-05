@@ -28,6 +28,6 @@ class ContactController extends Controller
     }
 
     public function delete($id) {
-
+        return (new contactData())->deleteContact($id);
     }
 }

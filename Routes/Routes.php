@@ -81,6 +81,10 @@ $router->post('/admin/contact/update', function() {
     (new AdminContactView())->showUpdateSubmit($_POST);
 });
 
+$router->get('/admin/contact/delete/([0-9]+)', function($id) {
+    (new AdminContactView())->deleteEntry($id);
+});
+
 
 
 $router->get('/admin/companies', function() {

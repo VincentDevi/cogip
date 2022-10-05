@@ -27,17 +27,24 @@ class contactData extends DbData
     {
         $query = $this->createQuery();
 
-//        $data['created_at'] = todayDate();
-//        $data['updated_at'] = todayDate();
-
-        return $this->createEntry($query, $data);
+        return $this->executeQuery($query, $data);
     }
 
     public function updateContact($data): bool
     {
         $query = $this->updateQuery();
 
-        return $this->createEntry($query, $data);
+        return $this->executeQuery($query, $data);
+    }
+
+    public function deleteContact($id): bool
+    {
+        $query = $this->deleteQuery();
+        $data = [
+            'id' => $id,
+        ];
+
+        return $this->executeQuery($query, $data);
     }
 
     private function getQuery(): string
@@ -85,15 +92,24 @@ class contactData extends DbData
     private function updateQuery(): string
     {
         return "
-        UPDATE contacts
-        SET contacts_name = :name,
-            contacts_firstname = :firstname, 
-            email = :email, 
-            contacts_phone = :phone, 
-            company_id = :company_id, 
-            contacts_updates_at = :updated_at 
-        WHERE id = :contact_id;
+                UPDATE contacts
+                SET contacts_name = :name,
+                    contacts_firstname = :firstname, 
+                    email = :email, 
+                    contacts_phone = :phone, 
+                    company_id = :company_id, 
+                    contacts_updates_at = :updated_at 
+                WHERE id = :contact_id;
         ";
+    }
+
+    private function deleteQuery(): string
+    {
+        return "
+                DELETE FROM contacts 
+                WHERE id = :id;
+        ";
+
     }
 
     public function getLastContactsData($limit): array

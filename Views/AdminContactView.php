@@ -55,4 +55,19 @@ class AdminContactView extends Views
             $this->view('dashboard/dashboard_update_contact', $data);
         }
     }
+
+    public function deleteEntry($id) {
+        $deleted = (new ContactController())->delete($id);
+
+        // todo : solve this : if entry does no exist SQL return no problem, when we try to delete unexistant data, we should retrieve an error.
+        if ($deleted === TRUE) {
+            $data['message'] = 'Contact successfully deleted.';
+
+            $this->view('dashboard/dashboard_contacts', $data);
+        } else {
+            $data['message'] = 'Something went wrong.';
+
+            $this->view('dashboard/dashboard_contacts', $data);
+        }
+    }
 }
