@@ -1,17 +1,22 @@
+{# *DATA VALUES to display through the pages #}
+{# ! NOT a template NOR a vue #}
+{# ! Add to gitignore #}
+
+for 'All Invoices'
+    values, you received:
+            ref
+            due_date
+            companies_name
+            invoices_created_at
+
 for 'All companies'
     values, you received:
         companies_name
-        country
         tva
-        companies_created_at
+        country
         types_name
-for 'All invoices'
-    values, you received:
-        ref
-        due_dates
-        companies_name
-        invoices_created_at
-
+        companies_created_at
+        
 for 'All contacts'
     values, you received:
         contacts_name
@@ -60,3 +65,16 @@ here is an example of how to use the data you received ( this one is for the 'Al
         <li>{{ user.companies_name }}</li>
     {% endfor %}
 </ul>
+
+{#
+    func example:
+    
+    {% for param in _context %}
+        <tag>{{param.value}}</tag>
+        <tag>{{param.ref}}</tag>
+        <tag>{{param.due_dates}}</tag>
+        ...
+    {% endfor %}
+
+    /!\ "_context" is a parameter that received function, so it won't change through tables
+#}

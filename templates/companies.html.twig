@@ -1,22 +1,66 @@
 {# *HTML VUE  #}
-{# ALL COMPANIES Page #}
+{# *ALL COMPANIES Page #}
+{# see exemple page for datavalues #}
+
+{# TODO: 1. correct road for links to company/id pages #}
+{# TODO: 2. order companies by Alphabetical order #}
+{# TODO: 3. withdraw hour in "created at" ?? #}
+
 
 {% extends "welcome.html.twig" %}
 
-{% block title %}Companies{% endblock %}
-
-{% block tabletitlesection %}
-    {# TODO: replace h2 title + inputplaceholder by variable #}
-    <h2 class="main__section__title main__section__title--yellowshadow">ALL COMPANIES</h2>
-    <input class "searchinput" type="search" placeholder="Search company name" name="searchinput" id="searchinput"></input>
-{% endblock %}
+{% block title %}All Companies{% endblock %}
 
 
 {% block content %}
 
-    {% include 'datadetails.html.twig' %}
+    {% embed 'datadetails.html.twig' %}
+    {# "embed" function allow to update block content as "extends" does.
+    /!\ the "include" function does NOT. #}
 
-    {# ! Maybe other modifications in tableheadercells and tablebodyrows blocks #}
-    {# ! 5 th (cols) #}
+
+        {% block tabletitlesection %}
+            <h2 class="main__section__title main__section__title--yellowshadow">All companies</h2>
+            <input class "searchinput" type="search" placeholder="Search company name" name="searchinput" id="searchinput"></input>
+        {% endblock %}
+
+        {% block tableheadercells %}
+
+        <th scope="col" class="table__header__row__title">Name <span class="ordertriangle">&#9662;</span></th>
+        <th scope="col" class="table__header__row__title">TVA</th>
+        <th scope="col" class="table__header__row__title">Country</th>
+        <th scope="col" class="table__header__row__title">Type</th>
+        <th scope="col" class="table__header__row__title">Created at</th>
+        {% endblock %}
+
+
+
+        {% block tablebodyrows %}
+            {% for company in _context %}
+        
+        <tr class="table__body__row">
+            <td scope="col" class="table__body__row__cell"><a href="/company/{{company.id}}">{{company.companies_name}}</a></td>
+            <td scope="col" class="table__body__row__cell">{{company.tva}}</td>
+            <td scope="col" class="table__body__row__cell">{{company.country}}</td>
+            <td scope="col" class="table__body__row__cell">{{company.types_name}}</td>
+            <td scope="col" class="table__body__row__cell">{{company.companies_created_at}}</td>
+        </tr>
+            {% endfor %}
+
+        {% endblock %}
+        
+
+    {% endembed %}
 
 {% endblock %}
+
+
+
+{# 
+    'All companies' values:
+        companies_name
+        tva
+        country
+        types_name
+        companies_created_at
+ #}
