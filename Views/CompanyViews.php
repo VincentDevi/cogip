@@ -3,7 +3,7 @@
 namespace App\Views;
 
 use App\Controllers\CompanyController;
-use App\models\CompanyData;
+use App\models\CompanyModel;
 use App\models\DbData;
 
 class CompanyViews extends Views

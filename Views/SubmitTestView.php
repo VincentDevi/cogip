@@ -2,8 +2,9 @@
 
 namespace App\Views;
 
-use App\Controllers\InvoiceController;
-
+/**
+ * Test class for testing the submitting forms.
+ */
 class SubmitTestView extends Views
 {
     public function show() {

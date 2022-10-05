@@ -2,7 +2,7 @@
 
 namespace App\models;
 
-class CompanyData extends DbData
+class CompanyModel extends DbData
 {
 
     /**
