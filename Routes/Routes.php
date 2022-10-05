@@ -2,9 +2,10 @@
 
 namespace App\Routes;
 
+use App\Controllers\ContactController;
 use App\Controllers\DashboardHomeController;
 use App\Views\AdminCompaniesView;
-use App\Views\AdminContactsView;
+use App\Views\AdminContactView;
 use App\Views\AdminCreateCompanyView;
 use App\Views\AdminCreateContactView;
 use App\Views\AdminCreateInvoiceView;
@@ -66,47 +67,64 @@ $router->get('/admin', function() {
     (new AdminView())->show();
 });
 
+
+
 $router->get('/admin/contacts', function() {
-    (new AdminContactsView())->show();
-});
-
-$router->get('/admin/companies', function() {
-    (new AdminCompaniesView())->show();
-});
-
-$router->get('/admin/invoices', function() {
-    (new AdminInvoicesView())->show();
+    (new AdminContactView())->showEntries();
 });
 
 $router->get('/admin/contact/create', function() {
-    (new AdminCreateContactView())->show();
+    (new AdminContactView())->showCreateForm();
 });
 
-$router->get('/admin/company/create', function() {
-    (new AdminCreateCompanyView())->show();
+$router->post('/admin/contact/create', function() {
+    (new AdminContactView())->showCreateSubmit($_POST);
 });
 
-$router->get('/admin/invoice/create', function() {
-    (new AdminCreateInvoiceView())->show();
-});
+//$router->get('/admin/contact/update/([0-9]+)', function($id) {
+//    (new AdminUpdateContactView())->show($id);
+//});
+//
+//$router->post('/admin/contact/update', function() {
+//    (new ContactController())->update($_POST);
+//});
 
-$router->get('/admin/contact/update/([0-9]+)', function($id) {
-    (new AdminUpdateContactView())->show($id);
+
+
+$router->get('/admin/companies', function() {
+    (new AdminCompaniesView())->show();
 });
 
 $router->get('/admin/company/update/([0-9]+)', function($id) {
     (new AdminUpdateCompanyView())->show($id);
 });
 
+$router->get('/admin/company/create', function() {
+    (new AdminCreateCompanyView())->show();
+});
+
+
+$router->get('/admin/invoice/create', function() {
+    (new AdminCreateInvoiceView())->show();
+});
+
+
+
+$router->get('/admin/invoices', function() {
+    (new AdminInvoicesView())->show();
+});
+
 $router->get('/admin/invoice/update/([0-9]+)', function($id) {
     (new AdminUpdateInvoiceView())->show($id);
 });
+
+
 
 $router->get('/submitest', function() {
     (new SubmitTestView())->show();
 });
 
-$router->post('/submitest/submit', function() {
+$router->post('/submitest', function() {
     $data = [
         'test2' => $_POST,
     ];
