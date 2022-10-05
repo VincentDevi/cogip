@@ -2,6 +2,7 @@
 
 namespace App\Views;
 
+use App\Controllers\CompanyController;
 use App\Controllers\ContactController;
 
 class AdminContactView extends Views
@@ -12,7 +13,9 @@ class AdminContactView extends Views
     }
 
     public function showCreateForm() {
-        $this->view('dashboard/dashboard_create_contact');
+        $data['companies'] = (new CompanyController())->read();
+
+        $this->view('dashboard/dashboard_create_contact', $data);
     }
 
     public function showCreateSubmit($inputs)
