@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\models\CompanyModel;
 use App\models\InvoiceModel;
 
 class InvoiceController extends Controller
@@ -20,6 +21,6 @@ class InvoiceController extends Controller
     }
 
     public function delete($id) {
-
+        return (new InvoiceModel())->deleteEntry($id);
     }
 }

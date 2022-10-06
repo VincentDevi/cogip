@@ -109,11 +109,11 @@ class AdminCompaniesView extends Views
         if ($deleted === TRUE) {
             $data['message'] = COMPANY_DELETE_SUCCESS_MESSAGE;
 
-            $this->view('dashboard/dashboard_companies', $data);
+            $this->showAll($data);
         } else {
             $data['message'] = COMPANY_DELETE_ERROR_MESSAGE;
 
-            $this->view('dashboard/dashboard_companies', $data);
+            $this->showAll($data);
         }
     }
 }

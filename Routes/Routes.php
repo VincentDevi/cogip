@@ -119,7 +119,11 @@ $router->get('/admin/invoice/create', function() {
 
 
 $router->get('/admin/invoices', function() {
-    (new AdminInvoicesView())->show();
+    (new AdminInvoicesView())->showAll();
+});
+
+$router->get('/admin/invoice/delete/([0-9]+)', function($id) {
+    (new AdminInvoicesView())->deleteEntry($id);
 });
 
 $router->get('/admin/invoice/update/([0-9]+)', function($id) {
