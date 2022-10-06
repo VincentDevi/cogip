@@ -18,8 +18,6 @@ class AdminCompaniesView extends Views
 
     /**
      * Show the view with form to create a new company.
-     * Send the companies data's to allow the possibility to create
-     * a select input with companies.
      *
      * @return void
      */

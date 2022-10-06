@@ -2,6 +2,7 @@
 
 namespace App\Views;
 
+use App\Controllers\CompanyController;
 use App\Controllers\InvoiceController;
 
 class AdminInvoicesView extends Views
@@ -13,6 +14,18 @@ class AdminInvoicesView extends Views
         if ($incomingData) $data = array_merge($data, $incomingData);
 
         $this->view('dashboard/dashboard_invoices', $data);
+    }
+
+    /**
+     * Show the view with form to create a new invoice.
+     *
+     * @return void
+     */
+    public function showCreateForm(): void
+    {
+        $data['companies'] = (new CompanyController())->read();
+
+        $this->view('dashboard/dashboard_create_invoice', $data);
     }
 
 

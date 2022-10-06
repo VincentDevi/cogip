@@ -112,14 +112,14 @@ $router->post('/admin/company/update', function() {
 });
 
 
-$router->get('/admin/invoice/create', function() {
-    (new AdminCreateInvoiceView())->show();
-});
-
 
 
 $router->get('/admin/invoices', function() {
     (new AdminInvoicesView())->showAll();
+});
+
+$router->get('/admin/invoice/create', function() {
+    (new AdminInvoicesView())->showCreateForm();
 });
 
 $router->get('/admin/invoice/delete/([0-9]+)', function($id) {
