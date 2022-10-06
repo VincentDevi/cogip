@@ -57,6 +57,17 @@ class Dbh
         // todo : return null if something went wrong.
         return TRUE;
     }
+    public function executeCountQuery($query, $data){
+        $connexion = $this->connexion();
+        $stmt = $connexion->prepare($query);
+        $stmt->execute($data);
+        $result = $stmt->fetchColumn();
+        $connexion = NULL;
+        $stmt = null;
+
+
+        return $result;
+    }
 
     /**
      * Return the PDO Connexion object.

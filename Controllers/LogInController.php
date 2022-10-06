@@ -6,11 +6,12 @@ use App\models\logIns\LogIn;
 class LogInController extends Controller
 {
     public function realLogIn($inputs){
-        if ($this->userResult($inputs) != 0){
+        $ok =$this->userResult($inputs);
+        if ( $ok !=0){
             $this->setGlobalVariable($inputs);
             $error = [];
         }else{
-            $error=["Invalid Email or Password"];
+            $error=["error"=>"Invalid Email or Password"];
         }
         return $error;
     }
@@ -24,6 +25,4 @@ class LogInController extends Controller
         $_SESSION["name"] = $array[0]["last_name"];
         $_SESSION["firstname"] = $array[0]["first_name"];
     }
-
-
 }

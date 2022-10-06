@@ -10,9 +10,9 @@ class LogIn extends Dbh
 
 
     //SQL REQUEST
-    public function countUser($array):array{
+    public function countUser($array){
         $arr=$this->logInDataRequest($array["email"],$array["password"]);
-        return $this->fetchData($this->checkEmailPasswordQuery(),$arr);
+        return $this->executeCountQuery($this->checkEmailPasswordQuery(),$arr);
     }
     public  function getUserData($array):array{
         $arr=$this->logInDataRequest($array["email"],$array["password"]);
@@ -28,7 +28,7 @@ class LogIn extends Dbh
     }
     // values to execute the getData()
     private function logInDataRequest($email, $password){
-        return $this->sanitizeLogIn($email,$password);
+        return $this->logInValidation($email,$password);
     }
 
 

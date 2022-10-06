@@ -12,12 +12,14 @@ class LogInView extends Views
         $this->view('login/login');
     }
     public function showConnect($inputs){
-        $array = (new LogIn())->logInValidation($inputs["email"],$inputs["password"]);
         $datas = new LogInController();
-        $data = $datas->realLogIn($array);
-        // need to check if the middelware will still redirect to LogIn
-        // if we are not logged in, even if we send to the home here.
-        $this->view('welcome');
+        $data = $datas->realLogIn($inputs);
+        if ($data ==[]){
+            redirect(getRoot());
+        }else{
+            $this->view('login/login',$data);
+
+        }
     }
     public function showDisconnect(){
         session_destroy();
