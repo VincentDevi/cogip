@@ -1,0 +1,28 @@
+.main__section{
+    display: flex;
+    flex-direction: column;
+    h3{
+        font-weight: 700;
+        margin: 2rem 2rem;
+        padding-bottom: 10px;
+    
+        border-bottom: 1px solid #E7E7E7;
+    }
+    .main__section__table{
+        margin-left: 5%;
+        .table__header{
+            font-weight: 600;
+            text-align: left;
+            height: 5vh;
+        }
+        .table__body{
+            text-align: left;
+            font-weight: 200;
+
+            .table__body__row{
+                margin-bottom: 20px;
+                height: 5vh;
+            }
+        }
+    }
+}

@@ -1,44 +1,75 @@
-@import "mixin","variables";
+@import "mixin","variables", "dataDashboard";
 
 body{
+    position: relative;
     display: flex;
     font-family: var(--font-family-title);
     .aside{
-        height: 100vh;
+        height: 100%;
         width: 15%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
+        
         &__section--user{
             border: 1px solid #E7E7E7;
             padding: 20%;
             text-align: center;
+            font-family: var(--font-family-header);
+            font-weight: 900;
+            font-size: 1.5vw;
+            height: 100%;
             img{
-                width: 70%;
+                width: 60%;
+                margin-bottom: 10%;
             }
         }
         &__section--nav{
             .aside__section__nav{
+                margin-left: 2vw;
+
                 ul{
+                    margin-top: 30%;
                     display: flex;
                     flex-direction: column;
                     li{
                         display: flex;
                         align-items: center;
+                        margin-bottom: 25%;
+                        img{
+                            width: 15px;
+                        }
+                        span{
+                            margin-left: 1rem;
+                            font-size: 1.2vw;
+                        }
+                    }
+                    li:hover{
+                        border-right: #9698D6;
+                        font-weight: 600;
+                        border-right: solid 3px #9698D6;
+                        cursor: pointer;
                     }
                 }
             }
         }
         &__section--logout{
             border-top: 1px solid #E7E7E7;
-
-            bottom: 0;
+            padding-top: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             img{
                 width: 25%;
+                margin-left: 5%;
+            }
+            h6{
+                margin-right: 5%;
+                color: #9698D6;
+            }
+            h6:hover{
+                color: #42425c;
+                cursor: pointer;
             }
         }
     }
@@ -59,6 +90,9 @@ body{
                     font-weight: 900;
                     font-size: 2vw;
                 }
+                &__subtitle{
+                    font-size: 1vw;
+                }
             }
             &__welcome{
                 background-color: var(--color-purpledashboard);
@@ -69,7 +103,7 @@ body{
                     color: white;
                 }
                 p{
-                    font-size: 15px;
+                    font-size: 1vw;
                     font-weight: 300;
                     color: rgba(255, 255, 255, 0.8);
                 }
@@ -83,13 +117,45 @@ body{
         }
         &__section--statistique{
             width: 45%;
+            height: 25%;
             background-color: white;
             border-radius: 10px;
+            h3{
+                margin: 1rem 0rem 2rem 1rem;
+                font-weight: 700;
+            }
+            .main__section__stats{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                .stats_block__data--contact{
+                    background-color: #4D4CAC;
+                }
+                .stats_block__data--invoices{
+                    background-color: #9698D6;
+                }
+                .stats_block__data--companies{
+                    background-color: #FF808B;
+                }
+                
+                p{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    color: white;
+                    border-radius: 50%;
+                    width: 75px;
+                    height: 75px;
+                    font-size: 1vw;
+                }
+            }
         }
         &__section--datatable{
             width: 45%;
             background-color: white;
             border-radius: 10px;
+            font-size: 1vw;
         }
     }
 }
