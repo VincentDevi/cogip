@@ -51,9 +51,14 @@ class ContactController extends Controller
     public function update($data): ?bool
     {
         $validatedData = (new ValidateUserInput())->validate($data, 'contact');
-        $validatedData['updated_at'] = todayDate();
 
-        return $validatedData ? (new ContactModel())->updateContact($validatedData) : NULL;
+
+        if ($validatedData) {
+            $validatedData['updated_at'] = todayDate();
+            return (new ContactModel())->updateContact($validatedData);
+        } else {
+            return NULL;
+        }
     }
 
     /**

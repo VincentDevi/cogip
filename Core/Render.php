@@ -28,25 +28,26 @@ class Render
 
         $twig->addExtension(new DebugExtension());
 
-        $data['root'] = $this->getRoot();
+//        $data['root'] = $this->getRoot();
 
+        $data['root'] = getRoot();
         echo $twig->render($templateFile, $data);
     }
 
-    /**
-     * Return the root of the project provided in dbSettings.php.
-     * It's the local path of public folder.
-     *
-     * @return string
-     */
-    private function getRoot(): string
-    {
-        // If it's a 404 page, dbSettings are not already loaded,
-        // and is not defined, so we require it.
-        if (!defined("HOST_SITE")) {
-            require_once '../models/dbSettings.php';
-        }
-
-        return HOST_SITE;
-    }
+//    /**
+//     * Return the root of the project provided in dbSettings.php.
+//     * It's the local path of public folder.
+//     *
+//     * @return string
+//     */
+//    private function getRoot(): string
+//    {
+//        // If it's a 404 page, dbSettings are not already loaded,
+//        // and is not defined, so we require it.
+//        if (!defined("HOST_SITE")) {
+//            require_once '../models/dbSettings.php';
+//        }
+//
+//        return HOST_SITE;
+//    }
 }

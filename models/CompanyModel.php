@@ -2,7 +2,7 @@
 
 namespace App\models;
 
-class CompanyModel extends DbData
+class CompanyModel extends CompanyQueries
 {
 
     /**
@@ -12,23 +12,57 @@ class CompanyModel extends DbData
      * @param $companyId
      * @return array
      */
-    public function getCompanyData($companyId = NULL): array
+    public function getCompanyData($id = NULL): array
     {
-        $limit = 5;
+        // todo : return NULL and show error if fetch return nothing or empty array.
+        if ($id) {
+            $query = $this->getAllQuery();
+            $rawData = $this->fetchData($query,["id"=>$id]);
 
-        if ($companyId) {
-            $idArray = [
-                "id"=> $companyId
+            return [
+                'companies' => $this->getCompany($rawData),
+                'contacts' => removeDuplicateRows($this->getContactsInCompany($rawData)) ,
+                'invoices' => removeDuplicateRows($this->getInvoicesInCompany($rawData))
             ];
-            $invArr = $this->fetchData($this->getQuery("invoices", $limit),$idArray);
-            $contArr = $this->fetchData($this->getQuery("contacts", $limit), $idArray);
-            $compArr = $this->fetchData($this->getQuery("companies", $limit), $idArray);
-            return ["invoices"=>$invArr,
-                "contacts"=>$contArr,
-                "companies"=>$compArr];
         } else {
             return $this->getData('companies');
         }
+    }
+
+    private function getCompany($data) {
+        return [
+            'company_id' => $data[0]['company_id'],
+            'company_name' => $data[0]['company_name'],
+            'company_vat' => $data[0]['company_vat'],
+            'company_country' => $data[0]['company_country'],
+            'company_phone' => $data[0]['company_phone'],
+        ];
+    }
+
+    function mapContacts($data): array {
+        return [
+            'contact_id' => $data['contact_id'],
+            'contact_name' => $data['contact_name'],
+            'contact_firstname' => $data['contact_firstname'],
+        ];
+    }
+
+    private function getContactsInCompany($data) {
+        return array_map([$this, 'mapContacts'], $data);
+    }
+
+    private function mapInvoices($data) {
+        return [
+            'invoice_ref' => $data['invoice_ref'],
+            'invoice_due_date' => $data['invoice_due_date'],
+            'invoice_created_at' => $data['invoice_created_at'],
+            'invoice_id' => $data['invoice_id']
+        ];
+
+    }
+
+    private function getInvoicesInCompany($data) {
+        return array_map([$this, 'mapInvoices'], $data);
     }
 
     public function getLastCompaniesData($limit) {
@@ -40,28 +74,4 @@ class CompanyModel extends DbData
 
         return $this->fetchData($query, NULL, $this);
     }
-
-    // todo : refactor to do only one query for all.
-    /**
-     * Return the Query according to the provided table and limit.
-     *
-     * @param $table
-     * @param $limit
-     * @return string|null
-     */
-    private function getQuery($table, $limit): ?string
-    {
-        if ( $table === "invoices"){
-            return "SELECT ref, due_date, companies.companies_name, invoices_created_at"." FROM ".$table." INNER JOIN companies ON companies.id= id_company"
-                ." WHERE companies.id = :id "." LIMIT ".$limit.";";
-        }elseif ( $table === "contacts"){
-            return "SELECT contacts_name, contacts_firstname"." FROM ".$table." INNER JOIN companies ON companies.id = company_id"." WHERE companies.id = :id ;";
-
-        }elseif ( $table === "companies"){
-            return "SELECT companies_name, tva, country, companies_phone"." FROM ".$table." WHERE companies.id = :id ;";
-        }else {
-            return NULL;
-        }
-    }
-
 }
