@@ -6,7 +6,7 @@
     {% block tabletitlesection %}
     
         <h2 class="main__section__title main__section__title--yellowshadow">All INVOICES</h2>
-        <input class "searchinput" type="search" placeholder="Search Company" name="searchinput" id="searchinput"></input>
+        <input class "searchinput" type="search" placeholder="Search Company" name="searchinput" id="searchinput" onkeyup="filterResults()" oninput="filterResults()"></input>
     
     {% endblock %}
 

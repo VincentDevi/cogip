@@ -22,7 +22,7 @@
         {% block tabletitlesection %}
             <div class="div__title">
                 <h2 class="main__section__title main__section__title--yellowshadow">All&nbsp;companies</h2>
-                <input class="searchinput" type="search" placeholder="Search company name" name="searchinput" id="searchinput"></input>
+                <input class="searchinput" type="search" placeholder="Search company name" name="searchinput" id="searchinput" ></input>
             </div>
         {% endblock %}
 
@@ -38,10 +38,10 @@
 
 
         {% block tablebodyrows %}
-            {% for company in _context.companies|slice(0,10) %}
+            {% for company in _context.companies %}
         
         <tr class="table__body__row">
-            <td scope="col" class="table__body__row__cell"><a href="/cogip/public/company/{{company.id}}">{{company.companies_name}}</a></td>
+            <td scope="col" class="table__body__row__cell table__body__row__cell--companyname"><a href="/cogip/public/company/{{company.id}}">{{company.companies_name}}</a></td>
             <td scope="col" class="table__body__row__cell">{{company.tva}}</td>
             <td scope="col" class="table__body__row__cell">{{company.country}}</td>
             <td scope="col" class="table__body__row__cell">{{company.types_name}}</td>

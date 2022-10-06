@@ -160,6 +160,11 @@ main{
             font-family: var(--font-family-header);
             font-weight: var(--font-weight-semibold);
             font-size: 20px;
+            
+            // @include for-phone {
+            //     overflow-x: scroll;
+            //     max-width: 80vw;
+            // };
 
             .table__header {
                 width: fit-content;
@@ -204,6 +209,9 @@ main{
                         &:first-child {
                             padding-left: 2rem;
                         };
+
+                    .is-hidden { display: none; }
+                    
                     };
                 };
             };
