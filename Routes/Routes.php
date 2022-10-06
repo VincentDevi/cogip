@@ -88,7 +88,7 @@ $router->get('/admin/contact/delete/([0-9]+)', function($id) {
 
 
 $router->get('/admin/companies', function() {
-    (new AdminCompaniesView())->show();
+    (new AdminCompaniesView())->showAll();
 });
 
 $router->get('/admin/company/update/([0-9]+)', function($id) {

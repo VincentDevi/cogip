@@ -23,3 +23,15 @@ const CONTACT_UPDATE_ERROR_MESSAGE = 'Something went wrong.';
 const CONTACT_DELETE_SUCCESS_MESSAGE = 'Contact successfully deleted.';
 
 const CONTACT_DELETE_ERROR_MESSAGE = 'Something went wrong.';
+
+const COMPANY_CREATION_SUCCESS_MESSAGE = 'Company successfully created.';
+
+const COMPANY_CREATION_ERROR_MESSAGE = 'Something went wrong.';
+
+const COMPANY_UPDATE_SUCCESS_MESSAGE = 'Company successfully updated.';
+
+const COMPANY_UPDATE_ERROR_MESSAGE = 'Something went wrong.';
+
+const COMPANY_DELETE_SUCCESS_MESSAGE = 'Company successfully deleted.';
+
+const COMPANY_DELETE_ERROR_MESSAGE = 'Something went wrong.';

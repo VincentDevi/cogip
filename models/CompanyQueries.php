@@ -2,7 +2,7 @@
 
 namespace App\models;
 
-class CompanyQueries extends DbData
+class CompanyQueries extends DbManipulation
 {
     protected function getAllQuery(): string
     {
@@ -29,6 +29,28 @@ class CompanyQueries extends DbData
                     INNER JOIN contacts
                         ON contacts.company_id = invoices.id_company
                 WHERE companies.id = :id ;
+        ";
+    }
+
+    protected function createQuery() {
+        return "
+                INSERT INTO companies 
+                                    (
+                                     companies_name,
+                                     country, 
+                                     tva, 
+                                     companies_created_at, 
+                                     companies_updated_at, 
+                                     companies_phone
+                                     ) 
+                        VALUES (
+                                :name,
+                                :country, 
+                                :vat, 
+                                :created_at, 
+                                :updated_at, 
+                                :phone
+                                ) ;
         ";
     }
 }

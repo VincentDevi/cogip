@@ -2,7 +2,7 @@
 
 namespace App\models;
 
-class ContactQueries extends DbData
+class ContactQueries extends DbManipulation
 {
     /**
      * Returns the query to find one contact.
