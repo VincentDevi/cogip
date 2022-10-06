@@ -55,4 +55,17 @@ class CompanyQueries extends DbManipulation
                                 ) ;
         ";
     }
+
+    /**
+     * Returns the query to delete a company.
+     *
+     * @return string
+     */
+    protected function deleteQuery(): string
+    {
+        return "
+                DELETE FROM companies 
+                WHERE id = :id;
+        ";
+    }
 }

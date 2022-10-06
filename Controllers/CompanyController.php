@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\models\CompanyModel;
+use App\models\ContactModel;
 use App\models\ValidateUserInput;
 
 class CompanyController extends Controller
@@ -35,6 +36,6 @@ class CompanyController extends Controller
     }
 
     public function delete($id) {
-
+        return (new CompanyModel())->deleteEntry($id);
     }
 }

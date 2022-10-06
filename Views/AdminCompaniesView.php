@@ -4,6 +4,7 @@ namespace App\Views;
 
 use App\Controllers\AdminCompanyController;
 use App\Controllers\CompanyController;
+use App\Controllers\ContactController;
 
 class AdminCompaniesView extends Views
 {
@@ -47,6 +48,29 @@ class AdminCompaniesView extends Views
             $data['message'] = COMPANY_CREATION_ERROR_MESSAGE;
 
             $this->view('dashboard/dashboard_create_company', $data);
+        }
+    }
+
+    /**
+     * Delete the contact that have the provided id.
+     * Then redirect to dashboard contacts page with a success message in sent data's.
+     * If no success : redirect to dashboard contacts page with a fail message in sent data's.
+     * @param $id
+     * @return void
+     */
+    public function deleteEntry($id): void
+    {
+        $deleted = (new CompanyController())->delete($id);
+
+        // todo : solve this : if entry does no exist SQL return no problem, when we try to delete non existent data, we should retrieve an error.
+        if ($deleted === TRUE) {
+            $data['message'] = COMPANY_DELETE_SUCCESS_MESSAGE;
+
+            $this->view('dashboard/dashboard_companies', $data);
+        } else {
+            $data['message'] = COMPANY_DELETE_ERROR_MESSAGE;
+
+            $this->view('dashboard/dashboard_companies', $data);
         }
     }
 }

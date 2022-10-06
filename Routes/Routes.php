@@ -99,6 +99,10 @@ $router->post('/admin/company/create', function() {
     (new AdminCompaniesView())->showCreateSubmit($_POST);
 });
 
+$router->get('/admin/company/delete/([0-9]+)', function($id) {
+    (new AdminCompaniesView())->deleteEntry($id);
+});
+
 $router->get('/admin/company/update/([0-9]+)', function($id) {
     (new AdminUpdateCompanyView())->show($id);
 });

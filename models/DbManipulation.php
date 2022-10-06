@@ -15,7 +15,24 @@ class DbManipulation extends DbData
     {
         $query = $this->createQuery();
 
-        print_r($query);
+//        print_r($query);
+
+        return $this->executeQuery($query, $data);
+    }
+
+    /**
+     * Delete the specified entry from the database.
+     * Returns true if the operation was successful.
+     *
+     * @param $id
+     * @return bool
+     */
+    public function deleteEntry($id): bool
+    {
+        $query = $this->deleteQuery();
+        $data = [
+            'id' => $id,
+        ];
 
         return $this->executeQuery($query, $data);
     }
