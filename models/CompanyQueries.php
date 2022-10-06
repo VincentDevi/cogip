@@ -38,6 +38,7 @@ class CompanyQueries extends DbManipulation
                                     (
                                      companies_name,
                                      country, 
+                                     type_id, 
                                      tva, 
                                      companies_created_at, 
                                      companies_updated_at, 
@@ -46,6 +47,7 @@ class CompanyQueries extends DbManipulation
                         VALUES (
                                 :name,
                                 :country, 
+                                :type,
                                 :vat, 
                                 :created_at, 
                                 :updated_at, 

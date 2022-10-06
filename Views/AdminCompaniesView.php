@@ -7,8 +7,11 @@ use App\Controllers\CompanyController;
 
 class AdminCompaniesView extends Views
 {
-    public function showAll() {
+    public function showAll($incomingData = null) {
         $data = (new AdminCompanyController())->read();
+
+        if ($incomingData) $data = array_merge($data, $incomingData);
+
         $this->view('dashboard/dashboard_companies', $data);
     }
 
@@ -43,7 +46,7 @@ class AdminCompaniesView extends Views
         } else {
             $data['message'] = COMPANY_CREATION_ERROR_MESSAGE;
 
-            $this->view('dashboard/dashboard_create_contact', $data);
+            $this->view('dashboard/dashboard_create_company', $data);
         }
     }
 }

@@ -39,7 +39,7 @@ class ValidationTable
             'name' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
             'country' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
             // todo : enhance tva regex.
-            'tva' => 'required|regex:numeric',
+            'vat' => 'required|numeric',
             'phone' => 'required|regex:/^\d{2}(?: ?\d+)*$/',//https://stackoverflow.com/questions/6028553/regex-allowing-spaces-for-a-phone-number-regex
         ];
     }

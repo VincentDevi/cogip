@@ -11,10 +11,19 @@ class CompanyController extends Controller
 
     public function create($data) {
         $validatedData = (new ValidateUserInput())->validate($data, 'company');
-        $validatedData['created_at'] = todayDate();
-        $validatedData['updated_at'] = todayDate();
 
-        return $validatedData ? (new CompanyModel())->createEntry($validatedData) : NULL;
+        if ($validatedData) {
+            $validatedData['created_at'] = todayDate();
+            $validatedData['updated_at'] = todayDate();
+
+            // todo: choice must be in form, not in hard. send the two types to front like in contact controller
+            $validatedData['type'] = 1;
+
+            return (new CompanyModel())->createEntry($validatedData);
+        } else {
+            return NULL;
+        }
+
     }
 
     public function read($id = NULL) {
