@@ -104,10 +104,12 @@ $router->get('/admin/company/delete/([0-9]+)', function($id) {
 });
 
 $router->get('/admin/company/update/([0-9]+)', function($id) {
-    (new AdminUpdateCompanyView())->show($id);
+    (new AdminCompaniesView())->showUpdateForm($id);
 });
 
-
+$router->post('/admin/company/update', function() {
+    (new AdminCompaniesView())->showUpdateSubmit($_POST);
+});
 
 
 $router->get('/admin/invoice/create', function() {

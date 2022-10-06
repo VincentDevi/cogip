@@ -32,6 +32,7 @@ class Dbh
 
         // todo : use fetch when need unique row.
         $output = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        print_r($output);
 
         $connexion = NULL;
         $stmt = NULL;
@@ -49,6 +50,9 @@ class Dbh
     public function executeQuery($query, $data){
         $connexion = $this->connexion();
         $stmt = $connexion->prepare($query);
+
+//        print_r($query);
+//        print_r($data);
         $stmt->execute($data);
 
         $connexion = NULL;

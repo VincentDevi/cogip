@@ -31,8 +31,20 @@ class CompanyController extends Controller
         return (new CompanyModel())->getCompanyData($id);
     }
 
-    public function update($data, $id) {
+    public function update($data) {
+        $validatedData = (new ValidateUserInput())->validate($data, 'company');
 
+
+        if ($validatedData) {
+            $validatedData['updated_at'] = todayDate();
+
+            // todo: choice must be in form, not in hard. send the two types to front like in contact controller
+            $validatedData['type'] = 1;
+
+            return (new CompanyModel())->updateEntry($validatedData);
+        } else {
+            return NULL;
+        }
     }
 
     public function delete($id) {
