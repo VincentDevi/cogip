@@ -2,10 +2,28 @@
 
 namespace App\Controllers;
 use App\Core\Controller;
-use App\models\logIn\LogIn;
+use App\models\logIns\LogIn;
 class LogInController extends Controller
 {
-    public function userResult ($email, $password) {
-        $data = $this->getUser($email,$password);
+    public function realLogIn($inputs){
+        if ($this->userResult($inputs) != 0){
+            $this->setGlobalVariable($inputs);
+            $error = [];
+        }else{
+            $error=["Invalid Email or Password"];
+        }
+        return $error;
     }
+    private function userResult ($array) {
+        return (new LogIn())->countUser($array);
+    }
+
+    private function setGlobalVariable($inputs){
+        $array = (new LogIn())->getUserData($inputs);
+        $_SESSION["user"] = $array[0]["id"];
+        $_SESSION["name"] = $array[0]["last_name"];
+        $_SESSION["firstname"] = $array[0]["first_name"];
+    }
+
+
 }

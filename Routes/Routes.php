@@ -2,7 +2,7 @@
 
 namespace App\Routes;
 
-use App\models\logIn\CreateUser;
+use App\models\logIns\CreateUser;
 use App\Views\AdminCompaniesView;
 use App\Views\AdminContactView;
 use App\Views\AdminInvoicesView;
@@ -24,15 +24,25 @@ $router = new Router();
 
 //$router->setBasePath('/');
 
-$router->before('POST', '/login', function() {
-    if (!isset($_SESSION['users.id'])) {
+$router->before('GET', '/.*', function() {
+    if (!isset($_SESSION['user'])) {
         //header('location: /auth/login');
         //exit();
         (new LogInView())->show();
+        exit();
     }
+});
+$router->post('/login/connect', function() {
+    (new LogInView())->showConnect($_POST);
+});
+$router->get('/login/disconnect', function() {
+    (new LogInView())->showDisconnect($_POST);
 });
 $router->get('/createUser', function() {
     (new CreateUserView())->show();
+});
+$router->post('/login/create', function() {
+    (new CreateUserView())->show($_POST);
 });
 $router->set404(function() {
     header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
@@ -139,28 +149,6 @@ $router->post('/submitest', function() {
     (new SubmitTestView())->showReturn($data);
 });
 
-
-////////////////////////////////////////////////////////////////
-/// ///////////// In progress This not work
-$router->put('/create/invoice/reference/price/company', function($reference, $price, $company) {
-    //    (new CreateInvoiceController())->index($reference, $price, $company);
-});
-
-$router->put('/create/company/name/country/tva/phone', function($name, $country, $tva, $phone) {
-    //    (new CreateCompanyController())->index($name, $country, $tva, $phone);
-});
-
-$router->put('/create/contact/name/email/phone/companyId', function($name, $email, $phone, $companyId) {
-    //    (new CreateContactController())->index($name, $email, $phone, $companyId);
-});
-////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
-
-
-//$router->get('/dashboard', function() {
-////    echo 'invoices';
-//    (new DashboardHomeController())->index();
-//});
 
 $router->run();
 
