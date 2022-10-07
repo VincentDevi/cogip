@@ -45,7 +45,7 @@ class LogIn extends Dbh
     private function ruleValidationLogin():array{
         return [
             "email"=>"required|email",
-            "password"=>"required|alpha"
+            "password"=>"required|regex:/[\w\[\]`!@#$%\^&*()={}:;<>+'-]*/"
         ];
     }
     public function logInValidation ($email, $password){
