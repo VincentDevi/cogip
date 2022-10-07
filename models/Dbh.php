@@ -49,6 +49,12 @@ class Dbh
     public function executeQuery($query, $data){
         $connexion = $this->connexion();
         $stmt = $connexion->prepare($query);
+
+//        echo '<pre>';
+//        print_r($query);
+//        print_r($data);
+//        echo '</pre>';
+
         $stmt->execute($data);
 
         $connexion = NULL;

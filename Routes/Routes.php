@@ -114,27 +114,51 @@ $router->get('/admin/companies', function() {
     (new AdminCompaniesView())->showAll();
 });
 
-$router->get('/admin/company/update/([0-9]+)', function($id) {
-    (new AdminUpdateCompanyView())->show($id);
-});
-
 $router->get('/admin/company/create', function() {
-    (new AdminCreateCompanyView())->show();
+    (new AdminCompaniesView())->showCreateForm();
 });
 
-
-$router->get('/admin/invoice/create', function() {
-    (new AdminCreateInvoiceView())->show();
+$router->post('/admin/company/create', function() {
+    (new AdminCompaniesView())->showCreateSubmit($_POST);
 });
+
+$router->get('/admin/company/delete/([0-9]+)', function($id) {
+    (new AdminCompaniesView())->deleteEntry($id);
+});
+
+$router->get('/admin/company/update/([0-9]+)', function($id) {
+    (new AdminCompaniesView())->showUpdateForm($id);
+});
+
+$router->post('/admin/company/update', function() {
+    (new AdminCompaniesView())->showUpdateSubmit($_POST);
+});
+
 
 
 
 $router->get('/admin/invoices', function() {
-    (new AdminInvoicesView())->show();
+    (new AdminInvoicesView())->showAll();
+});
+
+$router->get('/admin/invoice/create', function() {
+    (new AdminInvoicesView())->showCreateForm();
+});
+
+$router->post('/admin/invoice/create', function() {
+    (new AdminInvoicesView())->showCreateSubmit($_POST);
+});
+
+$router->get('/admin/invoice/delete/([0-9]+)', function($id) {
+    (new AdminInvoicesView())->deleteEntry($id);
 });
 
 $router->get('/admin/invoice/update/([0-9]+)', function($id) {
-    (new AdminUpdateInvoiceView())->show($id);
+    (new AdminInvoicesView())->showUpdateForm($id);
+});
+
+$router->post('/admin/invoice/update', function() {
+    (new AdminInvoicesView())->showUpdateSubmit($_POST);
 });
 
 
