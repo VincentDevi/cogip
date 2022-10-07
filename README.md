@@ -25,6 +25,7 @@ This is a from scratch ERP for a fictive company.
 - Dashboard to create, update, delete companies, contacts, invoices.
 - Hamburger menu.
 - Responsive.
+- Create a new account.
 
 ### Languages
 - PHP 8.1 Vanilla
