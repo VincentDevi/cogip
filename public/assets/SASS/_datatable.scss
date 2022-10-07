@@ -1,3 +1,11 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    max-width: 100vw;
+};
+
 main{
     display: flex;
     flex-direction: column;
@@ -9,27 +17,172 @@ main{
         align-self: flex-start;
     }
     .main__section {
+        
         width: 85%;
         margin: auto;
+        // margin-bottom: 3rem;
+        
+        // necessary div with relative position to add yellow "underline" in absolute
+        .div__title {
+            width: 100%;
+            height:fit-content;
+            position: relative;
+            display:flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 2rem;
+
+        };
+
         &__title {
             font-family: var(--font-family-title);
             font-weight: var(--font-weight-black);
             font-size: 3.75rem;
-            margin: 0 0 7rem 0;
+            margin: 0 0 5rem 0;
             padding-left: 1rem;
+            min-width: fit-content;
+            width: fit-content;
+            padding-right: 100px;
 
-        }
-    
+            &--yellowshadow {
+                display: block;
+                float:left;
+                position:relative;
+                margin-bottom: 5.5rem;
+            
+                &::before {
+                    display: block;
+                    content: "";
+                    position:absolute;
+                    z-index:-1;
+                    width: 70%;
+                    bottom:-0.5rem;
+                        left:10rem;
+                        height:2rem;
+                    background: var(--color-yellow);
+                };
+            };
+
+            &--company {
+                text-transform: uppercase;
+                display: block;
+                float:left;
+                position:relative;
+
+                    &::before {
+                        display: block;
+                        content:'';
+                        position:absolute;
+                        width:100%;
+                        bottom:-0.5rem;
+                        left:3rem;
+                        height:2rem;
+                        background:var(--color-yellow);
+                        z-index:-1;
+
+                    };
+            };
+
+            &--companycontactstitle {
+                margin: 2.875rem 0 4.063rem 0;
+                padding:0
+            };
+
+            &--contact {
+                display: block;
+                float:left;
+                position:relative;
+
+                    &::before {
+                        display: block;
+                        content:'';
+                        position:absolute;
+                        width:80%;
+                        bottom:-0.5rem;
+                        left:3rem;
+                        height:2rem;
+                        background:var(--color-yellow);
+                        z-index:-1;
+
+                    };
+            };
+
+            &--companyinvoices {
+                margin-top: 6.875rem;
+            };
+
+        };
+
+        .searchinput {
+            width: fit-content;
+            height: fit-content;
+            text-align: left;
+            padding: 0.8rem 0.2rem 0.8rem 0.6rem;
+            margin: 5rem 0.7rem 0 0;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--color-lightgreysearchinput);
+            font-size: large;
+
+        };
+
+        // company page "Contact persons" section
+        &--companycontacts {
+            border-top: 1px solid var(--color-lightgreybordercontacts);
+            border-bottom: 1px solid var(--color-lightgreybordercontacts);
+        };
+
+        // Pagination buttons
+        .section__datanav {
+            height: fit-content;
+            margin: 3.125rem auto;
+            display:flex;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            &__btn {
+                width: 2rem;
+                height: 2rem;
+                border:1.2px solid var(--color-lightgreypagesbtns);
+                border-radius: var(--border-radius-sm);
+                text-align: center;
+                line-height: 2rem;
+                margin: 0 0.25rem;
+                font-family: var(--font-family-header);
+                font-size: 0.875rem;
+                font-weight: var(--font-weight-bold);
+
+                &--arrow {
+                    color: var(--color-yellow);
+                };
+
+            };
+        };
+
+
+
+        // ---------------------- DATATABLE STYLES (yellow pages)---------------------------
+
+        &__tablecontainer {
+            overflow-x: scroll;
+        };
+
         &__table {
             border-collapse: collapse;
-            width: 100%;
+            width:100%;
             font-family: var(--font-family-header);
             font-weight: var(--font-weight-semibold);
             font-size: 20px;
-    
+            
+            // @include for-phone {
+            //     overflow-x: scroll;
+            //     max-width: 80vw;
+            // };
+
             .table__header {
                 width: fit-content;
-    
+
                 &__row {
                     background-color: var(--color-yellow);
                     height: 55px;
@@ -38,20 +191,20 @@ main{
                         padding: 0 1.3rem 0 1.6rem;
                         vertical-align: middle;
                         text-align: left;
-                        white-space: nowrap;
+                        white-space:nowrap;
                         border: none;
-    
+
                         &:first-child {
                             padding-left: 2.3rem;
                         }
-    
-                        &:nth-last-child(1) {
-                            width: 100%;
-                        }
-                    }
-                }
-            }
-    
+
+                        &:nth-last-child(1){
+                            width:100%;
+                        };
+                    };
+                };
+            };
+
             .table__body {
                 &__row {
                     height: 55px;
@@ -59,7 +212,7 @@ main{
     
                     &:nth-of-type(even) {
                         background-color: var(--color-lightgreytablerows);
-                    }
+                    };
     
                     &__cell {
                         padding: 0 1.3rem;
@@ -69,19 +222,138 @@ main{
     
                         &:first-child {
                             padding-left: 2rem;
-                        }
-                    }
-                }
-            }
-        }
-    }
+                        };
 
-}
+                    .is-hidden { display: none; }
+                    
+                    };
+                };
+            };
+        
+        };
 
+    &--contact {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
 
+    };
+
+    // ! contacts section from "Company/id" page (contacts cards) != contact section from "Contact/id" page
+    &__contacts {
+        display:flex;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        margin-bottom: 5.25rem;
+
+        .contact__card {
+            background: var(--color-lightgreytablerows);
+            width:fit-content;
+            height: fit-content;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--border-radius-2xl);
+            margin-right: 3.6rem;
+            box-shadow: 0px 0px 3.5rem -1.813rem rgba(0, 0, 0, 0.25);
+
+            &__piccontainer {
+                margin: 1.875rem;
+                margin-left: 1.75rem;
+                position: relative;
+                width: 8.25rem;
+                height: 8.25rem;
+                border-radius: 50%;
+                overflow: hidden;
+
+                .contactpic {
+                    position: absolute;
+                    object-position: 50%;
+                    left:-2rem;
+                    object-fit: contain;
+                    height:100%;
+                    width:auto;
+                };
+            };
+
+            &__name {
+                font-family: var(--font-family-header);
+                font-weight: var(--font-weight-black);
+                font-size: 2.188rem;
+                width:fit-content;
+                margin: 0 2.8rem 0 0.875rem;
+            };
+
+            &__link {
+                text-decoration: none;
+                color: var(--color-blacktext);
+
+                &:hover {
+                    color: var(--color-purpledashboard);
+                };
+            };
+
+        };
+
+    };
+
+    };
+
+// -----------span triangle "arrow" in tableheader (yellow rows)
 .ordertriangle {
     font-size: 25px;
     vertical-align: middle;
-    line-height: unset !important;
+    line-height:unset !important;
 }
 
+
+// ----------------- contacts informations from Company & Contact Pages -------------
+
+    .contact {
+        width: fit-content;
+        padding: 1rem;
+        font-family: var(--font-family-header);
+        font-size: 1.563rem;
+        margin-bottom: 4.625rem;
+
+        .bold {
+            font-weight: var(--font-weight-bold);
+        };
+
+        .firstletterup {
+            text-transform: capitalize;
+        };
+
+        .tvacapitalize {
+            text-transform: uppercase;
+        }
+    };
+
+    .contact__pic {
+        width: 15.938rem;
+        height: 15.938rem;
+        position: relative;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 5rem;
+        margin-top: -1rem;
+        
+        .contactbigpic {
+            position: absolute;
+            object-position: 0%;
+            // left:-2rem;
+            object-fit: contain;
+            height:100%;
+            width:auto;
+            
+
+        };
+
+    };
+}
+
+
+
+// src highlight text http://codepen.io/OxyDesign/pen/eHAac

@@ -16,45 +16,46 @@
 
     {% block datatable %}
 
-    <table class="main__section__table">
+    <div class ="main__section__tablecontainer">
+        <table class="main__section__table">
 
-        {% block tableheader %}
-        <thead class="table__header">
-            <tr class="table__header__row">
-                
-                {% block tableheadercells %}
-                {# TODO: replace <td>.innerhtml by #}
-                <th scope="col" class="table__header__row__title">DataColTitle<span class="ordertriangle">&#9662;</span></th>
-                <th scope="col" class="table__header__row__title">DataColTitl<span class="ordertriangle">&#9662;</span></th>
-                <th scope="col" class="table__header__row__title">DataColTitl<span class="ordertriangle">&#9662;</span></th>
-                <th scope="col" class="table__header__row__title">DataColTitl<span class="ordertriangle">&#9662;</span></th>
-                {% endblock %}
+            {% block tableheader %}
+            <thead class="table__header">
+                <tr class="table__header__row">
+                    
+                    {% block tableheadercells %}
+                    {# TODO: replace <td>.innerhtml by #}
+                    <th scope="col" class="table__header__row__title">DataColTitle<span class="ordertriangle">&#9662;</span></th>
+                    <th scope="col" class="table__header__row__title">DataColTitl<span class="ordertriangle">&#9662;</span></th>
+                    <th scope="col" class="table__header__row__title">DataColTitl<span class="ordertriangle">&#9662;</span></th>
+                    <th scope="col" class="table__header__row__title">DataColTitl<span class="ordertriangle">&#9662;</span></th>
+                    {% endblock %}
 
-            </tr>
-        </thead>
-        {% endblock %}
-
-        {% block tablebody %}
-        <tbody class= "table__body">
-            {# TODO: write loop to display all table rows (<tr>) + replace <td>.innerhtml by db data #}
-            {% block tablebodyrows %}
-
-            <tr class="table__body__row">
-                <td scope="col" class="table__body__row__cell">F20220915-001</td>
-                <td scope="col" class="table__body__row__cell">15/09/20222</td>
-                <td scope="col" class="table__body__row__cell">Jouet Jean-Michel</td>
-                <td scope="col" class="table__body__row__cell">25/09/2020</td>
-            </tr>
-
+                </tr>
+            </thead>
             {% endblock %}
 
+            {% block tablebody %}
+            <tbody class= "table__body">
+                {# TODO: write loop to display all table rows (<tr>) + replace <td>.innerhtml by db data #}
+                {% block tablebodyrows %}
 
-        </tbody>
+                <tr class="table__body__row">
+                    <td scope="col" class="table__body__row__cell">F20220915-001</td>
+                    <td scope="col" class="table__body__row__cell">15/09/20222</td>
+                    <td scope="col" class="table__body__row__cell">Jouet Jean-Michel</td>
+                    <td scope="col" class="table__body__row__cell">25/09/2020</td>
+                </tr>
 
-        {% endblock %}
-        
-    </table>
+                {% endblock %}
 
+
+            </tbody>
+
+            {% endblock %}
+            
+        </table>
+    </div>
     {% endblock %}
 
     {% block datapages %}

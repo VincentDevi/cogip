@@ -6,10 +6,14 @@
   --color-greyfootertext:rgba(115, 115, 115, 1);
   --color-greyfooterlogo: #434138;
   --color-lightgreyarrow: rgba(145, 158, 171, 1);
+  --color-lightgreysearchinput: rgba(99, 99, 99, 1);
+  --color-lightgreybordercontacts: rgba(205, 205, 205, 1);
+  --color-lightgreypagesbtns: rgba(223, 227, 232, 1);
   --color-darkbluefooter: #0A142F;
   --color-purpledashboard: rgba(150, 152, 214, 1);
   --color-darkpurpledashboard: rgba(77, 76, 172, 1);
   --color-pinkdashboard: rgba(255, 128, 139, 1);
+  --color-backgroundDash: rgba(245, 245, 251, 1);
   --font-family-header: "Roboto", sans-serif;
   --font-family-title: "Inter", sans-serif;
   --font-size-body: 1rem;
@@ -30,7 +34,7 @@
   --border-radius-xl: 1rem;
   --border-radius-2xl: 2rem;
   --border-radius-pill: 50rem;
-  --border-radius-circle: 50%;
+  --border-radius-circle: 50%: ;
 }
 
 .header {
@@ -42,6 +46,7 @@
   justify-content: center;
   align-items: center;
   font-family: "Roboto";
+  margin-bottom: 3.5rem;
 }
 .header__menu {
   display: flex;
@@ -102,6 +107,15 @@
   padding: 10px;
   cursor: pointer;
   border: 0.5px;
+}
+.header__menu__container .navbar-links .header__menu__nav li a {
+  text-decoration: none;
+}
+.header__menu__container .navbar-links .header__menu__nav li a:visited {
+  color: var(--color-blacktext);
+}
+.header__menu__container .navbar-links .header__menu__nav li.activepage {
+  border: 0.5px solid black;
 }
 .header__menu__container .navbar-links .header__menu__nav li:hover {
   border: solid 0.5px;
@@ -224,12 +238,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 80px 0px;
-}
-@media only screen and (max-width: 413px) {
-  .footer .footer__banner {
-    flex-direction: column;
-    padding: 10px 0px;
-  }
+  margin-top: 6.25rem;
 }
 .footer .footer__banner .footer__banner__logo {
   font-weight: 900;
@@ -238,6 +247,12 @@
   color: var(--color-greyfooterlogo);
   padding: 5px;
   margin-bottom: 10px;
+}
+@media only screen and (max-width: 413px) {
+  .footer .footer__banner .footer__banner__logo {
+    flex-direction: column;
+    padding: 10px 0px;
+  }
 }
 .footer .footer__banner .footer__banner__infos {
   display: flex;
@@ -342,6 +357,10 @@
   cursor: pointer;
   white-space: nowrap;
 }
+.footer .footer__menu .footer__menu__nav li a {
+  text-decoration: none;
+  color: var(--color-blacktext);
+}
 .footer .footer__menu .footer__menu__copyright {
   color: var(--color-greyfootertext);
 }
@@ -389,6 +408,14 @@
   width: 80%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  max-width: 100vw;
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -404,12 +431,134 @@ main .main__section {
   width: 85%;
   margin: auto;
 }
+main .main__section .div__title {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 2rem;
+}
 main .main__section__title {
   font-family: var(--font-family-title);
   font-weight: var(--font-weight-black);
   font-size: 3.75rem;
-  margin: 0 0 7rem 0;
+  margin: 0 0 5rem 0;
   padding-left: 1rem;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding-right: 100px;
+}
+main .main__section__title--yellowshadow {
+  display: block;
+  float: left;
+  position: relative;
+  margin-bottom: 5.5rem;
+}
+main .main__section__title--yellowshadow::before {
+  display: block;
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 70%;
+  bottom: -0.5rem;
+  left: 10rem;
+  height: 2rem;
+  background: var(--color-yellow);
+}
+main .main__section__title--company {
+  text-transform: uppercase;
+  display: block;
+  float: left;
+  position: relative;
+}
+main .main__section__title--company::before {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 100%;
+  bottom: -0.5rem;
+  left: 3rem;
+  height: 2rem;
+  background: var(--color-yellow);
+  z-index: -1;
+}
+main .main__section__title--companycontactstitle {
+  margin: 2.875rem 0 4.063rem 0;
+  padding: 0;
+}
+main .main__section__title--contact {
+  display: block;
+  float: left;
+  position: relative;
+}
+main .main__section__title--contact::before {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 80%;
+  bottom: -0.5rem;
+  left: 3rem;
+  height: 2rem;
+  background: var(--color-yellow);
+  z-index: -1;
+}
+main .main__section__title--companyinvoices {
+  margin-top: 6.875rem;
+}
+main .main__section .searchinput {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  text-align: left;
+  padding: 0.8rem 0.2rem 0.8rem 0.6rem;
+  margin: 5rem 0.7rem 0 0;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-lightgreysearchinput);
+  font-size: large;
+}
+main .main__section--companycontacts {
+  border-top: 1px solid var(--color-lightgreybordercontacts);
+  border-bottom: 1px solid var(--color-lightgreybordercontacts);
+}
+main .main__section .section__datanav {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 3.125rem auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+main .main__section .section__datanav__btn {
+  width: 2rem;
+  height: 2rem;
+  border: 1.2px solid var(--color-lightgreypagesbtns);
+  border-radius: var(--border-radius-sm);
+  text-align: center;
+  line-height: 2rem;
+  margin: 0 0.25rem;
+  font-family: var(--font-family-header);
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-bold);
+}
+main .main__section .section__datanav__btn--arrow {
+  color: var(--color-yellow);
+}
+main .main__section__tablecontainer {
+  overflow-x: scroll;
 }
 main .main__section__table {
   border-collapse: collapse;
@@ -456,9 +605,175 @@ main .main__section__table .table__body__row__cell {
 main .main__section__table .table__body__row__cell:first-child {
   padding-left: 2rem;
 }
-
-.ordertriangle {
+main .main__section__table .table__body__row__cell .is-hidden {
+  display: none;
+}
+main .main__section--contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+main .main__section__contacts {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  margin-bottom: 5.25rem;
+}
+main .main__section__contacts .contact__card {
+  background: var(--color-lightgreytablerows);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius-2xl);
+  margin-right: 3.6rem;
+  box-shadow: 0px 0px 3.5rem -1.813rem rgba(0, 0, 0, 0.25);
+}
+main .main__section__contacts .contact__card__piccontainer {
+  margin: 1.875rem;
+  margin-left: 1.75rem;
+  position: relative;
+  width: 8.25rem;
+  height: 8.25rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+main .main__section__contacts .contact__card__piccontainer .contactpic {
+  position: absolute;
+  -o-object-position: 50%;
+     object-position: 50%;
+  left: -2rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 100%;
+  width: auto;
+}
+main .main__section__contacts .contact__card__name {
+  font-family: var(--font-family-header);
+  font-weight: var(--font-weight-black);
+  font-size: 2.188rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 2.8rem 0 0.875rem;
+}
+main .main__section__contacts .contact__card__link {
+  text-decoration: none;
+  color: var(--color-blacktext);
+}
+main .main__section__contacts .contact__card__link:hover {
+  color: var(--color-purpledashboard);
+}
+main .ordertriangle {
   font-size: 25px;
   vertical-align: middle;
   line-height: unset !important;
-}/*# sourceMappingURL=styles.css.map */
+}
+main .contact {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 1rem;
+  font-family: var(--font-family-header);
+  font-size: 1.563rem;
+  margin-bottom: 4.625rem;
+}
+main .contact .bold {
+  font-weight: var(--font-weight-bold);
+}
+main .contact .firstletterup {
+  text-transform: capitalize;
+}
+main .contact .tvacapitalize {
+  text-transform: uppercase;
+}
+main .contact__pic {
+  width: 15.938rem;
+  height: 15.938rem;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 5rem;
+  margin-top: -1rem;
+}
+main .contact__pic .contactbigpic {
+  position: absolute;
+  -o-object-position: 0%;
+     object-position: 0%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 100%;
+  width: auto;
+}
+
+@-webkit-keyframes bouncing {
+  0% {
+    bottom: 1rem;
+  }
+  50% {
+    bottom: 2rem;
+  }
+  100% {
+    bottom: 1rem;
+  }
+}
+
+@keyframes bouncing {
+  0% {
+    bottom: 1rem;
+  }
+  50% {
+    bottom: 2rem;
+  }
+  100% {
+    bottom: 1rem;
+  }
+}
+.topbtn {
+  display: none;
+}
+@media (min-width: 900px) {
+  .topbtn {
+    -webkit-animation: bouncing 1s infinite ease-in-out;
+            animation: bouncing 1s infinite ease-in-out;
+    position: fixed;
+    margin: 0 auto;
+    background: rgba(133, 133, 133, 0.201);
+    text-align: center;
+    font-weight: var(--font-weight-black);
+    left: 48vw;
+    font-size: 4rem;
+    color: white;
+    z-index: 99;
+    min-width: -webkit-fit-content;
+    min-width: -moz-fit-content;
+    min-width: fit-content;
+    min-height: -webkit-fit-content;
+    min-height: -moz-fit-content;
+    min-height: fit-content;
+    height: 5rem;
+    width: 5rem;
+    justify-content: center;
+    padding: auto;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  .topbtn:hover {
+    background: rgba(133, 133, 133, 0.393);
+  }
+  .topbtn a {
+    color: white;
+  }
+  .topbtn a:visited .topbtn a:active .topbtn a:hover {
+    color: white;
+  }
+}
