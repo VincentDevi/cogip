@@ -37,25 +37,6 @@
   --border-radius-circle: 50%: ;
 }
 
-.mybtn {
-  white-space: nowrap;
-  font-size: 4rem;
-  position: fixed;
-  right: 0;
-  bottom: 50px;
-  left: 0;
-  margin: auto;
-  width: 40px;
-  height: 40px;
-  transform: translateY(0);
-  transition: all 750ms ease-in-out;
-}
-
-/* this sets the position of the arrow when it's up, so it will move up or down by 14px when you add or remove this class */
-.lift {
-  transform: translateY(14px);
-}
-
 .main__section {
   display: flex;
   flex-direction: column;
@@ -104,6 +85,7 @@ body .aside {
 }
 @media (max-width: 413px) {
   body .aside {
+    padding: 3vh 2vw 2vh;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -114,10 +96,10 @@ body .aside__section {
   width: 100%;
 }
 body .aside__section--user {
-  align-self: flex-start;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-self: flex-start;
   border: 1px solid #E7E7E7;
   text-align: center;
   font-family: var(--font-family-header);
@@ -155,7 +137,7 @@ body .aside__section--user h3 {
 }
 @media (min-width: 600px) {
   body .aside__section--user h3 {
-    font-size: 1rem;
+    font-size: 1.2em;
     display: block;
     font-weight: var(--font-weight-black);
     line-height: 1.1;
@@ -176,10 +158,20 @@ body .aside__section--nav .aside__section__nav {
   height: -moz-fit-content;
   height: fit-content;
 }
+@media (max-width: 413px) {
+  body .aside__section--nav {
+    margin: 0;
+  }
+}
+body .aside__section--nav .aside__section__nav {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
 body .aside__section--nav .aside__section__nav ul {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   padding-left: 15%;
 }
 @media (max-width: 413px) {
@@ -229,11 +221,10 @@ body .aside__section--nav .aside__section__nav ul li:hover {
   }
 }
 body .aside__section--logout {
-  border-top: 1px solid #E7E7E7;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  bottom: 0;
+  border-top: 1px solid #E7E7E7;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -281,6 +272,16 @@ body .main {
   background-color: var(--color-backgroundDash);
 }
 @media (max-width: 413px) {
+  body .main {
+    width: 100%;
+    padding: 0%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+}
+@media (max-width: 811px) {
   body .main {
     width: 100%;
     padding: 0%;
@@ -360,6 +361,11 @@ body .main .header__illustration {
     display: none;
   }
 }
+@media (max-width: 811px) {
+  body .main .header__illustration {
+    bottom: 15%;
+  }
+}
 body .main__section--statistique {
   width: 45%;
   height: 25%;
@@ -367,6 +373,11 @@ body .main__section--statistique {
   border-radius: 10px;
 }
 @media (max-width: 413px) {
+  body .main__section--statistique {
+    width: 90%;
+  }
+}
+@media (max-width: 811px) {
   body .main__section--statistique {
     width: 90%;
   }
@@ -381,6 +392,11 @@ body .main__section--statistique .main__section__stats {
   align-items: center;
 }
 @media (max-width: 413px) {
+  body .main__section--statistique .main__section__stats {
+    margin-bottom: 3vh;
+  }
+}
+@media (max-width: 811px) {
   body .main__section--statistique .main__section__stats {
     margin-bottom: 3vh;
   }
@@ -401,13 +417,20 @@ body .main__section--statistique .main__section__stats p {
   text-align: center;
   color: white;
   border-radius: 50%;
-  width: 10vw;
-  height: 10vw;
+  width: 8vw;
+  height: 8vw;
   font-size: 1vw;
 }
 @media (max-width: 413px) {
   body .main__section--statistique .main__section__stats p {
     font-size: 2vw;
+  }
+}
+@media (max-width: 811px) {
+  body .main__section--statistique .main__section__stats p {
+    width: 10vw;
+    height: 10vw;
+    font-size: 1.5vw;
   }
 }
 body .main__section--datatable {
@@ -420,5 +443,11 @@ body .main__section--datatable {
   body .main__section--datatable {
     width: 90%;
     font-size: 2.5vw;
+  }
+}
+@media (max-width: 811px) {
+  body .main__section--datatable {
+    width: 90%;
+    font-size: 2vw;
   }
 }
