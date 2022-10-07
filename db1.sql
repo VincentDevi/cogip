@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 04, 2022 at 02:48 PM
+-- Generation Time: Oct 07, 2022 at 09:07 AM
 -- Server version: 8.0.30-0ubuntu0.22.04.1
 -- PHP Version: 8.1.2
 
@@ -118,6 +118,14 @@ CREATE TABLE `permissions` (
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'all', '2022-10-05 15:33:27', '2022-10-05 15:33:27'),
+(2, 'read', '2022-10-05 15:34:19', '2022-10-05 15:34:19');
+
 -- --------------------------------------------------------
 
 --
@@ -127,9 +135,17 @@ CREATE TABLE `permissions` (
 CREATE TABLE `roles` (
   `id` int NOT NULL,
   `name` varchar(50) NOT NULL,
-  `created_at` int NOT NULL,
-  `updated_at` int NOT NULL
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'admin', '2022-10-05 00:00:00', '2022-10-05 00:00:00'),
+(2, 'user', '2022-10-05 00:00:00', '2022-10-05 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -142,6 +158,14 @@ CREATE TABLE `roles_permission` (
   `permission_id` int NOT NULL,
   `role_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `roles_permission`
+--
+
+INSERT INTO `roles_permission` (`id`, `permission_id`, `role_id`) VALUES
+(1, 1, 1),
+(2, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -177,9 +201,16 @@ CREATE TABLE `users` (
   `last_name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `created_at` int NOT NULL,
-  `updated_at` int NOT NULL
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `first_name`, `role_id`, `last_name`, `email`, `password`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 1, 'admin', 'admin@gmail.com', 'admin', '2022-10-05 15:37:11', '2022-10-05 15:37:11');
 
 --
 -- Indexes for dumped tables
@@ -265,19 +296,19 @@ ALTER TABLE `invoices`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `roles_permission`
 --
 ALTER TABLE `roles_permission`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `types`
@@ -289,7 +320,7 @@ ALTER TABLE `types`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

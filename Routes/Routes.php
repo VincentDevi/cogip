@@ -25,23 +25,24 @@ $router = new Router();
 //$router->setBasePath('/');
 
 $router->before('GET', '/.*', function() {
-    if (!isset($_SESSION['user'])) {
-        //header('location: /auth/login');
-        //exit();
+    if (!isset($_SESSION['user']) && getUrlLastElement() != "createUser") {
         (new LogInView())->show();
         exit();
     }
 });
-$router->post('/login/connect', function() {
+$router->post('login/connect', function() {
     (new LogInView())->showConnect($_POST);
 });
-$router->get('/login/disconnect', function() {
-    (new LogInView())->showDisconnect($_POST);
+$router->get('login/disconnect', function() {
+    (new LogInView())->showDisconnect();
 });
-$router->get('/createUser', function() {
+$router->get('login/createUser', function() {
     (new CreateUserView())->show();
 });
-$router->post('/login/create', function() {
+$router->post('login/createUser/send', function() {
+    (new CreateUserView())->showCreate($_POST);
+});
+$router->post('login/create', function() {
     (new CreateUserView())->show($_POST);
 });
 $router->set404(function() {

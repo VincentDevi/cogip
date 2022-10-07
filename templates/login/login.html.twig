@@ -1,10 +1,12 @@
 <h1>Log In</h1>
 <p>salut</p>
 {{dump() }}
-<form method="POST" action="{{ root }}/login/connect" name="form" id="form">
+<form method="POST" action="{{ root }}login/connect" name="form" id="form">
 
     <input type="email" value="admin@gmail.com" placeholder="" name="email">
     <input type="password" value="admin" placeholder="" name="password">
     <input type="Submit">
-
 </form>
+<div>
+    <a href="{{ root }}login/createUser">Sign Up</a>
+</div>

@@ -113,3 +113,10 @@ function getRoot(): string
 
     return HOST_SITE;
 }
+
+function getUrlLastElement():string{
+    $url = $_SERVER['REQUEST_URI'];
+    $array = explode("/",$url);
+    return $array[count($array)-1];
+
+}
