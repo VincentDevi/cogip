@@ -66,6 +66,35 @@ class AdminInvoicesView extends Views
         $this->view('dashboard/dashboard_update_invoice', $data);
     }
 
+    /**
+     * Submit the update form by calling tha appropriate controller.
+     * Then redirect to dashboard invoices page with a success message in sent data's.
+     * If no success : redirect to dashboard crete invoice page with a fail message in sent data's.
+     * If no success and id is not provided : redirect to all invoices page.
+     *
+     * @param $inputs
+     * @return void
+     */
+    public function showUpdateSubmit($inputs): void
+    {
+        $created = (new InvoiceController())->update($inputs);
+
+        if ($created === TRUE && array_key_exists("invoice_id", $inputs)) {
+            $data['message'] = INVOICE_UPDATE_SUCCESS_MESSAGE;
+
+            $this->showAll($data);
+        } elseif ($created !== TRUE && array_key_exists("invoice_id", $inputs)) {
+            $data['message'] = INVOICE_UPDATE_ERROR_MESSAGE;
+
+            // todo: make message appear when redirect.
+            redirect(getRoot().'/admin/invoice/update/'.$inputs['contact_id']);
+        } elseif ($created !== TRUE && !(array_key_exists("invoice_id", $inputs))) {
+            $data['message'] = INVOICE_UPDATE_ERROR_MESSAGE;
+
+            $this->showAll($data);
+        }
+    }
+
 
 
 

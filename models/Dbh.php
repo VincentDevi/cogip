@@ -50,8 +50,11 @@ class Dbh
         $connexion = $this->connexion();
         $stmt = $connexion->prepare($query);
 
+//        echo '<pre>';
 //        print_r($query);
 //        print_r($data);
+//        echo '</pre>';
+
         $stmt->execute($data);
 
         $connexion = NULL;

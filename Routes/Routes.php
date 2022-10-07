@@ -134,6 +134,10 @@ $router->get('/admin/invoice/update/([0-9]+)', function($id) {
     (new AdminInvoicesView())->showUpdateForm($id);
 });
 
+$router->post('/admin/invoice/update', function() {
+    (new AdminInvoicesView())->showUpdateSubmit($_POST);
+});
+
 
 
 $router->get('/submitest', function() {

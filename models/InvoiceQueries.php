@@ -9,7 +9,7 @@ class InvoiceQueries extends DbManipulation
                 SELECT invoices.id,
                        invoices.ref,
                        companies.companies_name AS company_name,
-                       id_company AS company_ide,
+                       id_company AS company_id,
                        invoices_created_at AS created_at,
                        invoices_updated_at AS updated_at,
                        invoices.due_date 
@@ -44,6 +44,23 @@ class InvoiceQueries extends DbManipulation
                         :due_date
                         ) ;
             ";
+    }
+
+    /**
+     * Returns the query to update an invoice.
+     *
+     * @return string
+     */
+    protected function updateQuery(): string
+    {
+        return "
+                UPDATE invoices
+                SET ref = :reference,
+                    id_company = :company_id, 
+                    invoices_updated_at = :updated_at, 
+                    due_date = :due_date
+                WHERE id = :invoice_id;
+        ";
     }
 
     /**

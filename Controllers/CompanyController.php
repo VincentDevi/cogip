@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\models\CompanyModel;
-use App\models\ContactModel;
 use App\models\ValidateUserInput;
 
 class CompanyController extends Controller
@@ -32,7 +31,6 @@ class CompanyController extends Controller
 
     public function update($data) {
         $validatedData = (new ValidateUserInput())->validate($data, 'company');
-
 
         if ($validatedData) {
             $validatedData['updated_at'] = todayDate();

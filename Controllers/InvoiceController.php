@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\models\CompanyModel;
 use App\models\InvoiceModel;
 use App\models\ValidateUserInput;
 
@@ -26,8 +25,17 @@ class InvoiceController extends Controller
         return (new InvoiceModel())->getInvoiceData($id);
     }
 
-    public function update($data, $id) {
+    public function update($data) {
+        $validatedData = (new ValidateUserInput())->validate($data, 'invoice');
 
+
+        if ($validatedData) {
+            $validatedData['updated_at'] = todayDate();
+
+            return (new InvoiceModel())->updateEntry($validatedData);
+        } else {
+            return NULL;
+        }
     }
 
     public function delete($id) {
