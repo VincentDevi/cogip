@@ -118,5 +118,10 @@ function getUrlLastElement():string{
     $url = $_SERVER['REQUEST_URI'];
     $array = explode("/",$url);
     return $array[count($array)-1];
-
+}
+function sanitize($input){
+    foreach ($input as $i){
+        $i = htmlspecialchars($i);
+    }
+    return $input;
 }

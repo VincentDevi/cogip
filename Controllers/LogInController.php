@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Core\Controller;
 use App\models\logIns\LogIn;
+use App\models\logIns\CreateUser;
 class LogInController extends Controller
 {
     public function realLogIn($inputs){
@@ -24,5 +25,8 @@ class LogInController extends Controller
         $_SESSION["user"] = $array[0]["id"];
         $_SESSION["name"] = $array[0]["last_name"];
         $_SESSION["firstname"] = $array[0]["first_name"];
+    }
+    public function createUser($inputs){
+        return (new CreateUser())->createUserRequest($inputs);
     }
 }

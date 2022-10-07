@@ -61,6 +61,4 @@ class LogIn extends Dbh
 
         return !$validation->fails() ? $valuesArray : null;
     }
-
-
 }
