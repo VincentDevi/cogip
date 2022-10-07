@@ -14,7 +14,7 @@ class CompanyViews extends Views
      * @return void
      */
     public function showAll() {
-        $data = (new companyController())->read();
+        $data["companies"] = (new companyController())->read();
         $this->view('companies', $data);
     }
 

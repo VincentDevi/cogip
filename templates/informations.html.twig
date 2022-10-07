@@ -2,9 +2,17 @@
 {#  SHOW_INVOICE + SHOW_CONTACT Informations (coordonnées) #}
 
 {# TODO: replace <li> & span.innerhtml by variables + LOOP? #}
+
+{% block sectioncompanycontact %}
 <section class="main__section">
 
+        {% block sectiontitle %}
+        <h2 class="main__section__title main__section__title--company">Section Title</h2>
+        {% endblock %}
+
     {% block infotemplate %}
+    
+
         <div class="contact">
             <ul class="contact__infos">
                 <li class="contact__info__item"><span class="bold">Name:&nbsp;</span>Pied Pipper</li>
@@ -16,7 +24,9 @@
     {% endblock %}
 
     {% block contactpic %}
-        {# Here empty, to update in "contact" page #}
+        {# Here empty, to update in "CONTACT" page (!= COMPANY page) #}
     {% endblock %}
 
 </section>
+
+{% endblock %}

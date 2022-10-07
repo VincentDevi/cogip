@@ -17,8 +17,10 @@
     {% embed 'datadetails.html.twig' %}
 
         {% block tabletitlesection %}
-            <h2 class="main__section__title main__section__title--yellowshadow">All contacts</h2>
-            <input class "searchinput" type="search" placeholder="Search contact" name="searchinput" id="searchinput"></input>
+            <div class="div__title">
+                <h2 class="main__section__title main__section__title--yellowshadow">All&nbsp;contacts</h2>
+                <input class="searchinput" type="search" placeholder="Search contact" name="searchinput" id="searchcontact"></input>
+            </div>
         {% endblock %}
 
         {% block tableheadercells %}
@@ -31,10 +33,10 @@
 
         {% block tablebodyrows %}
 
-            {% for contact in _context %}
+            {% for contact in _context.contacts|slice(0,10) %}
         
             <tr class="table__body__row">
-                <td scope="col" class="table__body__row__cell"><a href="/company/{{contact.id}}">{{contact.contacts_name}}</a></td>
+                <td scope="col" class="table__body__row__cell"><a href="{{ root }}/contact/{{contact.id}}">{{contact.contacts_name}}</a></td>
                 <td scope="col" class="table__body__row__cell">{{contact.contacts_phone}}</td>
                 <td scope="col" class="table__body__row__cell">{{contact.email}}</td>
                 <td scope="col" class="table__body__row__cell">{{contact.companies_name}}</td>

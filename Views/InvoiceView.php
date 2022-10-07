@@ -12,7 +12,7 @@ class InvoiceView extends Views
      * @return void
      */
     public function showAll() {
-        $data = (new InvoiceController())->read();
+        $data["invoices"] = (new InvoiceController())->read();
         $this->view('invoices', $data);
     }
 }

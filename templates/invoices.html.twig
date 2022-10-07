@@ -20,8 +20,10 @@
     /!\ the "include" function does NOT. #}
 
     {% block tabletitlesection %}
-        <h2 class="main__section__title main__section__title--yellowshadow">All invoices</h2>
-        <input class "searchinput" type="search" placeholder="Search company" name="searchinput" id="searchinput"></input>
+        <div class="div__title">
+            <h2 class="main__section__title main__section__title--yellowshadow">All&nbsp;invoices</h2>
+            <input class="searchinput" type="search" placeholder="Search company" name="searchinput" id="searchinvoice"></input>
+        </div>
     {% endblock %}
 
         {% block tableheadercells %}
@@ -34,7 +36,7 @@
     
 
         {% block tablebodyrows %}
-            {% for invoice in _context %}
+            {% for invoice in _context.invoices %}
         
         <tr class="table__body__row">
             <td scope="col" class="table__body__row__cell"><a href="/company/{{invoice.id_company}}">{{invoice.ref}}</a></td>

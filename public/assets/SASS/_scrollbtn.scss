@@ -1,0 +1,58 @@
+@keyframes bouncing {
+    0% {bottom: 1rem;}
+    50% {bottom: 2rem;}
+    100% {bottom: 1rem;}
+};
+
+
+.topbtn{
+    
+    display:none;
+
+        @include for-tablet-landscape {
+
+        // background: url('https://api.iconify.design/bi/chevron-compact-up.svg') no-repeat center center / contain;
+        // content: url('https://api.iconify.design/bi/chevron-compact-up.svg');
+        animation: bouncing 1s infinite ease-in-out;
+        position: fixed;
+        margin: 0 auto;
+        background: rgba(133, 133, 133, 0.201);
+        text-align: center;
+        font-weight: var(--font-weight-black);
+        left: 48vw;
+        font-size: 4rem;
+        color: white;
+        z-index: 99;
+        min-width: fit-content;
+        min-height: fit-content;
+        height: 5rem;
+        width: 5rem;
+        justify-content: center;
+        padding:auto;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        border-radius: 50%;
+
+        &:hover {
+            // color:var(--color-yellow);
+            background: rgba(133, 133, 133, 0.393);
+        };
+
+        & a {
+            color:white;
+            &:visited &:active &:hover {
+                color:white;
+            };
+        };
+    };
+
+};
+
+
+
+   
+
+
+
+
