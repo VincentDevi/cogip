@@ -1,4 +1,5 @@
 
+
 <h1>dashboard create contact</h1>
 
 <form method="POST" action="{{ root }}/admin/contact/create" name="form" id="form">
@@ -11,13 +12,8 @@
     <input type="text" value="Jean@gmail.com" placeholder="toto" name="email">
     <input type="text" value="12345678" placeholder="toto" name="phone">
     <input type="text" value="4" placeholder="4" name="company_id">
-    <p>input for company must be a select, with companies names as option, returned value must be the id of the selected company.</p>
     <input type="Submit">
 
     <p>It's important to give names to inputs : theses names will be used by form action to send datas to PHP</p>
 
 </form>
-
-<pre>
-{{ dump() }}
-</pre>

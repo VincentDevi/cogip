@@ -1,5 +1,8 @@
 {# *HTML VUE  #}
 {# = "SHOW_INVOICE" page (see Figma) #}
+{# TODO: update pics variable "src" and "alt"#}
+{# TODO: Links to contact + ID #}
+{# TODO: custom contacts card container scrowl (js function) #}
 
 {% extends "welcome.html.twig" %}
 
@@ -19,21 +22,19 @@
 
         {% block informations %}
             {% embed 'informations.html.twig' %}
-                    
-            {% block infotemplate %}
-                <div class="contact">
-                    <ul class="contact__infos">
-                        <li class="contact__info__item"><span class="bold">Name:&nbsp;</span>{{cmpany.contacts_name}}</li>
-                        <li class="contact__info__item"><span class="bold">TVA:&nbsp;</span>{{contact.contacts_phone}}</li>
-                        <li class="contact__info__item"><span class="bold">Country:&nbsp;</span>{{contact.email}}</li>
-                        <li class="contact__info__item"><span class="bold">Phone:&nbsp;</span>{{contact.companies_name}}</li>
-                    </ul>
-                </div>
-            {% endblock %}
 
-                {% block contactpic %}
-                    <div class="contact__pic">
-                        {# <img src=""> #}
+                {% block sectiontitle %}
+                    <h2 class="main__section__title main__section__title--company">{{companies[0].companies_name}}</h2>
+                {% endblock %}
+                        
+                {% block infotemplate %}
+                    <div class="contact">
+                        <ul class="contact__infos">
+                            <li class="contact__info__item"><span class="bold">Name:&nbsp;</span><span class="firstletterup">{{companies[0].companies_name}}</span></li>
+                            <li class="contact__info__item"><span class="bold">TVA:&nbsp;</span><span class="tvacapitalize">{{companies[0].tva}}</span></li>
+                            <li class="contact__info__item"><span class="bold">Country:&nbsp;</span><span class="firstletterup">{{companies[0].country}}</span></li>
+                            <li class="contact__info__item"><span class="bold">Phone:&nbsp;</span>{{companies[0].companies_phone}}</li>
+                        </ul>
                     </div>
                 {% endblock %}
                 
@@ -41,25 +42,55 @@
         {% endblock %}
 
         {% block companycontact %}
-            <section class="main__section">
-                <h2 class="main__section__title">Contact persons</h2>
-                    <div class="main__section__contacts">
-                        {# contains contact cards #}
+            <section class="main__section main__section--companycontacts">
+                <h2 class="main__section__title main__section__title--companycontactstitle">Contact persons</h2>
+
+                <div class="main__section__contacts">
+                    {# contains contact cards #}
+
+                    {# LOOP through contacts + update pics variable "src" and "alt" #}
+                    
+                    {% for contact in _context.contacts %}
                         <div class="contact__card">
-                            <img class="contact__card__pic">
-                            <h3 class="contact__card__name">Bertram<br>Gilfoyle</h3>
+                            <div class="contact__card__piccontainer">
+                                <img src="{{ root }}/assets/img/contactpics/close-up-portrait-handsome-stylish-young-man-standing-profile-turn-head-with-beaming-smile-express-satisfaction-enthusiasm-standing-white-wall-pleased_176420-33957.jpg" class="contactpic" alt="contactpic">
+                            </div>
+                            <a href="{{ root }}/contact/{{contact.id}}" class="contact__card__link"><h3 class="contact__card__name">{{contact.contacts_firstname}}<br>{{contact.contacts_name}}</h3></a>
                         </div>
-                        <div class="contact__card">
-                            <img class="contact__card__pic">
-                            <h3 class="contact__card__name">Henry<br>George</h3>
-                        </div>
-                    </div>
+                    {% endfor %}
+                </div>
+                    
             </section>
         {% endblock %}
 
         {# Import table template: #}
-        {% include 'datatabletemplate.html.twig' %}
+        {% embed 'datatabletemplate.html.twig' %}
 
-    {% endfor %}
+            {% block tabletitlesection %}
+                <h2 class="main__section__title main__section__title--companyinvoices">Last invoices</h2>
+            {% endblock %}
+
+            {% block tableheadercells %}
+                <th scope="col" class="table__header__row__title">Invoice number</th>
+                <th scope="col" class="table__header__row__title">Dates</th>
+                <th scope="col" class="table__header__row__title">Company</th>
+                <th scope="col" class="table__header__row__title">Created at</th>
+            {% endblock %}
+
+
+            {% block tablebodyrows %}
+
+                {% for invoice in _context.invoices %}
+                    <tr class="table__body__row">
+                        <td scope="col" class="table__body__row__cell">{{invoice.ref}}</td>
+                        <td scope="col" class="table__body__row__cell">{{invoice.due_date}}</td>
+                        <td scope="col" class="table__body__row__cell">{{invoice.companies_name}}</td>
+                        <td scope="col" class="table__body__row__cell">{{invoice.invoices_created_at}}</td>
+                    </tr>
+                {% endfor %}
+            {% endblock %}
+
+
+        {% endembed %}
 
 {% endblock %}

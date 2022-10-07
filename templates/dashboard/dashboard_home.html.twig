@@ -1,3 +1,28 @@
-{{ dump() }}
 
-<h1>dashboard home</h1>
+{# *HTML VUE  #}
+{# Dashboard Global #}
+{% extends 'dashboardlayout.html.twig' %}
+
+
+{% block main %}
+    <main class="main">
+        {% include "headerdashboard.html.twig" %}
+
+        {% include 'dashboardstats.html.twig' %}
+
+        {# ? Write function to update dashboardtables content OR create new html/twig pages? #}
+
+        {% include 'dashboardtablelayout.html.twig' %}
+
+        {% include 'dashboardtablelayout.html.twig' %}
+
+        {% include 'dashboardtablelayout.html.twig' %}    
+    </main>
+    
+
+
+{% endblock %}
+
+{# <pre>
+    {{ dump() }}
+</pre> #}

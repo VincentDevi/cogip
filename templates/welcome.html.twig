@@ -17,5 +17,14 @@
     <img src="{{ root }}/assets/img/lightIdea.svg" alt="light_idea" class="main__lightIdea">
     {% include 'lastcompanies.html.twig' %}
 
+    {% block bannerdown %}
+    <div class="bottomBanner">
+        <div class="downbanner__content">
+                <h2 class="downbanner__content__slogan">WORK BETTER<br>IN YOUR<br>COMPANY</h2>
+                <img class="downbanner__content__image" src="{{ root }}/assets/img/footer_topBanner.png" alt="downbanner_image">
+        </div>
+    </div>    
+        
+    {% endblock %}
 
 {% endblock %}
