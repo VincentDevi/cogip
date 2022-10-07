@@ -1,0 +1,51 @@
+@import "variables", "mixin";
+
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-family-title);
+    background-color: var(--color-yellow);
+    border-radius: 5%;
+    width: 50%;
+    &__text{
+        width: 50%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .errorNumber{
+            font-size: 4vw;
+        }
+        .something{
+            font-size: 3vw;
+        }
+        .wrong{
+            font-size: 5vw;
+        }
+        .home{
+            background-color: var(--color-yellow);
+            border: none;
+            padding: 0.8vw;
+            font-size: 2vw;
+            cursor: pointer;
+        }
+    }
+    &__img{
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        img{
+            width: 100%
+        }
+    }
+}
