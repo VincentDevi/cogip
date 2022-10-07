@@ -4,6 +4,7 @@ namespace App\models;
 
 class ContactModel extends ContactQueries
 {
+    // todo : need to use methods from DbManipulation instead of theses.
     /**
      * Returns the data's from the company according to the provided ID.
      * If no id is provided, returns all the companies data's.
