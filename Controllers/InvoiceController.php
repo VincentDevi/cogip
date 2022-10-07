@@ -12,8 +12,6 @@ class InvoiceController extends Controller
     public function create($data) {
         $validatedData = (new ValidateUserInput())->validate($data, 'invoice');
 
-        print_r($validatedData);
-
         if ($validatedData) {
             $validatedData['created_at'] = todayDate();
             $validatedData['updated_at'] = todayDate();

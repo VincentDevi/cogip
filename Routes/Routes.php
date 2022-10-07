@@ -131,7 +131,7 @@ $router->get('/admin/invoice/delete/([0-9]+)', function($id) {
 });
 
 $router->get('/admin/invoice/update/([0-9]+)', function($id) {
-    (new AdminUpdateInvoiceView())->show($id);
+    (new AdminInvoicesView())->showUpdateForm($id);
 });
 
 

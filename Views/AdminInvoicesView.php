@@ -52,6 +52,20 @@ class AdminInvoicesView extends Views
         }
     }
 
+    /**
+     * Show the view with form to update the invoice with provided id.
+     * Send the invoice data to allow the possibility to prefill the form.
+     *
+     * @param $id
+     * @return void
+     */
+    public function showUpdateForm($id): void
+    {
+        $data['invoice'] = (new InvoiceController())->read($id);
+
+        $this->view('dashboard/dashboard_update_invoice', $data);
+    }
+
 
 
 
