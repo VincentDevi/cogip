@@ -7,38 +7,35 @@
 //     }
 //   } 
 
-// let topbtn = document.querySelector(".topbtn");
-// const scrollHandler = () => {
-//     const scrollPosition = window.scrollY 
-//     if ( scrollPosition > 0) {
-//         topbtn.style.display = 'block'
-//     } else {
-//         topbtn.style.display = 'none'
-//     };
-//   };
+// function to display "move to top arrow btn"
+let topbtn = document.querySelector(".topbtn");
+const scrollHandler = () => {
+    const scrollPosition = window.scrollY;
+    if (scrollPosition > 800) {
+        topbtn.style.display = 'block';
+    } else {
+        topbtn.style.display = 'none';
+    };
+  };
   
-//   document.addEventListener('scroll', scrollHandler);
-//   window.onload = scrollHandler;
-
-
-// function to filter results while typing in searchfields
+  document.addEventListener('scroll', scrollHandler);
+  window.onload = scrollHandler;
 
 
 
+// ! function to filter results with searchfields: REQUIRES API Road (Json file);
+// ! Pagination REQUIRES API Road (Json file);
 
-// console.log(companylinks);
-
-var input,request, filter, tablebody, tablerows, tablerowsAar, tablecells, a, i, txtValue;
-input = document.getElementById("searchinput");
-request = input.value;
-filter = input.value.toUpperCase();
-tablebody = document.querySelector(".table__body");
-tablerows = tablebody.getElementsByTagName("tr");
-tablecells = tablebody.querySelector(".table__body__row__cell--companyname");
+// var input,request, filter, tablebody, tablerows, tablerowsAar, tablecells, a, i, txtValue;
+// input = document.getElementById("searchinput");
+// request = input.value;
+// filter = input.value.toUpperCase();
+// tablebody = document.querySelector(".table__body");
+// tablerows = tablebody.getElementsByTagName("tr");
+// tablecells = tablebody.querySelector(".table__body__row__cell--companyname");
 
 
-function filterResults() {
-    console.log(tablecells);
+// function filterResults() {
 // companylinks = tablecells.getElementsByTagName("a");
     
     
@@ -53,24 +50,23 @@ function filterResults() {
     //     }
     // }
 
-    for (i = 0; i < tablecells.length; i++) {
-        a = tablecells[i].getElementsByTagName("a");
-        if(a.textContent.toLowerCase()
-        .includes(request.toLowerCase())) {
-            tablerows[i].classList.remove("is-hidden");
-            // tablerows[i].style.display = "";
-        }  else {
-            // tablerows[i].style.display = "none";
-            tablerows[i].classList.add("is-hidden");
-        };
-    };
-};
+//     for (i = 0; i < tablecells.length; i++) {
+//         a = tablecells[i].getElementsByTagName("a");
+//             if(a.textContent.toLowerCase().includes(request.toLowerCase())) {
+//                 tablerows[i].classList.remove("is-hidden");
+//                 // tablerows[i].style.display = "";
+//             }  else {
+//                 // tablerows[i].style.display = "none";
+//                 tablerows[i].classList.add("is-hidden");
+//             };
+//         };
+// };
 
 
-let typingTimer;               
-let typeInterval = 500;
+// let typingTimer;               
+// let typeInterval = 500;
 
-input.addEventListener('keyup', () => {
-    clearTimeout(typingTimer);
-    typingTimer = setTimeout(filterResults, typeInterval);
-});
+// input.addEventListener('keyup', () => {
+//     clearTimeout(typingTimer);
+//     typingTimer = setTimeout(filterResults, typeInterval);
+// });
