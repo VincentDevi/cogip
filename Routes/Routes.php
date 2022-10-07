@@ -30,19 +30,19 @@ $router->before('GET', '/.*', function() {
         exit();
     }
 });
-$router->post('login/connect', function() {
+$router->post('/login/connect', function() {
     (new LogInView())->showConnect($_POST);
 });
-$router->get('login/disconnect', function() {
+$router->get('/login/disconnect', function() {
     (new LogInView())->showDisconnect();
 });
-$router->get('login/createUser', function() {
+$router->get('/login/createUser', function() {
     (new CreateUserView())->show();
 });
-$router->post('login/createUser/send', function() {
+$router->post('/login/createUser/send', function() {
     (new CreateUserView())->showCreate($_POST);
 });
-$router->post('login/create', function() {
+$router->post('/login/create', function() {
     (new CreateUserView())->show($_POST);
 });
 $router->set404(function() {
