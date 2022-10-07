@@ -26,6 +26,7 @@ class ValidationTable
             'reference' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
             'company_id' => 'required|numeric',
             'due_date' => 'required|date',// default : Y-m-d
+            'type' => 'required|numeric',
             'id' => 'numeric'
         ];
     }

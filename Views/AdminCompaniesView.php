@@ -23,7 +23,28 @@ class AdminCompaniesView extends Views
      */
     public function showCreateForm(): void
     {
-        $this->view('dashboard/dashboard_create_company');
+        $data['companies_type'] = $this->companyTypes();
+
+        $this->view('dashboard/dashboard_create_company', $data);
+    }
+
+    /**
+     * Return the possibles companies types.
+     *
+     * @return \string[][]
+     */
+    private function companyTypes(): array
+    {
+        return [
+            [
+                'id' => '1',
+                'type_name' => 'supplier'
+            ],
+            [
+                'id' => '2',
+                'type_name' => 'client'
+            ]
+        ];
     }
 
     /**
@@ -59,6 +80,7 @@ class AdminCompaniesView extends Views
     public function showUpdateForm($id): void
     {
         $data['companies'] = (new CompanyController())->read($id);
+        $data['companies_type'] = $this->companyTypes();
 
         $this->view('dashboard/dashboard_update_company', $data);
     }

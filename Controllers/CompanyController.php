@@ -16,8 +16,8 @@ class CompanyController extends Controller
             $validatedData['created_at'] = todayDate();
             $validatedData['updated_at'] = todayDate();
 
-            // todo: choice must be in form, not in hard. send the two types to front like in contact controller
-            $validatedData['type'] = 1;
+//            // todo: choice must be in form, not in hard. send the two types to front like in contact controller
+//            $validatedData['type'] = 1;
 
             return (new CompanyModel())->createEntry($validatedData);
         } else {
@@ -35,8 +35,8 @@ class CompanyController extends Controller
         if ($validatedData) {
             $validatedData['updated_at'] = todayDate();
 
-            // todo: choice must be in form, not in hard. send the two types to front like in contact controller
-            $validatedData['type'] = 1;
+//            // todo: choice must be in form, not in hard. send the two types to front like in contact controller
+//            $validatedData['type'] = 1;
 
             return (new CompanyModel())->updateEntry($validatedData);
         } else {
