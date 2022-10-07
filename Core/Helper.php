@@ -120,3 +120,11 @@ function getUrlLastElement():string{
     return $array[count($array)-1];
 
 }
+
+function getCurrentUser() {
+    if (isset($_SESSION['firstname']) && isset($_SESSION['name'])) {
+        return $_SESSION["firstname"]." ".$_SESSION["name"];
+    } else {
+        return "";
+    }
+}

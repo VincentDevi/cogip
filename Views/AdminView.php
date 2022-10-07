@@ -14,7 +14,8 @@ class AdminView extends Views
     public function show() {
         $data = (new HomeController())->read();
 
-        $data['user'] = CURRENT_USER;
+//        $data['user'] = CURRENT_USER;
+//        $data['user'] = getCurrentUser();
 
         $this->view('dashboard/dashboard_home', $data);
     }

@@ -210,8 +210,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `role_id`, `last_name`, `email`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 1, 'admin', 'admin@gmail.com', 'admin', '2022-10-05 15:37:11', '2022-10-05 15:37:11');
-
+(1, 'Jean-Christian', 1, 'Ranu', 'Jean-Christian@cogip.com', 'admin', '2022-10-05 15:37:11', '2022-10-05 15:37:11');
 --
 -- Indexes for dumped tables
 --
