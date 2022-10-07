@@ -37,6 +37,25 @@
   --border-radius-circle: 50%: ;
 }
 
+.mybtn {
+  white-space: nowrap;
+  font-size: 4rem;
+  position: fixed;
+  right: 0;
+  bottom: 50px;
+  left: 0;
+  margin: auto;
+  width: 40px;
+  height: 40px;
+  transform: translateY(0);
+  transition: all 750ms ease-in-out;
+}
+
+/* this sets the position of the arrow when it's up, so it will move up or down by 14px when you add or remove this class */
+.lift {
+  transform: translateY(14px);
+}
+
 .header {
   background-color: var(--color-yellow);
   width: 100%;
@@ -240,6 +259,16 @@
   padding: 80px 0px;
   margin-top: 6.25rem;
 }
+@media only screen and (max-width: 413px) {
+  .footer .footer__banner {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 811px) {
+  .footer .footer__banner {
+    flex-direction: column;
+  }
+}
 .footer .footer__banner .footer__banner__logo {
   font-weight: 900;
   font-size: 48px;
@@ -264,6 +293,11 @@
 @media only screen and (max-width: 413px) {
   .footer .footer__banner .footer__banner__infos {
     width: 100%;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 811px) {
+  .footer .footer__banner .footer__banner__infos {
     align-items: center;
   }
 }
@@ -342,12 +376,22 @@
     flex-direction: column;
   }
 }
+@media only screen and (max-width: 811px) {
+  .footer .footer__menu {
+    flex-direction: column;
+  }
+}
 .footer .footer__menu .footer__menu__nav {
   display: flex;
   justify-content: space-evenly;
   gap: 2vw;
 }
 @media only screen and (max-width: 413px) {
+  .footer .footer__menu .footer__menu__nav {
+    flex-wrap: wrap;
+  }
+}
+@media only screen and (max-width: 811px) {
   .footer .footer__menu .footer__menu__nav {
     flex-wrap: wrap;
   }
@@ -776,4 +820,4 @@ main .contact__pic .contactbigpic {
   .topbtn a:visited .topbtn a:active .topbtn a:hover {
     color: white;
   }
-}
+}/*# sourceMappingURL=styles.css.map */
