@@ -37,6 +37,25 @@
   --border-radius-circle: 50%: ;
 }
 
+.mybtn {
+  white-space: nowrap;
+  font-size: 4rem;
+  position: fixed;
+  right: 0;
+  bottom: 50px;
+  left: 0;
+  margin: auto;
+  width: 40px;
+  height: 40px;
+  transform: translateY(0);
+  transition: all 750ms ease-in-out;
+}
+
+/* this sets the position of the arrow when it's up, so it will move up or down by 14px when you add or remove this class */
+.lift {
+  transform: translateY(14px);
+}
+
 .main__section {
   display: flex;
   flex-direction: column;
@@ -74,11 +93,14 @@ body {
   }
 }
 body .aside {
-  height: 100%;
-  width: 15%;
+  width: 20%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+}
+@media (max-width: 413px) {
+  body .aside {
+    padding: 3vh 2vw 2vh;
+  }
 }
 @media (max-width: 413px) {
   body .aside {
@@ -88,14 +110,20 @@ body .aside {
     width: 100%;
   }
 }
+body .aside__section {
+  width: 100%;
+}
 body .aside__section--user {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border: 1px solid #E7E7E7;
-  padding: 20%;
   text-align: center;
   font-family: var(--font-family-header);
   font-weight: 900;
   font-size: 1.5vw;
-  height: 100%;
+  aspect-ratio: 1/1;
 }
 @media (max-width: 413px) {
   body .aside__section--user {
@@ -112,7 +140,7 @@ body .aside__section--user {
   }
 }
 body .aside__section--user .section__user__pic img {
-  width: 60%;
+  width: 40%;
   margin-bottom: 10%;
 }
 @media (max-width: 413px) {
@@ -125,20 +153,34 @@ body .aside__section--user .section__user__pic img {
 body .aside__section--user h3 {
   display: none;
 }
-body .aside__section--nav .aside__section__nav {
-  margin-left: 2vw;
-  height: 100%;
-}
-@media (max-width: 413px) {
-  body .aside__section--nav .aside__section__nav {
-    margin-left: 0vw;
+@media (min-width: 600px) {
+  body .aside__section--user h3 {
+    font-size: 1rem;
+    display: block;
+    font-weight: var(--font-weight-black);
+    line-height: 1.1;
   }
 }
+body .aside__section--nav {
+  flex-grow: 1;
+  margin-top: 15%;
+}
+@media (max-width: 413px) {
+  body .aside__section--nav {
+    margin: 0;
+  }
+}
+body .aside__section--nav .aside__section__nav {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
 body .aside__section--nav .aside__section__nav ul {
-  margin-top: 30%;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  justify-content: center;
+  padding-left: 15%;
 }
 @media (max-width: 413px) {
   body .aside__section--nav .aside__section__nav ul {
@@ -149,7 +191,8 @@ body .aside__section--nav .aside__section__nav ul {
 body .aside__section--nav .aside__section__nav ul li {
   display: flex;
   align-items: center;
-  margin-bottom: 25%;
+  margin: 0.8em 0;
+  padding: 0.2em 0;
 }
 @media (max-width: 413px) {
   body .aside__section--nav .aside__section__nav ul li {
@@ -163,12 +206,14 @@ body .aside__section--nav .aside__section__nav ul li {
 body .aside__section--nav .aside__section__nav ul li img {
   width: 15px;
 }
-body .aside__section--nav .aside__section__nav ul li span {
+body .aside__section--nav .aside__section__nav ul li a {
+  text-decoration: none;
   margin-left: 1rem;
   font-size: 1.2vw;
+  color: inherit;
 }
 @media (max-width: 413px) {
-  body .aside__section--nav .aside__section__nav ul li span {
+  body .aside__section--nav .aside__section__nav ul li a {
     margin-left: 0rem;
     font-size: 2.2vw;
   }
@@ -185,10 +230,13 @@ body .aside__section--nav .aside__section__nav ul li:hover {
 }
 body .aside__section--logout {
   border-top: 1px solid #E7E7E7;
-  padding-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  bottom: 0;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 @media (max-width: 413px) {
   body .aside__section--logout {
@@ -201,8 +249,8 @@ body .aside__section--logout {
   }
 }
 body .aside__section--logout img {
-  width: 25%;
-  margin-left: 5%;
+  width: 16.8%;
+  margin: 3% 5%;
 }
 @media (max-width: 413px) {
   body .aside__section--logout img {
@@ -224,8 +272,8 @@ body .aside__section--logout h6:hover {
   cursor: pointer;
 }
 body .main {
-  width: 85%;
-  padding: 3%;
+  width: 80%;
+  padding: 3% 0;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -274,6 +322,10 @@ body .main .header__welcome {
 }
 body .main .header__welcome h2 {
   font-size: 2vw;
+  font-weight: var(--font-weight-bold);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   color: white;
 }
 @media (max-width: 413px) {
@@ -284,6 +336,12 @@ body .main .header__welcome h2 {
 body .main .header__welcome p {
   font-size: 1vw;
   font-weight: 300;
+  max-width: 30%;
+  line-height: 1.2;
+  margin: 0.5rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   color: rgba(255, 255, 255, 0.8);
 }
 @media (max-width: 413px) {
@@ -293,9 +351,9 @@ body .main .header__welcome p {
 }
 body .main .header__illustration {
   position: absolute;
-  bottom: 35%;
+  top: -22%;
   left: 60%;
-  width: 30%;
+  width: 35%;
 }
 @media (max-width: 413px) {
   body .main .header__illustration {
@@ -363,4 +421,4 @@ body .main__section--datatable {
     width: 90%;
     font-size: 2.5vw;
   }
-}/*# sourceMappingURL=dashboard.css.map */
+}
