@@ -122,6 +122,10 @@ $router->get('/admin/invoice/create', function() {
     (new AdminInvoicesView())->showCreateForm();
 });
 
+$router->post('/admin/invoice/create', function() {
+    (new AdminInvoicesView())->showCreateSubmit($_POST);
+});
+
 $router->get('/admin/invoice/delete/([0-9]+)', function($id) {
     (new AdminInvoicesView())->deleteEntry($id);
 });

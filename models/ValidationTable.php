@@ -24,8 +24,9 @@ class ValidationTable
     protected function getInvoiceTable() {
         return [
             'reference' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
-            'price' => 'required|numeric',
-            'company' => 'required|regex:/^[a-zA-Z0-9][ A-Za-z0-9_-]*$/',
+            'company_id' => 'required|numeric',
+            'due_date' => 'required|date',// default : Y-m-d
+            'id' => 'numeric'
         ];
     }
 

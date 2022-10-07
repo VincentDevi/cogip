@@ -3,6 +3,7 @@
 namespace App\Views;
 
 use App\Controllers\CompanyController;
+use App\Controllers\ContactController;
 use App\Controllers\InvoiceController;
 
 class AdminInvoicesView extends Views
@@ -28,6 +29,29 @@ class AdminInvoicesView extends Views
         $this->view('dashboard/dashboard_create_invoice', $data);
     }
 
+    /**
+     * Submit the create form by calling tha appropriate controller.
+     * Then redirect to dashboard invoices page with a success message in sent data's.
+     * If no success : redirect to dashboard crete invoices page with a fail message in sent data's.
+     *
+     * @param $inputs
+     * @return void
+     */
+    public function showCreateSubmit($inputs): void
+    {
+        $created = (new InvoiceController())->create($inputs);
+
+        if ($created === TRUE) {
+            $data['message'] = INVOICE_CREATION_SUCCESS_MESSAGE;
+
+            $this->showAll($data);
+        } else {
+            $data['message'] = INVOICE_CREATION_ERROR_MESSAGE;
+
+            $this->view('dashboard/dashboard_create_invoice', $data);
+        }
+    }
+
 
 
 
@@ -46,11 +70,10 @@ class AdminInvoicesView extends Views
         if ($deleted === TRUE) {
             $data['message'] = INVOICE_DELETE_SUCCESS_MESSAGE;
 
-            $this->showAll($data);
         } else {
             $data['message'] = INVOICE_DELETE_ERROR_MESSAGE;
 
-            $this->showAll($data);
         }
+        $this->showAll($data);
     }
 }

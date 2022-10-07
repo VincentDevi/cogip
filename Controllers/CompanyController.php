@@ -24,7 +24,6 @@ class CompanyController extends Controller
         } else {
             return NULL;
         }
-
     }
 
     public function read($id = NULL) {

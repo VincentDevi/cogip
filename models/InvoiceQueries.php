@@ -9,6 +9,7 @@ class InvoiceQueries extends DbManipulation
                 SELECT invoices.id,
                        invoices.ref,
                        companies.companies_name AS company_name,
+                       id_company AS company_ide,
                        invoices_created_at AS created_at,
                        invoices_updated_at AS updated_at,
                        invoices.due_date 
@@ -16,6 +17,32 @@ class InvoiceQueries extends DbManipulation
                 INNER JOIN companies
                 ON companies.id=invoices.id_company
                 WHERE invoices.id = :id ;
+            ";
+    }
+
+    /**
+     * Returns the query to create a new contact.
+     *
+     * @return string
+     */
+    protected function createQuery(): string
+    {
+        return "
+                INSERT INTO invoices 
+                            (
+                             ref, 
+                             id_company,
+                             invoices_created_at, 
+                             invoices_updated_at, 
+                             due_date
+                             ) 
+                VALUES (
+                        :reference,
+                        :company_id,
+                        :created_at, 
+                        :updated_at, 
+                        :due_date
+                        ) ;
             ";
     }
 
