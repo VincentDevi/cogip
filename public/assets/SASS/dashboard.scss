@@ -20,7 +20,7 @@ body {
             justify-content: center;
             align-items: center;
             width: 100%;
-            
+
         }
 
         &__section--user {
@@ -39,14 +39,16 @@ body {
                 height: 0%;
                 width: 35%;
             }
-            .section__user__pic{
+
+            .section__user__pic {
                 @media (max-width: 413px) {
                     width: 75%;
                 }
+
                 img {
                     width: 60%;
                     margin-bottom: 10%;
-    
+
                     @media (max-width: 413px) {
                         width: 30px;
                         margin-bottom: 0%;
@@ -54,8 +56,8 @@ body {
                     }
                 }
             }
-            
-            h3{
+
+            h3 {
                 display: none;
             }
         }
@@ -64,9 +66,11 @@ body {
             .aside__section__nav {
                 margin-left: 2vw;
                 height: 100%;
+
                 @media (max-width: 413px) {
                     margin-left: 0vw;
                 }
+
                 ul {
                     margin-top: 30%;
                     display: flex;
@@ -110,6 +114,7 @@ body {
                         font-weight: 600;
                         border-right: solid 3px #9698D6;
                         cursor: pointer;
+
                         @media (max-width: 413px) {
                             border-right: solid 0px #9698D6;
                         }
@@ -178,6 +183,15 @@ body {
             flex-wrap: nowrap;
         }
 
+        @media (max-width: 811px) {
+            width: 100%;
+            padding: 0%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+
         .header {
             width: 92%;
             position: relative;
@@ -189,6 +203,7 @@ body {
                 &__title {
                     font-weight: 900;
                     font-size: 2vw;
+
                     @media (max-width: 413px) {
                         font-size: 4vw;
                     }
@@ -196,6 +211,7 @@ body {
 
                 &__subtitle {
                     font-size: 1vw;
+
                     @media (max-width: 413px) {
                         font-size: 3vw;
                     }
@@ -210,14 +226,17 @@ body {
                 h2 {
                     font-size: 2vw;
                     color: white;
+
                     @media (max-width: 413px) {
                         font-size: 4vw;
                     }
                 }
+
                 p {
                     font-size: 1vw;
                     font-weight: 300;
                     color: rgba(255, 255, 255, 0.8);
+
                     @media (max-width: 413px) {
                         font-size: 3vw;
                     }
@@ -233,6 +252,10 @@ body {
                 @media (max-width: 413px) {
                     display: none;
                 }
+
+                @media (max-width: 811px) {
+                    bottom: 15%;
+                }
             }
         }
 
@@ -243,6 +266,10 @@ body {
             border-radius: 10px;
 
             @media (max-width: 413px) {
+                width: 90%;
+            }
+
+            @media (max-width: 811px) {
                 width: 90%;
             }
 
@@ -257,6 +284,9 @@ body {
                 align-items: center;
 
                 @media (max-width: 413px) {
+                    margin-bottom: 3vh;
+                }
+                @media (max-width: 811px) {
                     margin-bottom: 3vh;
                 }
 
@@ -279,13 +309,22 @@ body {
                     text-align: center;
                     color: white;
                     border-radius: 50%;
-                    width: 10vw;
-                    height: 10vw;
+                    width: 8vw;
+                    height: 8vw;
                     font-size: 1vw;
 
                     @media (max-width: 413px) {
                         font-size: 2vw;
                     }
+
+                    @media (max-width: 811px) {
+                        width: 10vw;
+                        height: 10vw;
+                        font-size: 1.5vw;
+
+                    }
+
+
                 }
             }
         }
@@ -299,6 +338,11 @@ body {
             @media (max-width: 413px) {
                 width: 90%;
                 font-size: 2.5vw;
+            }
+
+            @media (max-width: 811px) {
+                width: 90%;
+                font-size: 2vw;
             }
         }
     }

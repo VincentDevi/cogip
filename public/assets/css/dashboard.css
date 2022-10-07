@@ -37,6 +37,25 @@
   --border-radius-circle: 50%: ;
 }
 
+.mybtn {
+  white-space: nowrap;
+  font-size: 4rem;
+  position: fixed;
+  right: 0;
+  bottom: 50px;
+  left: 0;
+  margin: auto;
+  width: 40px;
+  height: 40px;
+  transform: translateY(0);
+  transition: all 750ms ease-in-out;
+}
+
+/* this sets the position of the arrow when it's up, so it will move up or down by 14px when you add or remove this class */
+.lift {
+  transform: translateY(14px);
+}
+
 .main__section {
   display: flex;
   flex-direction: column;
@@ -242,6 +261,16 @@ body .main {
     flex-wrap: nowrap;
   }
 }
+@media (max-width: 811px) {
+  body .main {
+    width: 100%;
+    padding: 0%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+}
 body .main .header {
   width: 92%;
   position: relative;
@@ -302,6 +331,11 @@ body .main .header__illustration {
     display: none;
   }
 }
+@media (max-width: 811px) {
+  body .main .header__illustration {
+    bottom: 15%;
+  }
+}
 body .main__section--statistique {
   width: 45%;
   height: 25%;
@@ -309,6 +343,11 @@ body .main__section--statistique {
   border-radius: 10px;
 }
 @media (max-width: 413px) {
+  body .main__section--statistique {
+    width: 90%;
+  }
+}
+@media (max-width: 811px) {
   body .main__section--statistique {
     width: 90%;
   }
@@ -323,6 +362,11 @@ body .main__section--statistique .main__section__stats {
   align-items: center;
 }
 @media (max-width: 413px) {
+  body .main__section--statistique .main__section__stats {
+    margin-bottom: 3vh;
+  }
+}
+@media (max-width: 811px) {
   body .main__section--statistique .main__section__stats {
     margin-bottom: 3vh;
   }
@@ -343,13 +387,20 @@ body .main__section--statistique .main__section__stats p {
   text-align: center;
   color: white;
   border-radius: 50%;
-  width: 10vw;
-  height: 10vw;
+  width: 8vw;
+  height: 8vw;
   font-size: 1vw;
 }
 @media (max-width: 413px) {
   body .main__section--statistique .main__section__stats p {
     font-size: 2vw;
+  }
+}
+@media (max-width: 811px) {
+  body .main__section--statistique .main__section__stats p {
+    width: 10vw;
+    height: 10vw;
+    font-size: 1.5vw;
   }
 }
 body .main__section--datatable {
@@ -362,5 +413,11 @@ body .main__section--datatable {
   body .main__section--datatable {
     width: 90%;
     font-size: 2.5vw;
+  }
+}
+@media (max-width: 811px) {
+  body .main__section--datatable {
+    width: 90%;
+    font-size: 2vw;
   }
 }/*# sourceMappingURL=dashboard.css.map */
