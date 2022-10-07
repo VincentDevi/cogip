@@ -16,7 +16,7 @@ class CreateUser extends Dbh
             $test = $this->createUserValidation($input);
             if ( $test !=  null ){
                 $ok = $this->valuesToExecute($test);
-                $this->executeQuery($this->queryCreateUser(),$test);
+                $this->executeQuery($this->queryCreateUser(),$ok);
                 $error = "user successfully created";
                 $road = "/login/login";
             }else{
@@ -59,10 +59,10 @@ class CreateUser extends Dbh
         return !$validation->fails() ? $values : null;
     }
     private function valuesToExecute($input){
-        $array["created_at"]=todayDate();
-        $array["updated_at"]=todayDate();
-        $array["role_id"]= 1;
-        unset($array["confirm_password"]);
-        return $array;
+        $input["created_at"]=todayDate();
+        $input["updated_at"]=todayDate();
+        $input["role_id"]= 1;
+        unset($input["confirm_password"]);
+        return $input;
     }
 }
