@@ -13,6 +13,7 @@
   --color-purpledashboard: rgba(150, 152, 214, 1);
   --color-darkpurpledashboard: rgba(77, 76, 172, 1);
   --color-pinkdashboard: rgba(255, 128, 139, 1);
+  --color-backgroundDash: rgba(245, 245, 251, 1);
   --font-family-header: "Roboto", sans-serif;
   --font-family-title: "Inter", sans-serif;
   --font-size-body: 1rem;
@@ -34,25 +35,6 @@
   --border-radius-2xl: 2rem;
   --border-radius-pill: 50rem;
   --border-radius-circle: 50%: ;
-}
-
-.mybtn {
-  white-space: nowrap;
-  font-size: 4rem;
-  position: fixed;
-  right: 0;
-  bottom: 50px;
-  left: 0;
-  margin: auto;
-  width: 40px;
-  height: 40px;
-  transform: translateY(0);
-  transition: all 750ms ease-in-out;
-}
-
-/* this sets the position of the arrow when it's up, so it will move up or down by 14px when you add or remove this class */
-.lift {
-  transform: translateY(14px);
 }
 
 .header {
