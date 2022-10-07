@@ -20,10 +20,16 @@ class ContactController extends Controller
     public function create($data): ?bool
     {
         $validatedData = (new ValidateUserInput())->validate($data, 'contact');
-        $validatedData['created_at'] = todayDate();
-        $validatedData['updated_at'] = todayDate();
 
-        return $validatedData ? (new ContactModel())->createContact($validatedData) : NULL;
+        if ($validatedData) {
+            $validatedData['created_at'] = todayDate();
+            $validatedData['updated_at'] = todayDate();
+
+            return (new ContactModel())->createContact($validatedData);
+        } else {
+            return NULL;
+        }
+
     }
 
     /**

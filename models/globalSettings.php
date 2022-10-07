@@ -1,11 +1,6 @@
 <?php
 
 /**
- * The current user. Should be deprecated with login.
- */
-const CURRENT_USER = "Jean-Christian Ranu";
-
-/**
  * The quantity of items to display for contacts, companies, invoices
  * on the homepage and dashboard home.
  */
@@ -35,3 +30,15 @@ const COMPANY_UPDATE_ERROR_MESSAGE = 'Something went wrong.';
 const COMPANY_DELETE_SUCCESS_MESSAGE = 'Company successfully deleted.';
 
 const COMPANY_DELETE_ERROR_MESSAGE = 'Something went wrong.';
+
+const INVOICE_CREATION_SUCCESS_MESSAGE = 'Invoice successfully created.';
+
+const INVOICE_CREATION_ERROR_MESSAGE = 'Something went wrong.';
+
+const INVOICE_UPDATE_SUCCESS_MESSAGE = 'Invoice successfully updated.';
+
+const INVOICE_UPDATE_ERROR_MESSAGE = 'Something went wrong.';
+
+const INVOICE_DELETE_SUCCESS_MESSAGE = 'Invoice successfully deleted.';
+
+const INVOICE_DELETE_ERROR_MESSAGE = 'Something went wrong.';

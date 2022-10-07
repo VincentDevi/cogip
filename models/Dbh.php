@@ -4,7 +4,6 @@ namespace App\models;
 
 use PDO;
 use PDOException;
-use App\models\dashboard\Form;
 
 require_once 'dbSettings.php';
 
@@ -13,8 +12,6 @@ require_once 'dbSettings.php';
  */
 class Dbh
 {
-
-    // todo : refactor name to fetchData
     /**
      * Execute the provided query to the database and return the results.
      * Optional $vars parameter specifies an array of variables to pass to the query.
@@ -49,6 +46,7 @@ class Dbh
     public function executeQuery($query, $data){
         $connexion = $this->connexion();
         $stmt = $connexion->prepare($query);
+
         $stmt->execute($data);
 
         $connexion = NULL;
@@ -57,6 +55,14 @@ class Dbh
         // todo : return null if something went wrong.
         return TRUE;
     }
+
+    /**
+     * Execute the provided query with the provide data's
+     *
+     * @param $query
+     * @param $data
+     * @return mixed
+     */
     public function executeCountQuery($query, $data){
         $connexion = $this->connexion();
         $stmt = $connexion->prepare($query);

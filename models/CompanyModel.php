@@ -17,7 +17,11 @@ class CompanyModel extends CompanyQueries
         // todo : return NULL and show error if fetch return nothing or empty array.
         if ($id) {
             $query = $this->getAllQuery();
+
+//            print_r($query);
             $rawData = $this->fetchData($query,["id"=>$id]);
+
+//            print_r($id);
 
             return [
                 'companies' => $this->getCompany($rawData),
@@ -30,13 +34,14 @@ class CompanyModel extends CompanyQueries
     }
 
     private function getCompany($data) {
-        return [
-            'company_id' => $data[0]['company_id'],
-            'company_name' => $data[0]['company_name'],
-            'company_vat' => $data[0]['company_vat'],
-            'company_country' => $data[0]['company_country'],
-            'company_phone' => $data[0]['company_phone'],
-        ];
+        return 'test';
+//        return [
+//            'company_id' => $data[0]['company_id'],
+//            'company_name' => $data[0]['company_name'],
+//            'company_vat' => $data[0]['company_vat'],
+//            'company_country' => $data[0]['company_country'],
+//            'company_phone' => $data[0]['company_phone'],
+//        ];
     }
 
     function mapContacts($data): array {

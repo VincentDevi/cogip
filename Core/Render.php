@@ -31,6 +31,8 @@ class Render
 //        $data['root'] = $this->getRoot();
 
         $data['root'] = getRoot();
+        $data['user'] = getCurrentUser();
+
         echo $twig->render($templateFile, $data);
     }
 

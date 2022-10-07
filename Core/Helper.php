@@ -124,4 +124,14 @@ function sanitize($input){
         $i = htmlspecialchars($i);
     }
     return $input;
+
+}
+
+function getCurrentUser() {
+    if (isset($_SESSION['firstname']) && isset($_SESSION['name'])) {
+        return $_SESSION["firstname"]." ".$_SESSION["name"];
+    } else {
+        return "";
+    }
+
 }

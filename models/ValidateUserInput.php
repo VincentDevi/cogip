@@ -60,6 +60,8 @@ class ValidateUserInput extends ValidationTable
         $validator = new Validator();
         $validation = $validator->validate($rawInputs, $table);
 
+//        print_r($validation->fails());
+
         return $validation->fails() ? NULL : $rawInputs;
     }
 }

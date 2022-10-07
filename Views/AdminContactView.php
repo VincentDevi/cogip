@@ -120,11 +120,10 @@ class AdminContactView extends Views
         if ($deleted === TRUE) {
             $data['message'] = CONTACT_DELETE_SUCCESS_MESSAGE;
 
-            $this->view('dashboard/dashboard_contacts', $data);
         } else {
             $data['message'] = CONTACT_DELETE_ERROR_MESSAGE;
 
-            $this->view('dashboard/dashboard_contacts', $data);
         }
+        $this->showAll($data);
     }
 }
