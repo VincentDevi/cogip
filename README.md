@@ -15,7 +15,7 @@ This is a from scratch ERP for a fictive company.
 - Regex man [Vincent Devilers](https://github.com/VincentDevi)
 - Frenetic refactorer [Rinaldo Benaccetta](https://github.com/RinaldoBenaccetta)
 
-## go to [cogip](https://https://cogip-vsxr.000webhostapp.com/)
+## go to [cogip](https://cogip-vsxr.000webhostapp.com/)
 
 ## Project infos
 
