@@ -1,0 +1,29 @@
+
+<h1>dashboard update company</h1>
+
+<form method="POST" action="{{ root }}/admin/company/update" name="form" id="form">
+
+    <p>In the tag form, we put the route for submitting form in action.
+        The routes are in routes_list.md at *Submit routes* section</p>
+
+    <p>
+        Inputs must be prefilled with data's in contact.
+    </p>
+
+    <input type="text" value="MegaCorp" placeholder="toto" name="name">
+    <input type="text" value="Belgium" placeholder="toto" name="country">
+    <input type="text" value="1234" placeholder="toto" name="vat">
+    <input type="text" value="12345678" placeholder="toto" name="phone">
+    <input type="text" value="2" placeholder="2" name="type">
+    <p>input for type must be a select, with types names as option, returned value must be the id of the selected type.</p>
+    <input type="hidden" name="company_id" value="7">
+    <p>Value of hidden input named contact_id must be the id of the contact</p>
+    <input type="Submit">
+
+    <p>It's important to give names to inputs : theses names will be used by form action to send datas to PHP</p>
+
+</form>
+
+<pre>
+    {{ dump() }}
+</pre>

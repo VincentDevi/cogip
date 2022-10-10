@@ -1,0 +1,82 @@
+@import "variables";
+
+body{
+    font-family: var(--font-family-title);
+    background-color: var(--color-yellow);
+    margin-top: 10vh;
+    @media (min-width: 413px) {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    @media (min-width: 821px) {
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    main{
+        background-color: rgb(255, 255, 255);
+        padding: 10%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        border-radius: 15px;
+
+        .header{
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 4vh;
+            margin-bottom: 4vh;
+            border-bottom: solid 1px var(--color-yellow);
+            .title{
+                font-size: 8vw;
+                @media (min-width: 821px) {
+                    font-size: 3vw;
+                }
+            }
+            .description{
+                font-size: 4vw;
+                @media (min-width: 821px) {
+                    font-size: 2vw;
+                }
+            }
+        }
+        .form{
+            display: flex;
+            flex-direction: column;
+            input{
+                border-radius: 5px;
+                padding: 2vw;
+                border: solid 0.25px rgb(211, 211, 211);
+                margin-bottom: 2vh;
+                font-size: 4vw;
+                color: rgb(124, 124, 124);
+                @media (min-width: 821px) {
+                    font-size: 2vw;
+                    padding: 1vw;
+                }
+            }
+            .submit{
+                background-color: var(--color-yellow);
+                color: black;
+            }
+            .submit:hover{
+                background-color: var(--color-yellow);
+                color: black;
+                border: solid 0.25px black;
+            }
+        }
+        .footer{
+            text-align: center;
+            font-size: 3vw;
+            margin-top: 3vh;
+            padding-top: 3vh;
+            border-top: solid 1px var(--color-yellow);
+            @media (min-width: 821px) {
+                font-size: 1vw;
+            }
+        }
+    }
+}

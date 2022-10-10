@@ -1,0 +1,32 @@
+{# ELEMENT TO INCLUDE : #}
+{# Last contacts table ==> to include on welcome.html.twig page AND on dashboardglobal.html.twig #}
+{# TODO: update styles on dashboard.scss #}
+{# TODO: order Last contacts by date (5 last encoded) #}
+
+
+{% extends 'datatabletemplate.html.twig' %}
+
+    {% block tabletitlesection %}
+        <h2 class="main__section__title">Last Contacts</h2>
+    {% endblock %}
+
+    {% block tableheadercells %}
+        <th scope="col" class="table__header__row__title">Name</th>
+        <th scope="col" class="table__header__row__title">Phone</th>
+        <th scope="col" class="table__header__row__title">Mail</th>
+        <th scope="col" class="table__header__row__title">Company</th>
+        <th scope="col" class="table__header__row__title">Created at</th>
+    {% endblock %}
+
+    {% block tablebodyrows %}
+
+        {% for contact in _context.contacts %}
+            <tr class="table__body__row">
+                <td scope="col" class="table__body__row__cell">{{contact.contacts_name}}</td>
+                <td scope="col" class="table__body__row__cell">{{contact.contacts_phone}}</td>
+                <td scope="col" class="table__body__row__cell">{{contact.email}}</td>
+                <td scope="col" class="table__body__row__cell">{{contact.companies_name}}</td>
+                <td scope="col" class="table__body__row__cell">{{contact.contacts_created_at}}</td>
+            </tr>
+        {% endfor %}
+    {% endblock %}

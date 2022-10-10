@@ -1,0 +1,32 @@
+{# ELEMENT TO INCLUDE #}
+{# Dashboard Statistics table ==> to include on dashboardglobal.html #}
+
+{% block dashboardglobalsection %}
+
+<section class="main__section main__section--statistique">
+
+    {% block dashboardtabletitle %}
+    <h3 class="main__section__title main__section__title--stats">Statistics</h3>
+    {% endblock %}
+
+
+    {% block dashboardsectioncontent %}
+    <div class="main__section__stats">
+        <div class="stats__block">
+            {# TODO: replace p.innerhtml by variables #}
+            <p class="stats_block__data stats_block__data--contact">{{ stats.invoices.Quantity }}<br>Invoices</p>
+        </div>
+        <div class="stats__block">
+            <p class="stats_block__data stats_block__data--invoices">{{ stats.contacts.Quantity }}<br>Contacts</p>
+        </div>
+        <div class="stats__block">
+            <p class="stats_block__data stats_block__data--companies">{{ stats.companies.Quantity }}<br>Companies</p>
+        </div>
+        
+    </div>
+
+    {% endblock %}
+    
+</section>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{# *HTML VUE  #}
+{# *ALL INVOICES Page #}
+{# see exemple page for datavalues #}
+
+{# TODO: 1. correct road for links to company/id pages #}
+{# TODO: 2. order data by date (from the most recent to the oldest) #}
+{# TODO: 3. withdraw hour in "created at" ?? #}
+
+{% extends "welcome.html.twig" %}
+
+{% block title %}All Invoices{% endblock %}
+
+
+
+
+{% block content %}
+
+    {% embed 'datadetails.html.twig' %}
+    {# "embed" function allow to update block content as "extends" does.
+    /!\ the "include" function does NOT. #}
+
+    {% block tabletitlesection %}
+        <div class="div__title">
+            <h2 class="main__section__title main__section__title--yellowshadow">All&nbsp;invoices</h2>
+            <input class="searchinput" type="search" placeholder="Search company" name="searchinput" id="searchinvoice"></input>
+        </div>
+    {% endblock %}
+
+        {% block tableheadercells %}
+
+        <th scope="col" class="table__header__row__title">Invoice Number</th>
+        <th scope="col" class="table__header__row__title">Due dates <span class="ordertriangle">&#9662;</span></th>
+        <th scope="col" class="table__header__row__title">Company</th>
+        <th scope="col" class="table__header__row__title">Created at</th>
+        {% endblock %}
+    
+
+        {% block tablebodyrows %}
+            {% for invoice in _context.invoices %}
+        
+        <tr class="table__body__row">
+            <td scope="col" class="table__body__row__cell"><a href="/company/{{invoice.id_company}}">{{invoice.ref}}</a></td>
+            <td scope="col" class="table__body__row__cell">{{invoice.due_date}}</td>
+            <td scope="col" class="table__body__row__cell">{{invoice.companies_name}}</td>
+            <td scope="col" class="table__body__row__cell">{{invoice.invoices_created_at}}</td>
+        </tr>
+            {% endfor %}
+
+        {% endblock %}
+        
+
+    {% endembed %}
+
+{% endblock %}
+
+
+
+{# 
+    
+1st col "Invoice number" => value = "ref" (/!\: add links with value "=id" to number to redirect to a new Invoice detail page = company page);
+
+2nd col "Due dates" => vamue = "due_date"(/!\ : from the most recent to the oldest. Add ordertriangle) 
+
+3rd col: "Company" => value = "companies_name"
+
+4th col "Created at" => value = "created_at"
+
+#}

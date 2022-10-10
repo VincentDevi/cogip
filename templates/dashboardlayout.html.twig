@@ -1,0 +1,30 @@
+{# TEMPLATE TO EXTEND #}
+{# Dashboard Template #}
+
+{% extends 'base.html.twig' %}
+
+    {% block stylesheets %}
+    <link href="{{ root }}/assets/css/dashboard.css" rel="stylesheet" type="text/css">
+    {% endblock %}
+
+
+    {% block body %}
+    <body>
+{# --------------------------- MAIN CONTENT--------------------------------- #}
+    {% block aside %}
+        {% include 'asidedashboard.html.twig' %}
+    {% endblock %}
+
+    {% block main %}
+        {% include 'dashboard_home.html.twig' %}
+    {% endblock %}
+
+{# --------------------------- FOOTER CONTENT------------------------------- #}
+        {% block javascripts %}
+            {# ! change script sheet? #}
+            <script src="{{ root }}/assets/javascript/script.js"></script>
+        {% endblock %}
+        
+    </body>
+    {% endblock %}
+    

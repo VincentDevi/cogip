@@ -1,0 +1,39 @@
+{# ELEMENT TO INCLUDE: #}
+{# Header ==> include on base.html main template #}
+
+{% block header %}
+    <header class="header">
+        <nav class="header__menu">
+            <div class="header__menu__container navbar">
+                <div class="header__dropdown">
+                    <div class="header__menu__logo" >COGIP</div>
+                    <a href="#" class="toggle-button">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </a>
+                </div>
+                
+                <div class="navbar-links">
+                    <ul class="header__menu__nav">
+                        <li class="menu__nav__home"><a class="headerlinks" href="/cogip/public">Home</a></li>
+                        <li class="menu__nav__invoices"><a class="headerlinks" href="/cogip/public/invoices">Invoices</a></li>
+                        <li class="menu__nav__companies"><a class="headerlinks" href="/cogip/public/companies">Companies</a></li>
+                        <li class="menu__nav__contacts"><a class="headerlinks" href="/cogip/public/contacts">Contacts</a></li>
+                        <button class="menu__connection__signUp"><a href="{{ root }}/admin"> admin</a></button>
+                        <a href="{{ root }}/login/disconnect"><button class="menu__connection__login">Log Out</button></a>
+                    </ul>
+                </div>  
+            </div>
+        </nav>
+        {% block banner %}
+            
+        {% endblock %}
+
+        <img class="header__mask" src="{{ root }}/assets/img/white_mask.svg" alt="white_mask">
+
+    </header>
+{% endblock %}
+
+
+

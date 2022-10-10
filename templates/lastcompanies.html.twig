@@ -1,0 +1,33 @@
+{# ELEMENT TO INCLUDE : #}
+{# Last companies table ==> to include on welcome.html.twig Page AND on dashboardglobal.html.twig #}
+{# TODO: update styles on dashboard.scss #}
+{# TODO: order Last companies by date (5 last encoded in db) #}
+
+
+{% extends 'datatabletemplate.html.twig' %}
+
+    {% block tabletitlesection %}
+
+        <h2 class="main__section__title">Last companies</h2>
+    {% endblock %}
+
+    {% block tableheadercells %}
+        <th scope="col" class="table__header__row__title">Name</th>
+        <th scope="col" class="table__header__row__title">TVA</th>
+        <th scope="col" class="table__header__row__title">Country</th>
+        <th scope="col" class="table__header__row__title">Type</th>
+        <th scope="col" class="table__header__row__title">Created at</th>
+    {% endblock %}
+
+    {% block tablebodyrows %}
+
+        {% for company in _context.companies %}
+            <tr class="table__body__row">
+                <td scope="col" class="table__body__row__cell">{{company.companies_name}}</td>
+                <td scope="col" class="table__body__row__cell">{{company.tva}}</td>
+                <td scope="col" class="table__body__row__cell">{{company.country}}</td>
+                <td scope="col" class="table__body__row__cell">{{company.types_name}}</td>
+                <td scope="col" class="table__body__row__cell">{{company.companies_created_at}}</td>
+            </tr>
+        {% endfor %}
+    {% endblock %}

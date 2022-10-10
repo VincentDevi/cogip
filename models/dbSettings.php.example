@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * Duplicate this file and rename the copy to 'dbSettings.php'
+ * Choose to use with environment variable or without environment variable according to your dev environment.
+ * Uncomment it and fill with your own.
+ *
+ * dbSettings is unique to each developer and should not be pushed to origin.
+ * dbSettings.php is ignored by git and should be created on distant server with credentials in environment variables.
+ */
+
+//// without environment variable
+//define("USER", "root");
+//define("PASSWORD", "password");
+//define("HOST", "localhost");
+//define("PORT", 3306);
+//define("DATABASE", "database");
+//define("HOST_SITE", "http://localhost:8000/");
+
+//// with environment variable
+//define("USER", getenv('USER'));
+//define("PASSWORD", getenv('PASSWORD'));
+//define("HOST", getenv('HOST'));
+//define("PORT", getenv('PORT'));
+//define("DATABASE", getenv('DATABASE'));
+//define("HOST_SITE", "http://localhost:8000/");

@@ -1,0 +1,51 @@
+{#  ***MAIN TEMPLATE*** #}
+
+<!DOCTYPE html>
+<html>
+    {% block head %}
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="{{ root }}/assets/css/reset.css" rel="stylesheet" type="text/css">
+
+        {% block stylesheets %}
+        <link href="{{ root }}/assets/css/styles.css" rel="stylesheet" type="text/css">
+        {% endblock %}
+        <title>{% block title %}{{pageTitle}}{% endblock %}</title>
+    </head>
+    {% endblock %}
+
+    {% block body %}
+    <body>
+{# --------------------------- HEADER CONTENT------------------------------- #}
+        {% block header %}
+            {% include 'header.html.twig' %}
+        {% endblock %}
+{# --------------------------- MAIN CONTENT--------------------------------- #}
+        <main>
+        {% block content %}
+            
+        {% endblock %}        
+        </main>
+{# --------------------------- FOOTER CONTENT------------------------------- #}        
+        {% block footer %}
+            {% include 'footer.html.twig' %}
+        {% endblock %}
+
+        {% block javascripts %}
+            <button onclick="topFunction()" id="topbtn" class="topbtn" title="Scrowll to Top"><a href="#"><iconify-icon icon="bi:chevron-compact-up"></a></iconify-icon>
+            </button>
+        
+            <script src="{{ root }}/assets/javascript/script.js"></script>
+            <script src="{{ root }}/assets/javascript/navbar.js"></script>
+            <script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
+            <script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
+            <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
+            
+            
+        {% endblock %}
+    </body>
+    {% endblock %}
+</html>

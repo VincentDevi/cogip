@@ -1,0 +1,11 @@
+{# ELEMENT TO INCLUDE: #}
+{# Header for welcome/Home Page ==> include on welcome.html #}
+
+{% extends "header.html.twig" %}
+
+{% block banner %}
+    <div class="header__banner">
+        <h2 class="header__banner__slogan">MANAGE YOUR CUSTOMERS AND INVOICES EASLY</h2>
+        <img class="header__banner__image" src="{{ root }}/assets/img/banner_manager.png" alt="banner_image">
+    </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{# ELEMENT TO INCLUDE: #}
+{# Footer ==> include on base.html main template #}
+
+{% block footer %}
+<footer class="footer">
+    <section class="footer__banner">
+        <div class="footer__banner__logo">COGIP</div>
+
+        <div class="footer__banner__infos">
+            <div class="banner__infos__adress">
+                <img src="{{ root }}/assets/img/icons/adresse.svg" alt="icon_adress">
+                <span>Square des Martyrs, 6000 Charleroi</span>
+            </div>
+            <section class="banner__infos__contact">
+                <div class="infos__contact__phone">
+                    <img src="{{ root }}/assets/img/icons/phone.svg" alt="icon_phone">
+                    <span>(123) 456-7890</span>
+                </div>
+                <div class="infos__contact__fax">
+                    <img src="{{ root }}/assets/img/icons/fax.svg" alt="icon_fax">
+                    <span>(123) 456-7890</span> 
+                </div>
+            </section>
+               
+            <section class="banner__infos__social">
+                <ul class="infos__social__icons">
+                    <li class="social__icons__title">Social Media</li>
+                    <li class="social__icons__facebook"><img src="{{ root }}/assets/img/icons/facebook.svg" alt="icon_facebook"></li>
+                    <li class="social__icons__twitter"><img src="{{ root }}/assets/img/icons/twitter.svg" alt="icon_twitter"></li>
+                    <li class="social__icons__linkedin"><img src="{{ root }}/assets/img/icons/linkedin.svg" alt="icon_linkedin"></li>
+                    <li class="social__icons__youtube"><img src="{{ root }}/assets/img/icons/youtube.svg" alt="icon_youtube"></li>
+                    <li class="social__icons__instagram"><img src="{{ root }}/assets/img/icons/instagram.svg" alt="icon_instagram"></li>
+                    <li class="social__icons__googleplus"><img src="{{ root }}/assets/img/icons/googleplus.svg" alt="icon_googleplus"></li>
+                    <li class="social__icons__pinterest"><img src="{{ root }}/assets/img/icons/pinterest.svg" alt="icon_pinterest"></li>
+                    <li class="social__icons__rss"><img src="{{ root }}/assets/img/icons/rss.svg" alt="icon_rss"></li>
+                </ul>
+            </section>
+        </div>
+    </section>
+    <section class="footer__menu">
+        <ul class="footer__menu__nav">
+            <li class="menu__nav__home"><a href="/cogip/public">HOME</a></li>
+            <li class="menu__nav__invoices"><a href="/cogip/public/invoices">INVOICES</a></li>
+            <li class="menu__nav__companies"><a href="/cogip/public/companies">COMPANIES</a></li>
+            <li class="menu__nav__contacts"><a href="/cogip/public/contacts">CONTACTS</a></li>
+            <li class="menu__nav__privacy policy"><a href="#">PRIVACY POLICY</a></li>
+        </ul>
+        <span class="footer__menu__copyright"> Copyright &copy; 2022 • COGIP Inc.</span>
+    </section>
+
+</footer>
+{% endblock %}

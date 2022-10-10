@@ -1,0 +1,19 @@
+
+
+<h1>dashboard create contact</h1>
+
+<form method="POST" action="{{ root }}/admin/contact/create" name="form" id="form">
+
+    <p>In the tag form, we put the route for submitting form in action.
+        The routes are in routes_list.md at *Submit routes* section</p>
+
+    <input type="text" value="Jean" placeholder="toto" name="name">
+    <input type="text" value="Dupont" placeholder="toto" name="firstname">
+    <input type="text" value="Jean@gmail.com" placeholder="toto" name="email">
+    <input type="text" value="12345678" placeholder="toto" name="phone">
+    <input type="text" value="4" placeholder="4" name="company_id">
+    <input type="Submit">
+
+    <p>It's important to give names to inputs : theses names will be used by form action to send datas to PHP</p>
+
+</form>

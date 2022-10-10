@@ -1,0 +1,64 @@
+{# *HTML VUE  #}
+{# *"ALL CONTACTS" page #}
+{# see exemple page for datavalues #}
+
+{# TODO: 1. correct road for links to "contact/id" pages #}
+{# TODO: 2. order contacts by Alphabetical order #}
+{# TODO: 3. withdraw hour in "created at" ?? #}
+
+
+{% extends "welcome.html.twig" %}
+
+{% block title %}Contacts{% endblock %}
+
+
+{% block content %}
+
+    {% embed 'datadetails.html.twig' %}
+
+        {% block tabletitlesection %}
+            <div class="div__title">
+                <h2 class="main__section__title main__section__title--yellowshadow">All&nbsp;contacts</h2>
+                <input class="searchinput" type="search" placeholder="Search contact" name="searchinput" id="searchcontact"></input>
+            </div>
+        {% endblock %}
+
+        {% block tableheadercells %}
+            <th scope="col" class="table__header__row__title">Name <span class="ordertriangle">&#9662;</span</th>
+            <th scope="col" class="table__header__row__title">Phone</th>
+            <th scope="col" class="table__header__row__title">Mail</th>
+            <th scope="col" class="table__header__row__title">Company</th>
+            <th scope="col" class="table__header__row__title">Created at</th>
+        {% endblock %}
+
+        {% block tablebodyrows %}
+
+            {% for contact in _context.contacts|slice(0,10) %}
+        
+            <tr class="table__body__row">
+                <td scope="col" class="table__body__row__cell"><a href="{{ root }}/contact/{{contact.id}}">{{contact.contacts_name}}</a></td>
+                <td scope="col" class="table__body__row__cell">{{contact.contacts_phone}}</td>
+                <td scope="col" class="table__body__row__cell">{{contact.email}}</td>
+                <td scope="col" class="table__body__row__cell">{{contact.companies_name}}</td>
+                <td scope="col" class="table__body__row__cell">{{contact.contacts_created_at}}</td>
+            </tr>
+            {% endfor %}
+
+        {% endblock %}
+
+
+    {% endembed %}
+
+
+{% endblock %}
+
+
+{# 
+    'All contacts' values:
+
+        contacts_name
+        contacts_phone
+        email
+        companies_name
+        contacts_created_at
+#}

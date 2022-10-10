@@ -1,0 +1,59 @@
+{# ELEMENT TO INCLUDE: #} {# Dashboard Aside Menu ==> To include on
+dashboardlayout.html #}
+
+<aside class="aside">
+    <section class="aside__section aside__section--user">
+        <div class="section__user__pic">
+            <img
+                class="avatar"
+                src="{{ root }}/assets/img/avatar.svg"
+                alt="personal picture"
+            />
+        </div>
+        <h3 class="section__user__name">
+            Henry <br />
+            George
+        </h3>
+    </section>
+
+    <section class="aside__section aside__section--nav">
+        <nav class="aside__section__nav">
+            <ul class="nav__list">
+                <li class="nav__list__item">
+                    <img
+                        src="{{ root }}/assets/img/icons/Icon_dashboard.svg"
+                        alt=""
+                    /><a href="#">Dashboards</a>
+                </li>
+                <li class="nav__list__item">
+                    <img
+                        src="{{ root }}/assets/img/icons/Icon_Invoices.svg"
+                        alt=""
+                    /><a href="#">Invoices</a>
+                </li>
+                <li class="nav__list__item">
+                    <img
+                        src="{{ root }}/assets/img/icons/Icon_Companies.svg"
+                        alt=""
+                    /><a href="#">Companies</a>
+                </li>
+                <li class="nav__list__item">
+                    <img
+                        src="{{ root }}/assets/img/icons/Icon_contact.svg"
+                        alt=""
+                    /><a href="#">Contacts</a>
+                </li>
+            </ul>
+        </nav>
+    </section>
+
+    <section class="aside__section aside__section--logout">
+        <img
+            class="smallAvatar"
+            src="{{ root }}/assets/img/avatar.svg"
+            alt="personal picture"
+        />
+
+        <h6 class="section__logout__p">Logout</h6>
+    </section>
+</aside>

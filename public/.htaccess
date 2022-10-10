@@ -1,0 +1,19 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php [L]
+
+
+#RewriteEngine On
+##RewriteBase /
+##RewriteRule ^index\.php$ - [L]
+#
+##RewriteBase /
+##
+##RewriteRule ^index\.php$ - [L,NC]
+##
+##RewriteRule \.(php|html?|xml)$ index.php [NC,L]
+#
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule . index.php [L]

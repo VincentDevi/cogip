@@ -6,7 +6,6 @@
 */
 
 define('__ROOT__', dirname(dirname(__FILE__)));
-
 /**
  * ------------------------------------------------------------------------
  * Display errors
@@ -20,7 +19,7 @@ $whoops->register();
 /**
  * ------------------------------------------------------------------------
  * redirect Helper
- * Redirect the user to a given url
+ * Redirect the dashboard to a given url
  */
 if(! function_exists('redirect'))
 {
@@ -61,5 +60,100 @@ if ( ! function_exists('dd'))
 
         echo "</code></pre></fieldset><div><br>";
     }
-} 
+}
+
+/**
+ * Return formatted today date.
+ *
+ * @return string
+ */
+if ( ! function_exists('todayDate'))
+{
+    function todayDate()
+    {
+        return date('Y-m-d');
+    }
+}
+
+/**
+ * Remove duplicate rows from a provided 2 dimensional array.
+ * https://stackoverflow.com/questions/3598298/php-remove-duplicate-values-from-multidimensional-array
+ *
+ * @param $array
+ * @return array
+ */
+function removeDuplicateRows($array)
+{
+    $result = array_map("unserialize", array_unique(array_map("serialize", $array)));
+
+    foreach ($result as $key => $value)
+    {
+        if ( is_array($value) )
+        {
+            $result[$key] = removeDuplicateRows($value);
+        }
+    }
+
+    return $result;
+}
+
+/**
+ * Return the root of the project provided in dbSettings.php.
+ * It's the local path of public folder.
+ *
+ * @return string
+ */
+function getRoot(): string
+{
+    // If it's a 404 page, dbSettings are not already loaded,
+    // and is not defined, so we require it.
+    if (!defined("HOST_SITE")) {
+        require_once '../models/dbSettings.php';
+    }
+
+    return HOST_SITE;
+}
+
+function getUrlLastElement():string{
+    $url = $_SERVER['REQUEST_URI'];
+    $array = explode("/",$url);
+    return $array[count($array)-1];
+}
+function sanitize($input){
+    foreach ($input as $i){
+        $i = htmlspecialchars($i);
+    }
+    return $input;
+
+}
+
+function getCurrentUser() {
+    if (isset($_SESSION['firstname']) && isset($_SESSION['name'])) {
+        return $_SESSION["firstname"]." ".$_SESSION["name"];
+    } else {
+        return "";
+    }
+
+}
+
+
+if ( ! function_exists('sanitizeArray'))
+{
+    /**
+     * Return sanitized $data array ready to be rendered to HTML.
+     *
+     * @param $data
+     * @return mixed
+     */
+    function sanitizeArray($data)
+    {
+        foreach ($data as $key => $string)  {
+            if ( is_string($string)){
+                $data[$key] = htmlspecialchars($string, ENT_QUOTES);
+            }
+        }
+
+        return $data;
+    }
+}
 

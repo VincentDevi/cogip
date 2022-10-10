@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    // colors for main pages
+    --color-blacktext :rgba(0, 0, 0, 1);
+    --color-yellow: rgba(249, 222, 78, 1);
+    // light grey table rows = background contacts cards
+    --color-lightgreytablerows: rgba(245, 245, 245, 1);
+    --color-greyfootertext:rgba(115, 115, 115, 1);
+    --color-greyfooterlogo:  #434138;
+    --color-lightgreyarrow: rgba(145, 158, 171, 1);
+    --color-lightgreysearchinput: rgba(99, 99, 99, 1);
+    --color-lightgreybordercontacts: rgba(205, 205, 205, 1);
+    --color-lightgreypagesbtns: rgba(223, 227, 232, 1);
+    --color-darkbluefooter: #0A142F;
+
+    // color for dashboard
+    --color-purpledashboard: rgba(150, 152, 214, 1);
+    --color-darkpurpledashboard: rgba(77, 76, 172, 1);
+    --color-pinkdashboard: rgba(255, 128, 139, 1);
+    --color-backgroundDash: rgba(245, 245, 251, 1);
+
+
+
+//   fonts
+
+  // same for logo, header nav and data tables:
+  --font-family-header: 'Roboto', sans-serif;
+  // same for big titles, placeholders and footer informations:
+  --font-family-title: 'Inter', sans-serif;
+
+
+// other font settings variables:
+  --font-size-body: 1rem;
+  --font-weight-thin:100;
+  --font-weight-light:300;
+  --font-weight-regular:400;
+  --font-weight-semibold:600;
+  --font-weight-bold:700;
+  --font-weight-black:900;
+  --line-height: 1.5;
+
+//   borders
+  --border-width: 1px;
+  --border-solid: solid;
+  --border-color: #dee2e6;
+  --border-color-translucent: rgba(0, 0, 0, 0.175);
+  --border-radius-main: 0.375rem;
+  --border-radius-sm: 0.25rem;
+  --border-radius-lg: 0.5rem;
+  --border-radius-xl: 1rem;
+  --border-radius-2xl: 2rem;
+  --border-radius-pill: 50rem;
+  --border-radius-circle: 50%:
+
+}
+
+
+.mybtn {
+  white-space: nowrap;
+  font-size: 4rem;
+  position: fixed;
+  right: 0;
+  bottom: 50px;
+  left: 0;
+  margin: auto;
+  width: 40px;
+  height: 40px;
+  transform: translateY(0);
+  -webkit-transition: all 500ms ease-in-out;
+  -moz-transition: all 750ms ease-in-out;
+  -ms-transition: all 750ms ease-in-out;
+  -o-transition: all 750ms ease-in-out;
+  transition: all 750ms ease-in-out;
+}
+
+/* this sets the position of the arrow when it's up, so it will move up or down by 14px when you add or remove this class */
+.lift {
+  transform: translateY(14px);
+}

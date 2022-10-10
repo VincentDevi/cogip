@@ -1,0 +1,114 @@
+
+{# *HTML VUE  #}
+{# Dashboard Global #}
+{% extends 'dashboardlayout.html.twig' %}
+
+
+{% block main %}
+    <main class="main">
+        
+        {% include "headerdashboard.html.twig" %}
+        <article class="main__container">
+            {% include 'dashboardstats.html.twig' %}
+
+            {% embed 'dashboardtablelayout.html.twig' %}
+
+                {% block dashboardtabletitle %}
+                    <h3 class="main__section__title">Last Invoices</h3>
+                {% endblock %}
+
+                {% block dashboardtablehead %}
+                <thead class="table__header">
+                    <tr class="table__header__row">
+                        {# TODO: LOOP function to replace th.innerhtml #}
+                        <th scope="col" class="table__header__cell">Invoice&nbsp;Number</th>
+                        <th scope="col" class="table__header__cell">Dates</th>
+                        <th scope="col" class="table__header__cell">Company</th>
+                    </tr>
+                </thead>
+                {% endblock %}
+
+                {% block dashboardtablerows %}
+                    {% for invoice in _context.invoices %}
+                        <tr class="table__body__row">
+                            {# TODO: LOOP function to replace th.innerhtml #}
+                            <th scope="col" class="table__body_cell">{{invoice.ref}}</th>
+                            <th scope="col" class="table__body__cell">{{invoice.due_date}}</th>
+                            <th scope="col" class="table__body__cell">{{invoice.companies_name}}</th>
+                        </tr>
+                    {% endfor %}
+                {% endblock %}
+                
+
+            {% endembed %}
+
+
+            {% embed 'dashboardtablelayout.html.twig' %}
+
+                {% block dashboardtabletitle %}
+                    <h3 class="main__section__title">Last Contacts</h3>
+                {% endblock %}
+
+                {% block dashboardtablehead %}
+                <thead class="table__header">
+                    <tr class="table__header__row">
+                        {# TODO: LOOP function to replace th.innerhtml #}
+                        <th scope="col" class="table__header__cell">Name</th>
+                        <th scope="col" class="table__header__cell">Phone</th>
+                        <th scope="col" class="table__header__cell">Email</th>
+                    </tr>
+                </thead>
+                {% endblock %}
+
+                {% block dashboardtablerows %}
+                    {% for contact in _context.contacts %}
+                        <tr class="table__body__row">
+                            {# TODO: LOOP function to replace th.innerhtml #}
+                            <th scope="col" class="table__body_cell">{{contact.contacts_firstname}}&nbsp;{{contact.contacts_name}}</th>
+                            <th scope="col" class="table__body__cell">{{contact.contacts_phone}}</th>
+                            <th scope="col" class="table__body__cell">{{contact.email}}</th>
+                        </tr>
+                    {% endfor %}
+                {% endblock %}
+
+            {% endembed %}
+
+
+            {% embed 'dashboardtablelayout.html.twig' %}
+
+                {% block dashboardtabletitle %}
+                    <h3 class="main__section__title">Last Companies</h3>
+                {% endblock %}
+
+                {% block dashboardtablehead %}
+                <thead class="table__header">
+                    <tr class="table__header__row">
+                        {# TODO: LOOP function to replace th.innerhtml #}
+                        <th scope="col" class="table__header__cell">Name</th>
+                        <th scope="col" class="table__header__cell">TVA</th>
+                        <th scope="col" class="table__header__cell">Country</th>
+                    </tr>
+                </thead>
+                {% endblock %}
+
+                {% block dashboardtablerows %}
+                    {% for company in _context.companies %}
+                        <tr class="table__body__row">
+                            {# TODO: LOOP function to replace th.innerhtml #}
+                            <th scope="col" class="table__body_cell">{{company.companies_name}}</th>
+                            <th scope="col" class="table__body__cell">{{company.tva}}</th>
+                            <th scope="col" class="table__body__cell">{{company.country}}</th>
+                        </tr>
+                    {% endfor %}
+                {% endblock %}
+
+            {% endembed %}
+        </article>
+    </main>
+    
+
+    {# <pre>
+        {{ dump() }}
+    </pre> #}
+{% endblock %}
+

@@ -1,0 +1,66 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>COGIP - Login</title>
+        <link rel="stylesheet" href="{{ root }}/assets/css/newUser.css" />
+    </head>
+    <body>
+        <main>
+            <div class="header">
+                <span class="title">Welcome to <br> COGIP</span>
+                <span class="description">Create your account by sending us your details</span>
+            </div>
+            <form
+                method="POST"
+                action="{{ root }}/login/createUser/send"
+                name="form"
+                id="form"
+                class="form"
+            >
+                <input
+                    type="text"
+                    value=""
+                    placeholder="enter your last name"
+                    name="last_name"
+                    required
+                />
+                <input
+                    type="text"
+                    value=""
+                    placeholder="enter your firstname"
+                    name="first_name"
+                    required
+                />
+                <input
+                    type="email"
+                    value=""
+                    placeholder="enter your email"
+                    name="email"
+                    required
+                />
+                <input
+                    type="password"
+                    value=""
+                    placeholder="enter your password"
+                    name="password"
+                    required
+                />
+                <input
+                    type="password"
+                    value=""
+                    placeholder="confirm your password"
+                    name="confirm_password"
+                    required
+                />
+
+                <input type="Submit" class="submit"/>
+            </form>
+            <div class="footer">
+                <span> Already an account ?</span>
+                <a href="{{ root }}/login/login">Log In</a>
+            </div>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+{# ELEMENT TO EXTEND/INCLUDE #}
+{# Data table layout for "ALL INVOICES", "ALL CONTACTS" and "ALL COMPANIES" pages #}
+
+{% extends "datatabletemplate.html.twig" %}
+
+    {% block tabletitlesection %}
+    
+        <h2 class="main__section__title main__section__title--yellowshadow">All INVOICES</h2>
+        <input class "searchinput" type="search" placeholder="Search Company" name="searchinput" id="searchinput" onkeyup="filterResults()" oninput="filterResults()"></input>
+    
+    {% endblock %}
+
+
+        {% block tableheadercells %}
+        {# TODO: replace <th>.innerhtml #}
+        <th scope="col" class="table__header__row__title"><span class="ordertriangle">&#9662;</span></th>
+        <th scope="col" class="table__header__row__title"><span class="ordertriangle">&#9662;</span></th>
+        <th scope="col" class="table__header__row__title"><span class="ordertriangle">&#9662;</span></th>
+        <th scope="col" class="table__header__row__title"><span class="ordertriangle">&#9662;</span></th>
+        {% endblock %}
+
+{# TODO: write loop function + Replace <th>.innerhtml by variables #}
+{# {% endblock %} #}
+
+{# {% block tablebody %} #}
+{# TODO: rewrite loop function + Replace <th>.innerhtml by variables #}
+{# {% endblock %} #}
+
+{% block datapages %}
+    <ul class="section__datanav">
+        {# TODO: write condition to hide buttons when more than 5 pages #}
+        <li class="section__datanav__btn section__datanav__btn--arrow">&#10094;</li>
+        <li class="section__datanav__btn section__datanav__btn--number">1</li>
+        <li class="section__datanav__btn section__datanav__btn--number">2</li>
+        <li class="section__datanav__btn section__datanav__btn--number">...</li>
+        <li class="section__datanav__btn section__datanav__btn--number">9</li>
+        <li class="section__datanav__btn section__datanav__btn--number">10</li>
+        <li class="section__datanav__btn section__datanav__btn--arrow">&#10095;</li>
+    </ul>
+{% endblock %}
