@@ -135,3 +135,25 @@ function getCurrentUser() {
     }
 
 }
+
+
+if ( ! function_exists('sanitizeArray'))
+{
+    /**
+     * Return sanitized $data array ready to be rendered to HTML.
+     *
+     * @param $data
+     * @return mixed
+     */
+    function sanitizeArray($data)
+    {
+        foreach ($data as $key => $string)  {
+            if ( is_string($string)){
+                $data[$key] = htmlspecialchars($string, ENT_QUOTES);
+            }
+        }
+
+        return $data;
+    }
+}
+

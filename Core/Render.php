@@ -22,34 +22,21 @@ class Render
 //            'cache' => __ROOT__.'/cache',
 //        ]);
 
+        // allow dump() in Twig.
         $twig = new Environment($loader, [
             'debug' => true,
         ]);
-
         $twig->addExtension(new DebugExtension());
 
-//        $data['root'] = $this->getRoot();
+        // add user accessible to all TWIG templates.
+        $data['user'] = getCurrentUser();
+
+        // sanitize before render to avoid XSS attack.
+        $data = sanitizeArray($data);
 
         $data['root'] = getRoot();
-        $data['user'] = getCurrentUser();
 
         echo $twig->render($templateFile, $data);
     }
 
-//    /**
-//     * Return the root of the project provided in dbSettings.php.
-//     * It's the local path of public folder.
-//     *
-//     * @return string
-//     */
-//    private function getRoot(): string
-//    {
-//        // If it's a 404 page, dbSettings are not already loaded,
-//        // and is not defined, so we require it.
-//        if (!defined("HOST_SITE")) {
-//            require_once '../models/dbSettings.php';
-//        }
-//
-//        return HOST_SITE;
-//    }
 }
