@@ -13,6 +13,7 @@
         border-top: 1px solid #E7E7E7;
         margin: 0 1rem 2rem 2rem;
         font-size: 0.938rem;
+        
         .table__header{
             font-weight: var(--font-weight-bold);
             text-align: left;
@@ -20,6 +21,7 @@
             &__row {
                 height:fit-content;
                 line-height: 1.5;
+                min-width: fit-content;
             };
 
             &__cell {
@@ -50,4 +52,8 @@
             }
         }
     }
+}
+
+.table__overflow {
+    overflow-x: auto;
 }
