@@ -66,13 +66,13 @@ body {
                 }
             }
 
-            h3 {
+            .section__user__name {
                 display: none;
                 @media (min-width: 600px) {
                     font-size: 1.2em;
-                       display: block;
-                       font-weight: var(--font-weight-black);
-                       line-height:1.1;
+                    display: block;
+                    font-weight: var(--font-weight-black);
+                    line-height:1.1;
                     };
 
             }
@@ -223,6 +223,7 @@ body {
             width: 92%;
             position: relative;
             margin-top: 1vh;
+            
 
             &__legend {
                 margin-bottom: 5%;
@@ -248,11 +249,14 @@ body {
             &__welcome {
                 background-color: var(--color-purpledashboard);
                 border-radius: 10px;
-                padding: 5%;
+                padding: 6%;
 
                 h2 {
-                    font-size: 2vw;
+                    font-size: 2.5vw;
+                    font-weight: var(--font-weight-bold);
+                    width: fit-content;
                     color: white;
+                    // border: 2px solid black;
 
                     @media (max-width: 413px) {
                         font-size: 4vw;
@@ -263,9 +267,15 @@ body {
                     font-size: 1vw;
                     font-weight: 300;
                     color: rgba(255, 255, 255, 0.8);
+                    line-height: 1.1;
 
                     @media (max-width: 413px) {
                         font-size: 3vw;
+                    }
+
+                    @media (min-width: 768px) {
+                        max-width: 30%;
+                    padding: 0.5rem 0.3rem;
                     }
                 }
             }
@@ -286,9 +296,40 @@ body {
             }
         }
 
-        &__section--statistique {
+        &__container {
+            display:flex;
+            // flex-direction: column ;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        &__section {
+            display:flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            height:fit-content;
+            width:fit-content;
             width: 45%;
-            height: 25%;
+
+            &__title {
+                // margin: 1rem 0rem 1rem 1rem;
+                font-weight: 700;
+                // padding: 2.125rem;
+                font-size: 1.125rem;
+                font-family: var(--font-family-header);
+                border-bottom: 1px solid #E7E7E7;
+                
+                &--stats {
+                   border: none;
+                };
+            };
+        };
+
+        &__section--statistique {
+            
+            height: fit-content;
             background-color: white;
             border-radius: 10px;
 
@@ -300,10 +341,7 @@ body {
                 width: 90%;
             }
 
-            h3 {
-                margin: 1rem 0rem 1rem 1rem;
-                font-weight: 700;
-            }
+            
 
             .main__section__stats {
                 display: flex;
@@ -316,6 +354,10 @@ body {
                 @media (max-width: 811px) {
                     margin-bottom: 3vh;
                 }
+
+                // .stats_block__data {
+
+                // };
 
                 .stats_block__data--contact {
                     background-color: #4D4CAC;
@@ -336,9 +378,11 @@ body {
                     text-align: center;
                     color: white;
                     border-radius: 50%;
-                    width: 8vw;
-                    height: 8vw;
-                    font-size: 1vw;
+                    width: 4.375rem;
+                    height: 4.375rem;
+                    font-size: 0.75rem;
+                    font-family: var(--font-family-header);
+                    font-weight: var(--font-weight-black);
 
                     @media (max-width: 413px) {
                         font-size: 2vw;

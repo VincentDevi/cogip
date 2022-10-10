@@ -37,6 +37,25 @@
   --border-radius-circle: 50%: ;
 }
 
+.mybtn {
+  white-space: nowrap;
+  font-size: 4rem;
+  position: fixed;
+  right: 0;
+  bottom: 50px;
+  left: 0;
+  margin: auto;
+  width: 40px;
+  height: 40px;
+  transform: translateY(0);
+  transition: all 750ms ease-in-out;
+}
+
+/* this sets the position of the arrow when it's up, so it will move up or down by 14px when you add or remove this class */
+.lift {
+  transform: translateY(14px);
+}
+
 .main__section {
   display: flex;
   flex-direction: column;
@@ -77,11 +96,6 @@ body .aside {
   width: 20%;
   display: flex;
   flex-direction: column;
-}
-@media (max-width: 413px) {
-  body .aside {
-    padding: 3vh 2vw 2vh;
-  }
 }
 @media (max-width: 413px) {
   body .aside {
@@ -132,11 +146,11 @@ body .aside__section--user .section__user__pic img {
     padding: 10%;
   }
 }
-body .aside__section--user h3 {
+body .aside__section--user .section__user__name {
   display: none;
 }
 @media (min-width: 600px) {
-  body .aside__section--user h3 {
+  body .aside__section--user .section__user__name {
     font-size: 1.2em;
     display: block;
     font-weight: var(--font-weight-black);
@@ -159,15 +173,9 @@ body .aside__section--nav .aside__section__nav {
   height: fit-content;
 }
 @media (max-width: 413px) {
-  body .aside__section--nav {
-    margin: 0;
+  body .aside__section--nav .aside__section__nav {
+    margin-left: 0vw;
   }
-}
-body .aside__section--nav .aside__section__nav {
-  width: 100%;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
 }
 body .aside__section--nav .aside__section__nav ul {
   display: flex;
@@ -263,8 +271,8 @@ body .aside__section--logout h6:hover {
   cursor: pointer;
 }
 body .main {
-  width: 80%;
-  padding: 3% 0;
+  width: 85%;
+  padding: 3%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -319,10 +327,10 @@ body .main .header__legend__subtitle {
 body .main .header__welcome {
   background-color: var(--color-purpledashboard);
   border-radius: 10px;
-  padding: 5%;
+  padding: 6%;
 }
 body .main .header__welcome h2 {
-  font-size: 2vw;
+  font-size: 2.5vw;
   font-weight: var(--font-weight-bold);
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -337,24 +345,25 @@ body .main .header__welcome h2 {
 body .main .header__welcome p {
   font-size: 1vw;
   font-weight: 300;
-  max-width: 30%;
-  line-height: 1.2;
-  margin: 0.5rem;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
   color: rgba(255, 255, 255, 0.8);
+  line-height: 1.1;
 }
 @media (max-width: 413px) {
   body .main .header__welcome p {
     font-size: 3vw;
   }
 }
+@media (min-width: 768px) {
+  body .main .header__welcome p {
+    max-width: 30%;
+    padding: 0.5rem 0.3rem;
+  }
+}
 body .main .header__illustration {
   position: absolute;
-  top: -22%;
+  bottom: 35%;
   left: 60%;
-  width: 35%;
+  width: 30%;
 }
 @media (max-width: 413px) {
   body .main .header__illustration {
@@ -366,9 +375,38 @@ body .main .header__illustration {
     bottom: 15%;
   }
 }
-body .main__section--statistique {
+body .main__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 2rem 0;
+  margin-top: 2rem;
+}
+body .main__section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   width: 45%;
-  height: 25%;
+}
+body .main__section__title {
+  font-weight: 700;
+  font-size: 1.125rem;
+  font-family: var(--font-family-header);
+  border-bottom: 1px solid #E7E7E7;
+}
+body .main__section__title--stats {
+  border: none;
+}
+body .main__section--statistique {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   background-color: white;
   border-radius: 10px;
 }
@@ -381,10 +419,6 @@ body .main__section--statistique {
   body .main__section--statistique {
     width: 90%;
   }
-}
-body .main__section--statistique h3 {
-  margin: 1rem 0rem 1rem 1rem;
-  font-weight: 700;
 }
 body .main__section--statistique .main__section__stats {
   display: flex;
@@ -417,9 +451,11 @@ body .main__section--statistique .main__section__stats p {
   text-align: center;
   color: white;
   border-radius: 50%;
-  width: 8vw;
-  height: 8vw;
-  font-size: 1vw;
+  width: 4.375rem;
+  height: 4.375rem;
+  font-size: 0.75rem;
+  font-family: var(--font-family-header);
+  font-weight: var(--font-weight-black);
 }
 @media (max-width: 413px) {
   body .main__section--statistique .main__section__stats p {
