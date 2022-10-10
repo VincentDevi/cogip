@@ -13,7 +13,12 @@
         align-items: center;
         padding: 80px 0px;
         margin-top: 6.25rem;
-
+        @media only screen and (max-width: 413px) {
+            flex-direction: column;
+        }
+        @media only screen and (max-width: 811px) {
+            flex-direction: column;
+        }
         
         .footer__banner__logo {
             font-weight: 900;
@@ -36,6 +41,9 @@
             color: var(--color-greyfootertext);
             @media only screen and (max-width: 413px) {
                 width: 100%;
+                align-items: center;
+            }
+            @media only screen and (max-width: 811px) {
                 align-items: center;
             }
             .banner__infos__adress {
@@ -110,11 +118,17 @@
         @media only screen and (max-width: 413px) {
             flex-direction: column;
         }
+        @media only screen and (max-width: 811px) {
+            flex-direction: column;
+        }
         .footer__menu__nav {
             display: flex;
             justify-content: space-evenly;
             gap: 2vw;
             @media only screen and (max-width: 413px) {
+                flex-wrap: wrap;
+            }
+            @media only screen and (max-width: 811px) {
                 flex-wrap: wrap;
             }
             li {
