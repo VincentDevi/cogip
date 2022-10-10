@@ -13,45 +13,36 @@
 
 
     {% block dashboardsectioncontent %}
+    <div class ="table__overflow">
+        <table class="main__section__table">
 
-    <table class="main__section__table">
-        <thead class="table__header">
-            <tr class="table__header__row">
-                {# TODO: LOOP function to replace th.innerhtml #}
-                <th scope="col" class="table__header__cell">Name</th>
-                <th scope="col" class="table__header__cell">Phone</th>
-                <th scope="col" class="table__header__cell">Email</th>
-            </tr>
-
-        </thead>
-        <tbody class="table__body">
-            <tr class="table__body__row">
-                {# TODO: LOOP function to replace th.innerhtml #}
-                <th scope="col" class="table__body_cell">Henry Bailleux</th>
-                <th scope="col" class="table__body__cell">0485 78 76 67</th>
-                <th scope="col" class="table__body__cell">henry.bailleux@gr.be</th>
-            </tr>
-            <tr class="table__body__row">
-                <th scope="col" class="table__body_cell">Henry Bailleux</th>
-                <th scope="col" class="table__body__cell">0485 78 76 67</th>
-                <th scope="col" class="table__body__cell">henry.bailleux@gr.be</th>
-            </tr>
-            <tr class="table__body__row">
-                <th scope="col" class="table__body_cell">Henry Bailleux</th>
-                <th scope="col" class="table__body__cell">0485 78 76 67</th>
-                <th scope="col" class="table__body__cell">henry.bailleux@gr.be</th>
-            </tr>
-            <tr class="table__body__row">
-                <th scope="col" class="table__body_cell">Henry Bailleux</th>
-                <th scope="col" class="table__body__cell">0485 78 76 67</th>
-                <th scope="col" class="table__body__cell">henry.bailleux@gr.be</th>
-            </tr>
+            {% block dashboardtablehead %}
+            <thead class="table__header">
+                <tr class="table__header__row">
+                    {# TODO: LOOP function to replace th.innerhtml #}
+                    <th scope="col" class="table__header__cell">Name</th>
+                    <th scope="col" class="table__header__cell">Phone</th>
+                    <th scope="col" class="table__header__cell">Email</th>
+                </tr>
+            </thead>
+            {% endblock %}
             
+            <tbody class="table__body">
+                
+                {% block dashboardtablerows %}
+                <tr class="table__body__row">
+                    {# TODO: LOOP function to replace th.innerhtml #}
+                    <th scope="col" class="table__body_cell">Henry Bailleux</th>
+                    <th scope="col" class="table__body__cell">0485 78 76 67</th>
+                    <th scope="col" class="table__body__cell">henry.bailleux@gr.be</th>
+                </tr>
+                {% endblock %}
+                
 
-        </tbody>
+            </tbody>
 
-    </table>
-
+        </table>
+    </div>
     {% endblock %}
     
 </section>
